@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/ui/WhatsappFloat";
+import { CartProvider } from "@/components/lib/cart-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header/>
-        {children}
-        <WhatsAppFloat/>
-        <Footer/>
+        <CartProvider>
+          <Header/>
+          {children}
+          <WhatsAppFloat/>
+          <Footer/>
+        </CartProvider>
       </body>
     </html>
   );

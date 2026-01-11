@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 
 const stats = [
   { number: 500, suffix: "+", label: "Happy Clients" },
@@ -54,8 +55,18 @@ function CountUp({ end, duration = 2000, suffix = "" }: { end: number; duration?
 
 export default function StatsCounter() {
   return (
-    <section className="py-16 md:py-20 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-20 bg-primary text-primary-foreground relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1920&q=85"
+          alt="Background pattern"
+          fill
+          className="object-cover opacity-10"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">

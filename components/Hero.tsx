@@ -1,6 +1,10 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight, Check, Award, Users, Star, Palette, Truck, ShieldCheck, Tag, Headset, Leaf } from "lucide-react";
 
 export default function Hero() {
@@ -140,19 +144,54 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: Hero Image (40%) */}
+          {/* Right: Hero Image Carousel (40%) */}
           <div className="order-1 lg:order-2 relative">
-            <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1612538498456-e861df91d4d0?w=800&q=80"
-                alt="Professional Printing Equipment"
-                fill
-                className="object-cover"
-                priority
-              />
-              {/* Overlay with brand colors */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FDB913]/10 to-black/10"></div>
-            </div>
+            <Carousel
+              className="w-full"
+              opts={{ loop: true }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                })
+              ]}
+            >
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&q=80"
+                      alt="Modern printing facility with professional equipment"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FDB913]/10 to-black/10"></div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                      alt="Team collaboration on printing projects"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FDB913]/10 to-black/10"></div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=800&q=80"
+                      alt="Finished product showcase and samples"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FDB913]/10 to-black/10"></div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </div>

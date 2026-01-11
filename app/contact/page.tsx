@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, MessageCircle, CheckCircle2, Users } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -60,8 +61,141 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Office Showcase */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Visit Our Facility</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Experience our state-of-the-art production facility and meet our dedicated team
+            </p>
+          </div>
+
+          {/* Main Office Hero */}
+          <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl mb-8">
+            <Image
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85"
+              alt="Modern office building exterior"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
+              <div className="p-6 md:p-10 text-white">
+                <h3 className="text-3xl md:text-4xl font-bold mb-3">Our Modern Facility</h3>
+                <p className="text-base md:text-lg opacity-90 max-w-2xl">
+                  Located in the heart of Lahore, our facility features cutting-edge equipment and a professional environment
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Facility Images Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Reception Area */}
+            <div className="relative h-[280px] rounded-lg overflow-hidden shadow-xl group">
+              <Image
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80"
+                alt="Modern reception area"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-6 text-white">
+                  <h4 className="text-xl md:text-2xl font-bold mb-1">Reception Area</h4>
+                  <p className="text-sm opacity-90">Welcoming environment for all our clients</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Production Floor */}
+            <div className="relative h-[280px] rounded-lg overflow-hidden shadow-xl group">
+              <Image
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                alt="Modern production area"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-6 text-white">
+                  <h4 className="text-xl md:text-2xl font-bold mb-1">Production Floor</h4>
+                  <p className="text-sm opacity-90">Advanced equipment for premium results</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Availability */}
       <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div className="relative h-[350px] md:h-[450px] rounded-xl overflow-hidden shadow-xl">
+              <Image
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+                alt="Customer service team"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Contact Us?</h2>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-[#FDB913] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Free Consultation</h3>
+                    <p className="text-muted-foreground">Get expert advice on your printing and packaging needs at no cost</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-[#FDB913] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Quick Response</h3>
+                    <p className="text-muted-foreground">We respond to all inquiries within 24 hours or less</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-[#FDB913] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Dedicated Support</h3>
+                    <p className="text-muted-foreground">A personal account manager for every project</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-[#FDB913] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-lg mb-1">Flexible Communication</h3>
+                    <p className="text-muted-foreground">Reach us via phone, email, WhatsApp, or in-person visits</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Team at Work Image */}
+              <div className="relative h-[200px] rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+                  alt="Team at work"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <Users className="h-12 w-12 mx-auto mb-2" />
+                    <p className="font-semibold">Our Team is Ready to Help</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form & Info */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Information Cards */}

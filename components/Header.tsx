@@ -3,8 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, Phone, Printer, Package, Building2, ChevronDown } from "lucide-react";
+import { Menu, Phone, Printer, Package, Building2, ChevronDown, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/components/lib/cart-context";
+import CartSheet from "@/components/CartSheet";
 import {
   Sheet,
   SheetContent,
@@ -61,9 +63,11 @@ function ListItem({
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -275,7 +279,23 @@ export default function Header() {
           </NavigationMenu>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center shrink-0 ml-2">
+          <div className="hidden lg:flex items-center gap-2 shrink-0 ml-2">
+            {/* Shopping Cart Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative h-9 w-9"
+              onClick={() => setCartOpen(true)}
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-[#FDB913] text-black text-xs font-bold flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+              <span className="sr-only">Shopping cart with {totalItems} items</span>
+            </Button>
+
             <Button asChild size="sm" className="h-9 px-3 text-sm whitespace-nowrap">
               <Link href="/request-quote">Get Free Quote</Link>
             </Button>
@@ -398,7 +418,7 @@ export default function Header() {
                 >
                   Portfolio
                 </Link>
-                
+
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
@@ -406,6 +426,28 @@ export default function Header() {
                 >
                   Contact
                 </Link>
+
+                {/* Divider */}
+                <div className="border-t my-1" />
+
+                {/* Shopping Cart */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setCartOpen(true);
+                  }}
+                  className="w-full px-6 py-3 text-base font-medium hover:bg-accent transition-colors flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShoppingCart className="h-5 w-5" />
+                    Cart
+                  </span>
+                  {totalItems > 0 && (
+                    <span className="h-6 w-6 rounded-full bg-[#FDB913] text-black text-xs font-bold flex items-center justify-center">
+                      {totalItems}
+                    </span>
+                  )}
+                </button>
               </nav>
 
               {/* Fixed bottom buttons */}
@@ -426,6 +468,9 @@ export default function Header() {
           </Sheet>
         </div>
       </div>
+
+      {/* Cart Sheet */}
+      <CartSheet open={cartOpen} onOpenChange={setCartOpen} />
     </header>
   );
 }

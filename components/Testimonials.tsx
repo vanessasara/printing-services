@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 import {
   Carousel,
@@ -18,6 +18,7 @@ const testimonials = [
     company: "Sunrise Restaurants",
     role: "Owner",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=70",
     text: "Fast Printing transformed our restaurant branding. The custom menus and packaging are exceptional quality, and the turnaround time was incredibly fast. Our customers constantly compliment the professional presentation.",
   },
   {
@@ -25,6 +26,7 @@ const testimonials = [
     company: "MediCare Clinic",
     role: "Medical Director",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=70",
     text: "We needed compliant medical labels and brochures urgently. Fast Printing delivered beyond expectations - premium quality materials, perfect color matching, and they understood our regulatory requirements perfectly.",
   },
   {
@@ -32,6 +34,7 @@ const testimonials = [
     company: "BrightMinds School",
     role: "Principal",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=70",
     text: "Working with Fast Printing for our school materials has been wonderful. They created custom notebooks, ID cards, and certificates that the students love. The bulk pricing and quality are unbeatable.",
   },
   {
@@ -39,6 +42,7 @@ const testimonials = [
     company: "TechVenture Startup",
     role: "Founder & CEO",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=70",
     text: "As a startup, we needed professional branding on a budget. Fast Printing provided excellent design support and delivered premium business cards and packaging that made us look established. Highly recommended!",
   },
   {
@@ -46,6 +50,7 @@ const testimonials = [
     company: "Luxe Cosmetics",
     role: "Brand Manager",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=70",
     text: "The custom packaging for our cosmetic line exceeded all expectations. The attention to detail, eco-friendly materials, and stunning finishes have significantly elevated our brand perception. Worth every rupee!",
   },
   {
@@ -53,6 +58,7 @@ const testimonials = [
     company: "Pakistan Traders Association",
     role: "Secretary",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=70",
     text: "Fast Printing has been our go-to for all corporate events and promotional materials. Reliable, professional, and always deliver on time. The quality consistency across thousands of prints is remarkable.",
   },
 ];
@@ -102,6 +108,7 @@ export default function Testimonials() {
                     {/* Author */}
                     <div className="flex items-center gap-3">
                       <Avatar>
+                        <AvatarImage src={testimonial.image} alt={testimonial.name} />
                         <AvatarFallback className="bg-primary text-primary-foreground">
                           {testimonial.name.split(" ").map(n => n[0]).join("")}
                         </AvatarFallback>
