@@ -100,7 +100,7 @@ export default function PortfolioPage() {
                     <p className="text-white/90 text-sm mb-4">
                       Custom luxury packaging that elevated brand perception and increased sales by 45%
                     </p>
-                    <Link href="/portfolio/luxury-cosmetics-packaging" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
+                    <Link href="/portfolio/luxury-cosmetic-packaging" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
                       View Case Study
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
@@ -152,7 +152,7 @@ export default function PortfolioPage() {
                     <p className="text-white/90 text-sm mb-4">
                       Large format printing and displays that captured 30% more leads at exhibitions
                     </p>
-                    <Link href="/portfolio/tech-startup-marketing" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
+                    <Link href="/portfolio/tech-startup-branding" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
                       View Case Study
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>

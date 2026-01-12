@@ -43,7 +43,7 @@ export interface Service {
       tagline: "Fast, flexible printing perfect for short runs and quick turnarounds",
       description: "High-quality digital printing solutions for business cards, flyers, brochures, and more. Perfect for small to medium runs with fast delivery.",
       longDescription: "Our digital printing service offers exceptional quality and flexibility for businesses that need quick turnarounds without compromising on quality. Using state-of-the-art digital presses, we can produce vibrant, high-resolution prints on a variety of materials. Digital printing is ideal for projects that require variable data printing, short runs, or rapid production times. Unlike traditional offset printing, digital printing doesn't require plates, making it cost-effective for smaller quantities and allowing for easy customization of each printed piece.",
-      heroImage: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=1200&h=600&fit=crop",
+      heroImage: "/digital-printing-banner.jpeg",
       features: [
         "High-quality output with vibrant colors",
         "Fast turnaround times (24-48 hours available)",
@@ -120,7 +120,7 @@ export interface Service {
       tagline: "High-volume printing with exceptional quality and cost-effectiveness",
       description: "Traditional offset printing for large quantity projects where quality and consistency are paramount. Best for runs of 500+ pieces.",
       longDescription: "Offset printing is the gold standard for high-volume, high-quality printing projects. This traditional printing method uses plates and ink rollers to transfer images to paper, resulting in superior color accuracy and consistency across large print runs. While it requires longer setup times than digital printing, offset printing becomes increasingly cost-effective as quantities increase. It's the preferred choice for magazines, catalogs, brochures, and any project requiring exceptional color matching and quality. Our offset presses can handle a wide range of paper stocks and sizes, with various finishing options available.",
-      heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=600&fit=crop",
+      heroImage: "/offset-printing.jpeg",
       features: [
         "Exceptional color accuracy and consistency",
         "Cost-effective for large quantities (500+)",
@@ -197,7 +197,7 @@ export interface Service {
       tagline: "Vibrant, durable prints on various materials and surfaces",
       description: "Screen printing for t-shirts, promotional items, signage, and specialty applications. Perfect for bold designs and unique materials.",
       longDescription: "Screen printing, also known as silk screening, is a versatile printing technique that allows us to print on a wide variety of materials including fabric, plastic, metal, wood, and more. This method uses a mesh screen to transfer ink onto the substrate, creating vibrant, long-lasting prints. Screen printing is ideal for promotional items, apparel, signage, and any application requiring durability and bold colors. It's particularly cost-effective for larger quantities and excels at printing on non-paper materials where other printing methods fall short.",
-      heroImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&h=600&fit=crop",
+      heroImage: "/screen-printing.jpeg",
       features: [
         "Prints on virtually any surface",
         "Exceptionally durable and long-lasting",
@@ -274,7 +274,7 @@ export interface Service {
       tagline: "Banners, posters, and signage that make a big impact",
       description: "Wide-format printing for banners, posters, trade show displays, and outdoor advertising. Premium quality in any size.",
       longDescription: "Our large format printing services deliver stunning visual impact for projects of any size. Using advanced wide-format printers, we can produce high-resolution graphics up to 16 feet wide and any length. Whether you need outdoor banners, indoor posters, trade show displays, or vehicle wraps, our large format printing delivers vibrant colors and sharp details. We offer a variety of materials including vinyl, fabric, canvas, and specialty substrates, along with finishing options like grommets, hemming, and mounting.",
-      heroImage: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200&h=600&fit=crop",
+      heroImage: "/large-format-printing.jpeg",
       features: [
         "Sizes up to 16 feet wide, unlimited length",
         "UV-resistant inks for outdoor durability",

@@ -81,8 +81,8 @@ export default function ServicesGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {services.map((service) => (
-                <Link href={service.href}>
-            <Card key={service.title} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/50">
+                <Link key={service.title} href={service.href}>
+            <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/50">
               <CardHeader>
                 <div className="mb-4 inline-block p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
                   <service.icon className="h-6 w-6 text-primary" />

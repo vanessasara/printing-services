@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowRight, CheckCircle2, Printer, Package, Palette, Maximize, Leaf, Scissors } from "lucide-react";
-import { getAllServices, getServicesByCategory } from "@/components/lib/services";
+import { ArrowRight, CheckCircle2} from "lucide-react";
 import {serviceCategories,additionalServices} from '@/components/lib/services'
 
 export const metadata = {
@@ -15,8 +14,8 @@ export const metadata = {
 // Helper functions for category banners and benefit images
 function getCategoryBannerImage(category: string): string {
   const banners: Record<string, string> = {
-    "Printing Services": "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=1920&q=85",
-    "Packaging Solutions": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=85",
+    "Printing Services": "/service-page-first-banner.jpeg",
+    "Packaging Solutions": "/service-page-second-banner.jpeg",
     "Design Services": "https://images.unsplash.com/photo-1561070791-36c11767b26a?w=1920&q=85",
   };
   return banners[category] || "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=1920&q=85";
@@ -60,49 +59,58 @@ export default function ServicesPage() {
 
       {/* Service Categories */}
       {serviceCategories.map((category, idx) => (
-        <section key={idx} className={idx % 2 === 1 ? "py-16 md:py-24 bg-muted/30" : "py-16 md:py-24"}>
+        <section key={category.category} className={idx % 2 === 1 ? "py-16 md:py-24 bg-muted/30" : "py-16 md:py-24"}>
           <div className="container mx-auto px-4">
             {/* Category Header Banner */}
-            <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden mb-12">
+            <div className="relative h-56 sm:h-64 md:h-72 lg:h-80 rounded-xl md:rounded-2xl overflow-hidden mb-8 md:mb-12">
               <Image
                 src={getCategoryBannerImage(category.category)}
                 alt={`${category.category} banner`}
                 fill
                 className="object-cover"
+                priority={idx === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
-                <div className="container mx-auto px-8 flex items-center gap-4">
-                  <div className="p-4 bg-[#FDB913] rounded-lg">
-                    <category.icon className="h-8 w-8 text-black" />
-                  </div>
-                  <div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">{category.category}</h2>
-                    <p className="text-white/90 text-lg max-w-2xl">{category.description}</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40 md:to-transparent flex items-center">
+                <div className="container mx-auto px-4 sm:px-6 md:px-8">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 max-w-4xl">
+                    <div className="p-2.5 sm:p-3 md:p-4 bg-[#FDB913] rounded-lg flex-shrink-0">
+                      <category.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-black" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
+                        {category.category}
+                      </h2>
+                      <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl line-clamp-2 sm:line-clamp-none">
+                        {category.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
               {category.services.map((service) => (
                 <Link key={service.slug} href={`/services/${service.slug}`}>
-                  <Card className="h-full hover:shadow-lg transition-all duration-300 group overflow-hidden">
-                    <div className="relative h-48 overflow-hidden">
+                  <Card className="h-full hover:shadow-lg transition-all duration-300 group overflow-hidden border-2 hover:border-primary/30">
+                    <div className="relative h-44 sm:h-48 md:h-52 lg:h-48 overflow-hidden bg-muted">
                       <Image
                         src={service.heroImage}
                         alt={service.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       />
                     </div>
-                    <CardHeader>
-                      <CardTitle className="group-hover:text-primary transition-colors">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-1">
                         {service.name}
                       </CardTitle>
-                      <CardDescription>{service.description}</CardDescription>
+                      <CardDescription className="text-sm line-clamp-2">{service.description}</CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <span className="text-primary font-medium inline-flex items-center group-hover:gap-2 transition-all">
+                    <CardContent className="pt-0">
+                      <span className="text-primary font-medium text-sm inline-flex items-center group-hover:gap-2 transition-all">
                         Learn More
                         <ArrowRight className="ml-1 h-4 w-4" />
                       </span>
@@ -156,7 +164,7 @@ export default function ServicesPage() {
               Why Choose Our Services
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
               {[
                 {
                   title: "End-to-End Solutions",
@@ -183,8 +191,8 @@ export default function ServicesPage() {
                   description: "100% satisfaction guarantee. If you're not happy, we'll make it right.",
                 },
               ].map((item) => (
-                <Card key={item.title} className="overflow-hidden border-none shadow-sm group">
-                  <div className="relative">
+                <Card key={item.title} className="overflow-hidden border-none shadow-md group">
+                  <div className="relative min-h-[240px] sm:min-h-[260px]">
                     {/* Background Image */}
                     <div className="absolute inset-0 z-0">
                       <Image
@@ -192,17 +200,18 @@ export default function ServicesPage() {
                         alt={item.title}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-white/85"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/92 to-white/88"></div>
                     </div>
 
                     {/* Content */}
-                    <CardContent className="pt-6 relative z-10">
-                      <div className="mb-4 inline-flex p-3 bg-[#FDB913]/10 rounded-lg">
-                        <CheckCircle2 className="h-6 w-6 text-[#FDB913]" />
+                    <CardContent className="pt-5 sm:pt-6 pb-5 sm:pb-6 relative z-10">
+                      <div className="mb-3 sm:mb-4 inline-flex p-2.5 sm:p-3 bg-[#FDB913]/10 rounded-lg">
+                        <CheckCircle2 className="h-5 w-5 sm:h-6 sm:w-6 text-[#FDB913]" />
                       </div>
-                      <h3 className="font-semibold text-lg mb-3">{item.title}</h3>
-                      <p className="text-gray-700">{item.description}</p>
+                      <h3 className="font-semibold text-base sm:text-lg mb-2 sm:mb-3">{item.title}</h3>
+                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{item.description}</p>
                     </CardContent>
                   </div>
                 </Card>
@@ -223,48 +232,51 @@ export default function ServicesPage() {
               Our commitment to quality is backed by industry certifications and recognition
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center">
-                <div className="relative h-48 rounded-lg overflow-hidden mb-4">
+                <div className="relative h-40 sm:h-44 md:h-48 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-muted">
                   <Image
                     src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75"
                     alt="ISO Certification"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">ISO Certified</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold text-base sm:text-lg mb-1.5 sm:mb-2">ISO Certified</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground px-2">
                   Quality management systems certified to international standards
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="relative h-48 rounded-lg overflow-hidden mb-4">
+                <div className="relative h-40 sm:h-44 md:h-48 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-muted">
                   <Image
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=75"
                     alt="Quality Awards"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Award Winning</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold text-base sm:text-lg mb-1.5 sm:mb-2">Award Winning</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground px-2">
                   Recognized for excellence in printing and packaging services
                 </p>
               </div>
 
-              <div className="text-center">
-                <div className="relative h-48 rounded-lg overflow-hidden mb-4">
+              <div className="text-center sm:col-span-2 md:col-span-1">
+                <div className="relative h-40 sm:h-44 md:h-48 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-muted">
                   <Image
                     src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75"
                     alt="State-of-the-art Equipment"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Modern Equipment</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold text-base sm:text-lg mb-1.5 sm:mb-2">Modern Equipment</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground px-2">
                   Latest technology meeting industry standards and certifications
                 </p>
               </div>

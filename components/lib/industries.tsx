@@ -357,6 +357,334 @@ export const industries: Industry[] = [
         satisfactionRate: "98%",
       },
     },
+    {
+      id: 5,
+      slug: "corporate-business",
+      name: "Corporate & Business",
+      tagline: "Professional printing for professional businesses",
+      description: "Comprehensive corporate stationery, marketing materials, and branded items that enhance your business's professional image. From business cards to annual reports, we deliver quality that reflects your brand excellence.",
+      heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop",
+      challenges: [
+        {
+          title: "Brand Consistency",
+          description: "Maintaining consistent branding across all departments and materials",
+        },
+        {
+          title: "Professional Image",
+          description: "Materials must reflect corporate professionalism and quality standards",
+        },
+        {
+          title: "Volume & Variety",
+          description: "Managing diverse printing needs from multiple departments efficiently",
+        },
+      ],
+      solutions: [
+        {
+          title: "Brand Management",
+          description: "Centralized brand templates and guidelines ensuring consistency across all materials",
+        },
+        {
+          title: "Premium Quality",
+          description: "High-quality materials and finishes that project professional excellence",
+        },
+        {
+          title: "Account Management",
+          description: "Dedicated account managers to streamline ordering and maintain quality standards",
+        },
+      ],
+      products: [
+        {
+          name: "Business Cards",
+          description: "Premium business cards that make lasting impressions",
+          image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Letterheads",
+          description: "Professional letterheads for official correspondence",
+          image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Presentation Folders",
+          description: "High-quality folders for proposals and presentations",
+          image: "https://images.unsplash.com/photo-1586281380614-94ca412df0e0?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Corporate Reports",
+          description: "Annual reports and corporate documentation",
+          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop",
+        },
+      ],
+      caseStudies: [
+        {
+          client: "Engro Corporation",
+          project: "Complete corporate stationery overhaul for 20+ offices nationwide",
+          result: "40% cost savings through centralized ordering and improved brand consistency",
+        },
+        {
+          client: "Lucky Cement",
+          project: "Annual report design and printing for shareholders",
+          result: "Received industry recognition for report design and presentation quality",
+        },
+      ],
+      testimonials: [
+        {
+          name: "Adnan Siddiqui",
+          role: "Corporate Communications Manager, Systems Ltd",
+          text: "Fast Printing understands corporate requirements. Their attention to detail and consistent quality have made them our preferred partner for 8 years.",
+        },
+      ],
+      stats: {
+        clientsServed: "250+",
+        projectsCompleted: "1500+",
+        satisfactionRate: "99%",
+      },
+    },
+    {
+      id: 6,
+      slug: "events-hospitality",
+      name: "Events & Hospitality",
+      tagline: "Making every event memorable",
+      description: "Specialized printing solutions for events, weddings, conferences, and hospitality venues. From elegant invitations to large-format event signage, we help create memorable experiences.",
+      heroImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop",
+      challenges: [
+        {
+          title: "Tight Deadlines",
+          description: "Events have fixed dates requiring guaranteed on-time delivery",
+        },
+        {
+          title: "Premium Aesthetics",
+          description: "Materials must match the elegance and theme of the event",
+        },
+        {
+          title: "Large Scale Coordination",
+          description: "Managing multiple print items and deliveries for large events",
+        },
+      ],
+      solutions: [
+        {
+          title: "Rush Services",
+          description: "Priority production and express delivery options for urgent event needs",
+        },
+        {
+          title: "Luxury Finishes",
+          description: "Premium papers, foiling, embossing, and other special finishes for elegant presentation",
+        },
+        {
+          title: "Event Coordination",
+          description: "Dedicated project managers to coordinate all printing needs for seamless execution",
+        },
+      ],
+      products: [
+        {
+          name: "Wedding Invitations",
+          description: "Elegant custom invitations for your special day",
+          image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Event Banners",
+          description: "Large format banners and backdrops for events",
+          image: "https://images.unsplash.com/photo-1487260211189-670c54da558d?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Name Badges",
+          description: "Professional badges and lanyards for conferences",
+          image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Event Programs",
+          description: "Booklets and programs for conferences and weddings",
+          image: "https://images.unsplash.com/photo-1598901405737-eb5ed732f33d?w=400&h=300&fit=crop",
+        },
+      ],
+      caseStudies: [
+        {
+          client: "Pearl Continental Hotels",
+          project: "Complete event materials for 50+ conferences annually",
+          result: "99.8% on-time delivery rate and 95% client satisfaction across all events",
+        },
+        {
+          client: "Roots School System",
+          project: "Annual convocation materials for 15,000 graduates across multiple campuses",
+          result: "Flawless execution of complex multi-city delivery schedule",
+        },
+      ],
+      testimonials: [
+        {
+          name: "Zara Ahmed",
+          role: "Event Manager, Occasions by Zara",
+          text: "In the events business, timing is everything. Fast Printing has never let us down, even with impossible deadlines. Their quality is unmatched.",
+        },
+      ],
+      stats: {
+        clientsServed: "180+",
+        projectsCompleted: "750+",
+        satisfactionRate: "98%",
+      },
+    },
+    {
+      id: 7,
+      slug: "technology-startups",
+      name: "Technology & Startups",
+      tagline: "Modern printing for innovative companies",
+      description: "Fast, flexible printing solutions that keep pace with tech companies and startups. From pitch decks to product packaging, we help innovative companies make their mark.",
+      heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=600&fit=crop",
+      challenges: [
+        {
+          title: "Rapid Changes",
+          description: "Startups need flexibility to update materials as they iterate and pivot",
+        },
+        {
+          title: "Budget Constraints",
+          description: "Young companies need quality materials while managing limited budgets",
+        },
+        {
+          title: "Speed to Market",
+          description: "Quick turnaround times to support fast-paced product launches",
+        },
+      ],
+      solutions: [
+        {
+          title: "Small Batch Printing",
+          description: "Digital printing for small quantities without sacrificing quality or breaking the bank",
+        },
+        {
+          title: "Startup Packages",
+          description: "Bundled solutions and special pricing designed for startup needs and budgets",
+        },
+        {
+          title: "Express Production",
+          description: "Same-day and next-day services to support your aggressive timelines",
+        },
+      ],
+      products: [
+        {
+          name: "Pitch Decks",
+          description: "Professional presentation materials for investors",
+          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Product Packaging",
+          description: "Custom packaging for tech products and gadgets",
+          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Marketing Materials",
+          description: "Flyers, brochures, and promotional items",
+          image: "https://images.unsplash.com/photo-1561070791-36c11767b26a?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Tech Swag",
+          description: "Branded stickers, t-shirts, and promotional items",
+          image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop",
+        },
+      ],
+      caseStudies: [
+        {
+          client: "Airlift Technologies",
+          project: "Rapid production of marketing materials for aggressive expansion",
+          result: "Supported launch in 8 cities with 72-hour turnaround on all materials",
+        },
+        {
+          client: "Bykea",
+          project: "Custom helmet stickers and rider materials for nationwide fleet",
+          result: "Delivered 50,000+ units in 2 weeks, enabling rapid fleet expansion",
+        },
+      ],
+      testimonials: [
+        {
+          name: "Omar Farooq",
+          role: "Co-founder, TechHub Karachi",
+          text: "Fast Printing gets the startup hustle. They move at our speed without compromising on quality. Essential partner for any growing tech company.",
+        },
+      ],
+      stats: {
+        clientsServed: "120+",
+        projectsCompleted: "600+",
+        satisfactionRate: "97%",
+      },
+    },
+    {
+      id: 8,
+      slug: "fashion-apparel",
+      name: "Fashion & Apparel",
+      tagline: "Packaging as stylish as your products",
+      description: "Premium packaging and labels that complement fashion brands and elevate the customer experience. From luxury boxes to hang tags, we help your products make a stylish statement.",
+      heroImage: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&h=600&fit=crop",
+      challenges: [
+        {
+          title: "Brand Aesthetics",
+          description: "Packaging must align with fashion brand's visual identity and premium positioning",
+        },
+        {
+          title: "Seasonal Collections",
+          description: "Regular updates needed for new collections and seasonal campaigns",
+        },
+        {
+          title: "Premium Presentation",
+          description: "High-end finishes and materials expected by fashion-conscious customers",
+        },
+      ],
+      solutions: [
+        {
+          title: "Design Collaboration",
+          description: "Work closely with your design team to create packaging that complements your collections",
+        },
+        {
+          title: "Flexible Production",
+          description: "Quick turnaround for seasonal changes while maintaining premium quality",
+        },
+        {
+          title: "Luxury Finishes",
+          description: "Specialty papers, foiling, embossing, and other premium finishes fashion brands expect",
+        },
+      ],
+      products: [
+        {
+          name: "Garment Tags",
+          description: "Custom hang tags and care labels",
+          image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Luxury Boxes",
+          description: "Premium rigid boxes for high-end products",
+          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Shopping Bags",
+          description: "Designer shopping bags with luxury finishes",
+          image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=300&fit=crop",
+        },
+        {
+          name: "Lookbooks",
+          description: "Fashion catalogs and collection lookbooks",
+          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop",
+        },
+      ],
+      caseStudies: [
+        {
+          client: "Khaadi",
+          project: "Custom packaging redesign for luxury lawn collection",
+          result: "Packaging became a social media sensation with 500+ customer posts",
+        },
+        {
+          client: "Generation",
+          project: "Hang tags and packaging for seasonal collections",
+          result: "25% reduction in production time while upgrading to premium materials",
+        },
+      ],
+      testimonials: [
+        {
+          name: "Maheen Kardar",
+          role: "Creative Director, Studio by TCS",
+          text: "Our packaging is an extension of our brand. Fast Printing understands fashion and delivers the quality our customers expect.",
+        },
+      ],
+      stats: {
+        clientsServed: "90+",
+        projectsCompleted: "450+",
+        satisfactionRate: "98%",
+      },
+    },
   ];
   
  // This data will be imported from lib/industries.ts
