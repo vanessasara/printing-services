@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { CheckCircle2, HelpCircle, Calculator, TrendingDown } from "lucide-react";
@@ -111,12 +112,20 @@ export default function PricingPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Business Cards */}
-            <Card>
-              <CardHeader>
+            <Card className="overflow-hidden relative">
+              <div className="absolute inset-0 z-0 opacity-10">
+                <Image
+                  src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75"
+                  alt="Business cards printing"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="relative z-10">
                 <CardTitle>Business Cards</CardTitle>
                 <CardDescription>Standard size, full color</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">250 cards</span>
@@ -138,12 +147,20 @@ export default function PricingPage() {
             </Card>
 
             {/* Flyers */}
-            <Card>
-              <CardHeader>
+            <Card className="overflow-hidden relative">
+              <div className="absolute inset-0 z-0 opacity-10">
+                <Image
+                  src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75"
+                  alt="Flyers printing"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="relative z-10">
                 <CardTitle>Flyers</CardTitle>
                 <CardDescription>A5 size, single-sided, full color</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">500 flyers</span>
@@ -165,12 +182,20 @@ export default function PricingPage() {
             </Card>
 
             {/* Brochures */}
-            <Card>
-              <CardHeader>
+            <Card className="overflow-hidden relative">
+              <div className="absolute inset-0 z-0 opacity-10">
+                <Image
+                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75"
+                  alt="Brochures printing"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="relative z-10">
                 <CardTitle>Brochures</CardTitle>
                 <CardDescription>A4 tri-fold, full color</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">100 brochures</span>
@@ -192,12 +217,20 @@ export default function PricingPage() {
             </Card>
 
             {/* Custom Boxes */}
-            <Card>
-              <CardHeader>
+            <Card className="overflow-hidden relative">
+              <div className="absolute inset-0 z-0 opacity-10">
+                <Image
+                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75"
+                  alt="Custom boxes packaging"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="relative z-10">
                 <CardTitle>Custom Boxes</CardTitle>
                 <CardDescription>Product packaging, custom size</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">100 boxes</span>
@@ -219,12 +252,20 @@ export default function PricingPage() {
             </Card>
 
             {/* Labels & Stickers */}
-            <Card>
-              <CardHeader>
+            <Card className="overflow-hidden relative">
+              <div className="absolute inset-0 z-0 opacity-10">
+                <Image
+                  src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75"
+                  alt="Labels and stickers"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="relative z-10">
                 <CardTitle>Labels & Stickers</CardTitle>
                 <CardDescription>Custom size, full color</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">500 labels</span>
@@ -246,12 +287,20 @@ export default function PricingPage() {
             </Card>
 
             {/* Banners */}
-            <Card>
-              <CardHeader>
+            <Card className="overflow-hidden relative">
+              <div className="absolute inset-0 z-0 opacity-10">
+                <Image
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75"
+                  alt="Large format banners"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="relative z-10">
                 <CardTitle>Banners</CardTitle>
                 <CardDescription>Vinyl banner, full color</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">3x6 ft banner</span>
@@ -430,6 +479,122 @@ export default function PricingPage() {
             <p className="mt-8 text-sm opacity-90">
               Discounts apply automatically based on your order quantity. Contact us for enterprise pricing on 10,000+ units.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Demonstration - Quality Comparison */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Quality That Makes a Difference
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                See how our premium materials and finishes create exceptional results
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* Print Quality Comparison */}
+              <Card className="overflow-hidden">
+                <div className="grid grid-cols-2">
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75"
+                      alt="Standard print quality"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Standard
+                    </div>
+                  </div>
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75"
+                      alt="Premium print quality"
+                      fill
+                      className="object-cover brightness-110"
+                    />
+                    <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                      Premium
+                    </div>
+                  </div>
+                </div>
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold text-lg mb-2">Print Quality</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Premium printing delivers sharper details, richer colors, and professional finish
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Material Comparison */}
+              <Card className="overflow-hidden">
+                <div className="grid grid-cols-2">
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=75"
+                      alt="Standard material"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Standard
+                    </div>
+                  </div>
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=75"
+                      alt="Premium material"
+                      fill
+                      className="object-cover brightness-110"
+                    />
+                    <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                      Premium
+                    </div>
+                  </div>
+                </div>
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold text-lg mb-2">Material Quality</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Premium materials offer superior durability, texture, and professional feel
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Finishing Options Showcase */}
+            <Card className="overflow-hidden">
+              <div className="relative h-80">
+                <Image
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75"
+                  alt="Premium finishing options"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <h3 className="text-2xl font-bold mb-3">Premium Finishing Options</h3>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div>
+                      <div className="font-semibold mb-1">Lamination & Coating</div>
+                      <p className="text-sm text-white/90">Gloss, matte, or soft-touch finishes for protection and premium feel</p>
+                    </div>
+                    <div>
+                      <div className="font-semibold mb-1">Foil Stamping</div>
+                      <p className="text-sm text-white/90">Metallic accents in gold, silver, or custom colors for luxury appeal</p>
+                    </div>
+                    <div>
+                      <div className="font-semibold mb-1">Embossing & Debossing</div>
+                      <p className="text-sm text-white/90">Raised or recessed designs for tactile, memorable impressions</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>

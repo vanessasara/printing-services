@@ -101,35 +101,49 @@ export default function SustainabilityPage() {
                 icon: TreePine,
                 title: "FSC Certified Paper",
                 description: "All our paper products come from responsibly managed forests certified by the Forest Stewardship Council (FSC), ensuring sustainable forestry practices.",
+                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=75",
               },
               {
                 icon: Recycle,
                 title: "Recycled Materials",
                 description: "We use 100% post-consumer recycled paper and packaging materials whenever possible, reducing demand for virgin materials and saving trees.",
+                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=75",
               },
               {
                 icon: Droplet,
                 title: "Eco-Friendly Inks",
                 description: "Our vegetable and soy-based inks are renewable, biodegradable, and produce less VOC emissions compared to traditional petroleum-based inks.",
+                image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
               },
               {
                 icon: Leaf,
                 title: "Biodegradable Packaging",
                 description: "We offer biodegradable and compostable packaging options that break down naturally, leaving no harmful residue in the environment.",
+                image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=75",
               },
               {
                 icon: Award,
                 title: "Waste Reduction",
                 description: "Advanced printing technology and optimized processes minimize paper waste. All scrap materials are recycled or repurposed whenever possible.",
+                image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=75",
               },
               {
                 icon: Recycle,
                 title: "Energy Efficiency",
                 description: "Our facility uses energy-efficient LED lighting and equipment, and we're working toward renewable energy sources for our operations.",
+                image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=75",
               },
             ].map((practice) => (
-              <Card key={practice.title} className="border-2 hover:border-green-500/50 transition-colors">
-                <CardContent className="pt-6">
+              <Card key={practice.title} className="border-2 hover:border-green-500/50 transition-colors overflow-hidden relative group">
+                <div className="absolute inset-0 z-0 opacity-10">
+                  <Image
+                    src={practice.image}
+                    alt={practice.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <CardContent className="pt-6 relative z-10">
                   <div className="mb-4 inline-flex p-3 bg-green-100 rounded-lg">
                     <practice.icon className="h-6 w-6 text-green-600" />
                   </div>
@@ -307,6 +321,144 @@ export default function SustainabilityPage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Green Materials Showcase */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Sustainable Materials Close-Up
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Explore our eco-friendly material options and see the quality for yourself
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* Recycled Paper */}
+              <Card className="overflow-hidden">
+                <div className="relative h-64">
+                  <Image
+                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=75"
+                    alt="Recycled paper texture"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2">100% Recycled Paper</h3>
+                    <p className="text-white/90 text-sm mb-3">
+                      Post-consumer recycled content with excellent printability and durability
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-green-600 rounded-full text-xs font-semibold">FSC Certified</span>
+                      <span className="px-3 py-1 bg-green-600 rounded-full text-xs font-semibold">100% Recyclable</span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Eco Packaging */}
+              <Card className="overflow-hidden">
+                <div className="relative h-64">
+                  <Image
+                    src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75"
+                    alt="Eco-friendly packaging materials"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2">Sustainable Packaging</h3>
+                    <p className="text-white/90 text-sm mb-3">
+                      Biodegradable and compostable packaging options that protect both your product and the planet
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-green-600 rounded-full text-xs font-semibold">Biodegradable</span>
+                      <span className="px-3 py-1 bg-green-600 rounded-full text-xs font-semibold">Compostable</span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Sustainable Alternatives Grid */}
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* Bamboo Paper */}
+              <Card className="overflow-hidden group hover:shadow-xl transition-all">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=75"
+                    alt="Bamboo paper alternative"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h4 className="font-bold text-lg mb-1">Bamboo Paper</h4>
+                    <p className="text-xs text-white/90">Fast-growing, renewable resource</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Hemp Paper */}
+              <Card className="overflow-hidden group hover:shadow-xl transition-all">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=75"
+                    alt="Hemp paper alternative"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h4 className="font-bold text-lg mb-1">Hemp Paper</h4>
+                    <p className="text-xs text-white/90">Durable and eco-friendly fiber</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Biodegradable Materials */}
+              <Card className="overflow-hidden group hover:shadow-xl transition-all">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75"
+                    alt="Biodegradable materials"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h4 className="font-bold text-lg mb-1">Plant-Based Films</h4>
+                    <p className="text-xs text-white/90">Compostable alternative to plastic</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Call-out Box */}
+            <Card className="mt-8 bg-green-50 border-2 border-green-200">
+              <CardContent className="pt-6 pb-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-600 rounded-lg flex-shrink-0">
+                    <Leaf className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl mb-2">Need Help Choosing?</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Our team can help you select the best sustainable materials for your project, balancing environmental impact with quality and budget requirements.
+                    </p>
+                    <Button asChild variant="default" className="bg-green-600 hover:bg-green-700">
+                      <Link href="/contact">Consult with Our Green Team</Link>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

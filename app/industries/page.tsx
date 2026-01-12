@@ -94,6 +94,156 @@ export default function IndustriesPage() {
         </div>
       </section>
 
+      {/* Success Stories Preview */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-primary/5 to-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Success Stories & Results
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                See how we've helped businesses across industries achieve their goals with our printing and packaging solutions
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Before/After Example 1 */}
+              <Card className="overflow-hidden">
+                <div className="grid grid-cols-2">
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=75"
+                      alt="Before state"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Before
+                    </div>
+                  </div>
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75"
+                      alt="After state"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      After
+                    </div>
+                  </div>
+                </div>
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold text-lg mb-2">Retail Brand Transformation</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Upgraded from generic packaging to custom-designed boxes with premium finishes, resulting in 45% increase in customer satisfaction.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-primary font-medium">
+                    <ArrowRight className="h-4 w-4" />
+                    <span>45% satisfaction increase</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Before/After Example 2 */}
+              <Card className="overflow-hidden">
+                <div className="grid grid-cols-2">
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&q=75"
+                      alt="Before implementation"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      Before
+                    </div>
+                  </div>
+                  <div className="relative h-64">
+                    <Image
+                      src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=75"
+                      alt="After implementation"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      After
+                    </div>
+                  </div>
+                </div>
+                <CardContent className="pt-6">
+                  <h3 className="font-semibold text-lg mb-2">Educational Institution Rebrand</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Streamlined printing process across 15 campuses with consistent branding, saving 30% on costs while improving quality.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-primary font-medium">
+                    <ArrowRight className="h-4 w-4" />
+                    <span>30% cost reduction</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Results Showcase */}
+              <Card className="md:col-span-2">
+                <CardContent className="pt-6">
+                  <div className="grid md:grid-cols-4 gap-6 text-center">
+                    <div>
+                      <div className="relative h-20 w-20 mx-auto mb-3">
+                        <Image
+                          src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=200&q=70"
+                          alt="Client satisfaction"
+                          fill
+                          className="object-cover rounded-full"
+                        />
+                      </div>
+                      <div className="text-3xl font-bold text-primary mb-1">500+</div>
+                      <div className="text-sm text-muted-foreground">Happy Clients</div>
+                    </div>
+                    <div>
+                      <div className="relative h-20 w-20 mx-auto mb-3">
+                        <Image
+                          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&q=70"
+                          alt="Quality results"
+                          fill
+                          className="object-cover rounded-full"
+                        />
+                      </div>
+                      <div className="text-3xl font-bold text-primary mb-1">99%</div>
+                      <div className="text-sm text-muted-foreground">Quality Rate</div>
+                    </div>
+                    <div>
+                      <div className="relative h-20 w-20 mx-auto mb-3">
+                        <Image
+                          src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&q=70"
+                          alt="Projects completed"
+                          fill
+                          className="object-cover rounded-full"
+                        />
+                      </div>
+                      <div className="text-3xl font-bold text-primary mb-1">2000+</div>
+                      <div className="text-sm text-muted-foreground">Projects Done</div>
+                    </div>
+                    <div>
+                      <div className="relative h-20 w-20 mx-auto mb-3">
+                        <Image
+                          src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&q=70"
+                          alt="Fast delivery"
+                          fill
+                          className="object-cover rounded-full"
+                        />
+                      </div>
+                      <div className="text-3xl font-bold text-primary mb-1">24h</div>
+                      <div className="text-sm text-muted-foreground">Rush Available</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Industry-Specific Matters */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4">

@@ -86,6 +86,67 @@ export default function RequestQuotePage() {
         </div>
       </section>
 
+      {/* Trust Imagery Section */}
+      <section className="py-12 bg-gradient-to-br from-primary/5 to-background border-b">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Why Choose Us?</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* Customer Service */}
+              <Card className="overflow-hidden group hover:shadow-xl transition-all">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75"
+                    alt="Professional customer service"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="font-bold text-lg mb-1">Expert Consultation</h3>
+                    <p className="text-sm text-white/90">Professional guidance every step of the way</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Happy Client */}
+              <Card className="overflow-hidden group hover:shadow-xl transition-all">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=75"
+                    alt="Happy satisfied clients"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="font-bold text-lg mb-1">500+ Satisfied Clients</h3>
+                    <p className="text-sm text-white/90">Trusted by businesses across Pakistan</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Finished Projects */}
+              <Card className="overflow-hidden group hover:shadow-xl transition-all">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75"
+                    alt="High quality finished projects"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="font-bold text-lg mb-1">Premium Quality</h3>
+                    <p className="text-sm text-white/90">Exceptional results that exceed expectations</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Form Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -286,39 +347,142 @@ export default function RequestQuotePage() {
         </div>
       </section>
 
-      {/* What Happens Next Section */}
+      {/* What Happens Next Section - Visual Timeline */}
       {!isSuccess && (
-        <section className="py-16 bg-white border-t">
+        <section className="py-16 bg-gradient-to-br from-primary/5 to-background border-t">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">What Happens Next?</h2>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="inline-flex p-4 bg-[#FDB913]/10 rounded-full mb-4">
-                    <CheckCircle2 className="h-8 w-8 text-[#FDB913]" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">We Review Your Request</h3>
-                  <p className="text-sm text-gray-600">
-                    Our team carefully reviews your requirements and specifications
-                  </p>
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">What Happens Next?</h2>
+              <p className="text-center text-muted-foreground mb-12">Your journey from quote to delivery</p>
+
+              <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6 relative">
+                {/* Connecting line - hidden on mobile */}
+                <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-primary/20" style={{ zIndex: 0 }}></div>
+
+                {/* Step 1: Submit Request */}
+                <div className="relative">
+                  <Card className="overflow-hidden hover:shadow-lg transition-all">
+                    <div className="relative h-32">
+                      <Image
+                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=75"
+                        alt="Submit request"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="pt-4 pb-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#FDB913] text-black flex items-center justify-center text-lg font-bold mx-auto mb-2 relative z-10">
+                        1
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1">Submit Request</h3>
+                      <p className="text-xs text-muted-foreground">Fill out the form</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <div className="text-center">
-                  <div className="inline-flex p-4 bg-[#FDB913]/10 rounded-full mb-4">
-                    <Clock className="h-8 w-8 text-[#FDB913]" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Detailed Quote in 24hrs</h3>
-                  <p className="text-sm text-gray-600">
-                    Receive a comprehensive quote with pricing, timeline, and options
-                  </p>
+
+                {/* Step 2: Review & Quote */}
+                <div className="relative">
+                  <Card className="overflow-hidden hover:shadow-lg transition-all">
+                    <div className="relative h-32">
+                      <Image
+                        src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=75"
+                        alt="Review and quote"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="pt-4 pb-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#FDB913] text-black flex items-center justify-center text-lg font-bold mx-auto mb-2 relative z-10">
+                        2
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1">Review & Quote</h3>
+                      <p className="text-xs text-muted-foreground">Within 24 hours</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <div className="text-center">
-                  <div className="inline-flex p-4 bg-[#FDB913]/10 rounded-full mb-4">
-                    <MessageCircle className="h-8 w-8 text-[#FDB913]" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">WhatsApp Consultation</h3>
-                  <p className="text-sm text-gray-600">
-                    Chat with our team on WhatsApp to refine details and start your project
-                  </p>
+
+                {/* Step 3: Approve Quote */}
+                <div className="relative">
+                  <Card className="overflow-hidden hover:shadow-lg transition-all">
+                    <div className="relative h-32">
+                      <Image
+                        src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=75"
+                        alt="Approve quote"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="pt-4 pb-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#FDB913] text-black flex items-center justify-center text-lg font-bold mx-auto mb-2 relative z-10">
+                        3
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1">Approve Quote</h3>
+                      <p className="text-xs text-muted-foreground">Confirm details</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Step 4: Production Begins */}
+                <div className="relative">
+                  <Card className="overflow-hidden hover:shadow-lg transition-all">
+                    <div className="relative h-32">
+                      <Image
+                        src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=400&q=75"
+                        alt="Production begins"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="pt-4 pb-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#FDB913] text-black flex items-center justify-center text-lg font-bold mx-auto mb-2 relative z-10">
+                        4
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1">Production</h3>
+                      <p className="text-xs text-muted-foreground">We start printing</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Step 5: Quality Check */}
+                <div className="relative">
+                  <Card className="overflow-hidden hover:shadow-lg transition-all">
+                    <div className="relative h-32">
+                      <Image
+                        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=75"
+                        alt="Quality check"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="pt-4 pb-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#FDB913] text-black flex items-center justify-center text-lg font-bold mx-auto mb-2 relative z-10">
+                        5
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1">Quality Check</h3>
+                      <p className="text-xs text-muted-foreground">Thorough inspection</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Step 6: Delivery */}
+                <div className="relative">
+                  <Card className="overflow-hidden hover:shadow-lg transition-all">
+                    <div className="relative h-32">
+                      <Image
+                        src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=400&q=75"
+                        alt="Delivery"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="pt-4 pb-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#FDB913] text-black flex items-center justify-center text-lg font-bold mx-auto mb-2 relative z-10">
+                        6
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1">Delivery</h3>
+                      <p className="text-xs text-muted-foreground">Receive your order</p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>

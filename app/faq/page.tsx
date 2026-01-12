@@ -1,7 +1,54 @@
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { HelpCircle, Phone, Mail } from "lucide-react";
+import { HelpCircle, Phone, Mail, FileQuestion, Printer, DollarSign, Truck, Package, Palette } from "lucide-react";
+
+// Helper function to get category images and icons
+function getCategoryData(category: string): { image: string; icon: any } {
+  const categoryMap: Record<string, { image: string; icon: any }> = {
+    "General Questions": {
+      image: "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?w=600&q=75",
+      icon: HelpCircle,
+    },
+    "Ordering & Quotes": {
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=75",
+      icon: FileQuestion,
+    },
+    "Printing & Production": {
+      image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+      icon: Printer,
+    },
+    "Custom Packaging": {
+      image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
+      icon: Package,
+    },
+    "Pricing & Payment": {
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75",
+      icon: DollarSign,
+    },
+    "Delivery & Shipping": {
+      image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600&q=75",
+      icon: Truck,
+    },
+  };
+
+  return categoryMap[category] || { image: "https://images.unsplash.com/photo-1488998427799-e3362cec87c3?w=600&q=75", icon: HelpCircle };
+}
+
+// Helper function to get illustration images for specific questions
+function getQuestionIllustration(question: string): string | null {
+  const illustrationMap: Record<string, string> = {
+    "What file formats do you accept?": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=75",
+    "What color mode should my files be in?": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&q=75",
+    "What materials are available for packaging?": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&q=75",
+    "Do you offer eco-friendly packaging options?": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=75",
+    "What is your standard turnaround time?": "https://images.unsplash.com/photo-1501139083538-0139583c060f?w=400&q=75",
+    "How is pricing calculated?": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=75",
+  };
+
+  return illustrationMap[question] || null;
+}
 
 export const metadata = {
   title: "FAQ - Frequently Asked Questions | Fast Printing & Packaging",
@@ -165,29 +212,70 @@ export default function FAQPage() {
       {/* FAQ Content */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            {faqCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-primary/20">
-                  {category.category}
-                </h2>
-                <div className="space-y-4">
-                  {category.questions.map((faq, faqIndex) => (
-                    <Card key={faqIndex} className="border-l-4 border-l-primary/30">
-                      <CardContent className="pt-6">
-                        <h3 className="font-semibold text-lg mb-3 flex items-start gap-2">
-                          <span className="text-primary mt-1">Q:</span>
-                          <span>{faq.q}</span>
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed pl-6">
-                          <span className="font-semibold text-foreground">A:</span> {faq.a}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
+          <div className="max-w-6xl mx-auto">
+            {faqCategories.map((category, categoryIndex) => {
+              const categoryData = getCategoryData(category.category);
+              const CategoryIcon = categoryData.icon;
+
+              return (
+                <div key={categoryIndex} className="mb-16">
+                  {/* Category Header with Image */}
+                  <div className="relative h-48 rounded-xl overflow-hidden mb-8">
+                    <Image
+                      src={categoryData.image}
+                      alt={`${category.category} header`}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+                      <div className="container mx-auto px-8 flex items-center gap-4">
+                        <div className="p-3 bg-[#FDB913] rounded-lg">
+                          <CategoryIcon className="h-8 w-8 text-black" />
+                        </div>
+                        <h2 className="text-2xl md:text-4xl font-bold text-white">
+                          {category.category}
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Questions */}
+                  <div className="space-y-4">
+                    {category.questions.map((faq, faqIndex) => {
+                      const illustration = getQuestionIllustration(faq.q);
+
+                      return (
+                        <Card key={faqIndex} className="border-l-4 border-l-primary/30 overflow-hidden">
+                          <CardContent className="pt-6">
+                            <div className={illustration ? "grid md:grid-cols-3 gap-6" : ""}>
+                              <div className={illustration ? "md:col-span-2" : ""}>
+                                <h3 className="font-semibold text-lg mb-3 flex items-start gap-2">
+                                  <span className="text-primary mt-1">Q:</span>
+                                  <span>{faq.q}</span>
+                                </h3>
+                                <p className="text-muted-foreground leading-relaxed pl-6">
+                                  <span className="font-semibold text-foreground">A:</span> {faq.a}
+                                </p>
+                              </div>
+                              {illustration && (
+                                <div className="relative h-32 md:h-full rounded-lg overflow-hidden mt-4 md:mt-0">
+                                  <Image
+                                    src={illustration}
+                                    alt={`Illustration for ${faq.q}`}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                </div>
+                              )}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

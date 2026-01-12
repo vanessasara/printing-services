@@ -3,8 +3,120 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, ArrowRight, Clock, Award, Zap } from "lucide-react";
+import { CheckCircle2, ArrowRight, Clock, Award, Zap, Settings } from "lucide-react";
 import { getServiceBySlug, getAllServices } from "@/components/lib/services";
+
+// Helper function to get equipment images based on service slug
+function getEquipmentImages(slug: string): { image: string; name: string; description: string }[] {
+  const equipmentMap: Record<string, { image: string; name: string; description: string }[]> = {
+    "digital-printing": [
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Digital Press Equipment",
+        description: "State-of-the-art digital printing presses for high-quality output"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=600&q=75",
+        name: "Color Management System",
+        description: "Advanced color calibration for accurate and consistent results"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1585282263861-f55e341878f8?w=600&q=75",
+        name: "Finishing Equipment",
+        description: "Professional cutting and finishing tools for perfect edges"
+      },
+    ],
+    "offset-printing": [
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Offset Press",
+        description: "High-volume offset printing press for exceptional quality"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=75",
+        name: "Plate Making System",
+        description: "Modern plate-making technology for precise image transfer"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
+        name: "Quality Control Station",
+        description: "Rigorous quality checks throughout the printing process"
+      },
+    ],
+    "large-format-printing": [
+      {
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75",
+        name: "Large Format Printer",
+        description: "Wide-format printers capable of printing up to 10ft wide"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=75",
+        name: "Mounting Equipment",
+        description: "Professional mounting and lamination systems"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1487260211189-670c54da558d?w=600&q=75",
+        name: "Cutting & Finishing",
+        description: "Precision cutting tools for large format materials"
+      },
+    ],
+    "screen-printing": [
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Screen Printing Press",
+        description: "Multi-color screen printing equipment for vibrant results"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
+        name: "Screen Preparation",
+        description: "Professional screen preparation and exposure units"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=600&q=75",
+        name: "Curing System",
+        description: "Industrial curing ovens for durable prints"
+      },
+    ],
+    "custom-boxes": [
+      {
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=75",
+        name: "Box Making Machine",
+        description: "Automated box manufacturing equipment for precision"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
+        name: "Die Cutting Press",
+        description: "Precision die cutting for custom box shapes"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Printing Systems",
+        description: "High-quality printing on various packaging materials"
+      },
+    ],
+  };
+
+  // Default equipment for services not specifically mapped
+  const defaultEquipment = [
+    {
+      image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+      name: "Professional Equipment",
+      description: "State-of-the-art machinery for superior quality"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
+      name: "Production Facility",
+      description: "Modern facility with climate-controlled environment"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=600&q=75",
+      name: "Quality Assurance",
+      description: "Advanced inspection and quality control systems"
+    },
+  ];
+
+  return equipmentMap[slug] || defaultEquipment;
+}
 
 interface ServicePageProps {
   params: {
@@ -176,8 +288,46 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* Applications Section */}
+      {/* Equipment Showcase Section */}
       <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex p-4 bg-primary/10 rounded-full mb-4">
+                <Settings className="h-8 w-8 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Our Equipment & Technology
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Industry-leading equipment and technology to deliver exceptional results
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {getEquipmentImages(service.slug).map((equipment, idx) => (
+                <Card key={idx} className="overflow-hidden group">
+                  <div className="relative h-56">
+                    <Image
+                      src={equipment.image}
+                      alt={equipment.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardContent className="pt-6">
+                    <h3 className="font-semibold text-lg mb-2">{equipment.name}</h3>
+                    <p className="text-sm text-muted-foreground">{equipment.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Applications Section */}
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">

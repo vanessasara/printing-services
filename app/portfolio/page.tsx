@@ -68,6 +68,102 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Featured Projects */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-primary/5 to-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Featured Projects
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Showcasing our most impactful work and success stories
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* Featured Project 1 */}
+              <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                <div className="relative h-80">
+                  <Image
+                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=75"
+                    alt="Featured packaging project"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                    <div className="inline-flex px-3 py-1 bg-[#FDB913] text-black rounded-full text-sm font-semibold mb-3 self-start">
+                      Featured
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Premium Packaging Design</h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Custom luxury packaging that elevated brand perception and increased sales by 45%
+                    </p>
+                    <Link href="/portfolio/luxury-cosmetics-packaging" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
+                      View Case Study
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Featured Project 2 */}
+              <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                <div className="relative h-80">
+                  <Image
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75"
+                    alt="Featured branding project"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                    <div className="inline-flex px-3 py-1 bg-[#FDB913] text-black rounded-full text-sm font-semibold mb-3 self-start">
+                      Featured
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Complete Brand Identity</h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Full rebranding and print collateral suite for a leading restaurant chain
+                    </p>
+                    <Link href="/portfolio/restaurant-brand-identity" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
+                      View Case Study
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Featured Project 3 */}
+              <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                <div className="relative h-80">
+                  <Image
+                    src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=75"
+                    alt="Featured marketing materials"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                    <div className="inline-flex px-3 py-1 bg-[#FDB913] text-black rounded-full text-sm font-semibold mb-3 self-start">
+                      Featured
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Trade Show Materials</h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Large format printing and displays that captured 30% more leads at exhibitions
+                    </p>
+                    <Link href="/portfolio/tech-startup-marketing" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
+                      View Case Study
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Grid */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">

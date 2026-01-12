@@ -124,6 +124,119 @@ export default async function PortfolioCaseStudyPage({ params }: PortfolioPagePr
         </div>
       </section>
 
+      {/* Process Timeline */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Our Process
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Behind the scenes of bringing this project to life
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-6 relative">
+              {/* Connecting line - hidden on mobile */}
+              <div className="hidden md:block absolute top-32 left-0 right-0 h-0.5 bg-primary/20" style={{ zIndex: 0 }}></div>
+
+              {/* Step 1 */}
+              <div className="relative">
+                <Card className="overflow-hidden hover:shadow-lg transition-all">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1561070791-36c11767b26a?w=600&q=75"
+                      alt="Initial mockup stage"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold mx-auto mb-3 relative z-10">
+                      1
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">Initial Mockup</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Design concepts and client collaboration
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative">
+                <Card className="overflow-hidden hover:shadow-lg transition-all">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75"
+                      alt="Production stage 1"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold mx-auto mb-3 relative z-10">
+                      2
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">Pre-Production</h3>
+                    <p className="text-sm text-muted-foreground">
+                      File preparation and material selection
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative">
+                <Card className="overflow-hidden hover:shadow-lg transition-all">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75"
+                      alt="Production stage 2"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold mx-auto mb-3 relative z-10">
+                      3
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">Production</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Printing and manufacturing process
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Step 4 */}
+              <div className="relative">
+                <Card className="overflow-hidden hover:shadow-lg transition-all">
+                  <div className="relative h-48">
+                    <Image
+                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75"
+                      alt="Final assembly"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <CardContent className="pt-6 text-center">
+                    <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold mx-auto mb-3 relative z-10">
+                      4
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">Final Assembly</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Quality check and finishing touches
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Image Gallery */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -147,29 +260,59 @@ export default async function PortfolioCaseStudyPage({ params }: PortfolioPagePr
         </div>
       </section>
 
-      {/* Testimonial */}
+      {/* Testimonial & Client Collaboration */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2">
-              <CardContent className="pt-8 pb-8">
-                <div className="text-6xl text-primary mb-4">"</div>
-                <blockquote className="text-xl md:text-2xl font-medium mb-6 leading-relaxed">
-                  {project.testimonial.text}
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <User className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">{project.testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {project.testimonial.role}, {project.client}
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+              Client Feedback
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Testimonial Content */}
+              <div>
+                <Card className="border-2">
+                  <CardContent className="pt-8 pb-8">
+                    <div className="text-6xl text-primary mb-4">"</div>
+                    <blockquote className="text-xl font-medium mb-6 leading-relaxed">
+                      {project.testimonial.text}
+                    </blockquote>
+                    <div className="flex items-center gap-4">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                        <Image
+                          src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=200&q=70"
+                          alt={project.testimonial.author}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <div className="font-semibold">{project.testimonial.author}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {project.testimonial.role}, {project.client}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Collaboration Image */}
+              <div className="relative h-96 rounded-xl overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=75"
+                  alt="Client collaboration and consultation"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">Collaborative Process</h3>
+                  <p className="text-white/90 text-sm">
+                    Working closely with our clients to understand their vision and bring it to life
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
