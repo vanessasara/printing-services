@@ -159,7 +159,7 @@ export default function Hero() {
                 <CarouselItem>
                   <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&q=80"
+                      src="/Hero1.jpg"
                       alt="Modern printing facility with professional equipment"
                       fill
                       className="object-cover"
@@ -171,7 +171,7 @@ export default function Hero() {
                 <CarouselItem>
                   <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+src="/Hero2.jpg"
                       alt="Team collaboration on printing projects"
                       fill
                       className="object-cover"
@@ -182,7 +182,7 @@ export default function Hero() {
                 <CarouselItem>
                   <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=800&q=80"
+                      src="/Hero3.jpg"
                       alt="Finished product showcase and samples"
                       fill
                       className="object-cover"
