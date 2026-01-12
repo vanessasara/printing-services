@@ -107,13 +107,14 @@ export default function FeaturedPortfolio() {
           {filteredItems.slice(0, 8).map((item) => (
             <Link key={item.id} href={item.href}>
               <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="relative aspect-square bg-muted">
-                  {/* Placeholder for image - replace with actual Image component when images are available */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <span className="text-muted-foreground text-sm text-center px-4">
-                      {item.title}
-                    </span>
-                  </div>
+                <div className="relative aspect-square bg-muted overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="text-white font-medium">View Project</span>
                   </div>
