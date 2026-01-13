@@ -28,7 +28,7 @@ function getEquipmentImages(slug: string): { image: string; name: string; descri
     ],
     "offset-printing": [
       {
-        image: "/Offset-prining.jpg",
+        image: "/Offset-printing.jpg",
         name: "Offset Press",
         description: "High-volume offset printing press for exceptional quality"
       },
