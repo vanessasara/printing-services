@@ -55,7 +55,7 @@ function getEquipmentImages(slug: string): { image: string; name: string; descri
         description: "Professional screen preparation and exposure units"
       },
       {
-        image: "/Curing.jpg",
+        image: "/Curing-system.jpg",
         name: "Curing System",
         description: "Industrial curing ovens for durable prints"
       },
