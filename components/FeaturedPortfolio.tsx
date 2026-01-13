@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
-const categories = ["All", "Packaging", "Printing", "Design"];
+const categories = ["All", "Packaging", "Branding", "Design", "Marketing Materials"];
 
 const portfolioItems = [
   {
@@ -20,7 +20,7 @@ const portfolioItems = [
   {
     id: 2,
     title: "Restaurant Brand Identity",
-    category: "Design",
+    category: "Branding",
     image: "/restaurant-branding.jpg",
     href: "/portfolio/restaurant-brand-identity",
   },
@@ -54,10 +54,10 @@ const portfolioItems = [
   },
   {
     id: 7,
-    title: "Tech Startup Branding",
-    category: "Design",
-    image: "/tech-startup.jpeg",
-    href: "/portfolio/tech-startup-branding",
+    title: "Corporate Branding Package",
+    category: "Branding",
+    image: "/Branding.jpg",
+    href: "/portfolio/corporate-branding-package",
   },
   {
     id: 8,
