@@ -42,7 +42,7 @@ const portfolioItems = [
     id: 5,
     title: "School Prospectus & Marketing Materials",
     category: "Marketing Materials",
-    image: "/images/portfolio/event-materials.jpg",
+    image: "/school.jpg",
     href: "/portfolio/school-prospectus-design",
   },
   {
