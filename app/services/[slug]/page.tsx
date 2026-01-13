@@ -11,113 +11,263 @@ function getEquipmentImages(slug: string): { image: string; name: string; descri
   const equipmentMap: Record<string, { image: string; name: string; description: string }[]> = {
     "digital-printing": [
       {
-        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        image: "/Service-digital-press.jpg",
         name: "Digital Press Equipment",
         description: "State-of-the-art digital printing presses for high-quality output"
       },
       {
-        image: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=600&q=75",
+        image: "/Color-management.jpg",
         name: "Color Management System",
         description: "Advanced color calibration for accurate and consistent results"
       },
       {
-        image: "https://images.unsplash.com/photo-1585282263861-f55e341878f8?w=600&q=75",
+        image: "/Service-color.jpg",
         name: "Finishing Equipment",
         description: "Professional cutting and finishing tools for perfect edges"
       },
     ],
     "offset-printing": [
       {
-        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        image: "/Offset-prining.jpg",
         name: "Offset Press",
         description: "High-volume offset printing press for exceptional quality"
       },
       {
-        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=75",
+        image: "Screen-printing.jpg",
         name: "Plate Making System",
         description: "Modern plate-making technology for precise image transfer"
       },
       {
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
+        image: "/Quality-control.jpg",
         name: "Quality Control Station",
         description: "Rigorous quality checks throughout the printing process"
       },
     ],
-    "large-format-printing": [
-      {
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75",
-        name: "Large Format Printer",
-        description: "Wide-format printers capable of printing up to 10ft wide"
-      },
-      {
-        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=75",
-        name: "Mounting Equipment",
-        description: "Professional mounting and lamination systems"
-      },
-      {
-        image: "https://images.unsplash.com/photo-1487260211189-670c54da558d?w=600&q=75",
-        name: "Cutting & Finishing",
-        description: "Precision cutting tools for large format materials"
-      },
-    ],
     "screen-printing": [
       {
-        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        image: "/Screen-product-press.jpg",
         name: "Screen Printing Press",
         description: "Multi-color screen printing equipment for vibrant results"
       },
       {
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
-        name: "Screen Preparation",
+        image: "/Screen-prepation.jpg",
+        name: "Screen Preparation Station",
         description: "Professional screen preparation and exposure units"
       },
       {
-        image: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=600&q=75",
+        image: "/Curing.jpg",
         name: "Curing System",
         description: "Industrial curing ovens for durable prints"
+      },
+    ],
+    "large-format-printing": [
+      {
+        image: "/Long-form-printing.jpg",
+        name: "Wide Format Printer",
+        description: "Advanced printers capable of printing up to 16 feet wide"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=75",
+        name: "Mounting & Lamination",
+        description: "Professional mounting and lamination systems for durability"
+      },
+      {
+        image: "/Cutting.jpg",
+        name: "Precision Cutting Tools",
+        description: "Precision cutting equipment for large format materials"
       },
     ],
     "custom-boxes": [
       {
         image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=75",
-        name: "Box Making Machine",
-        description: "Automated box manufacturing equipment for precision"
+        name: "Box Manufacturing Machine",
+        description: "Automated equipment for precision box manufacturing"
       },
       {
         image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
         name: "Die Cutting Press",
-        description: "Precision die cutting for custom box shapes"
+        description: "Precision die cutting for custom box shapes and designs"
       },
       {
         image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
-        name: "Printing Systems",
+        name: "Packaging Printing Systems",
         description: "High-quality printing on various packaging materials"
       },
     ],
+    "labels-stickers": [
+      {
+        image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600&q=75",
+        name: "Label Printing Press",
+        description: "Specialized equipment for high-quality label production"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
+        name: "Die Cutting Machine",
+        description: "Precision die cutting for custom label shapes"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
+        name: "Finishing & Lamination",
+        description: "Professional finishing for weather-resistant labels"
+      },
+    ],
+    "bags-pouches": [
+      {
+        image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&q=75",
+        name: "Bag Making Equipment",
+        description: "Automated machinery for custom bag production"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Flexographic Printing",
+        description: "High-quality printing for bags and flexible packaging"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
+        name: "Sealing & Finishing",
+        description: "Precision sealing and handle attachment systems"
+      },
+    ],
+    "eco-friendly-packaging": [
+      {
+        image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=75",
+        name: "Sustainable Material Processing",
+        description: "Equipment for processing recycled and biodegradable materials"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=75",
+        name: "Eco-Friendly Manufacturing",
+        description: "Green manufacturing systems with minimal environmental impact"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Bio-Based Ink Printing",
+        description: "Printing with environmentally friendly, plant-based inks"
+      },
+    ],
+    "brand-identity": [
+      {
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=75",
+        name: "Design Workstation",
+        description: "Professional design studio for brand development"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=75",
+        name: "Color Calibration System",
+        description: "Precision color matching for brand consistency"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&q=75",
+        name: "Mockup Production Tools",
+        description: "Advanced tools for creating brand application mockups"
+      },
+    ],
+    "logo-design": [
+      {
+        image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&q=75",
+        name: "Digital Design Studio",
+        description: "Professional design software and hardware for logo creation"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=75",
+        name: "Vector Graphics Equipment",
+        description: "High-end equipment for creating scalable vector logos"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=75",
+        name: "Brand Visualization Tools",
+        description: "Tools for presenting logo concepts in various applications"
+      },
+    ],
+    "packaging-design": [
+      {
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75",
+        name: "3D Modeling Workstation",
+        description: "Advanced 3D design tools for packaging visualization"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
+        name: "Prototype Production",
+        description: "Equipment for creating physical packaging prototypes"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=75",
+        name: "Structural Design Tools",
+        description: "Specialized tools for packaging structure development"
+      },
+    ],
+    "marketing-materials": [
+      {
+        image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=75",
+        name: "Design Production Studio",
+        description: "Complete design studio for marketing collateral creation"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Digital Printing Press",
+        description: "High-quality printing for brochures and flyers"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75",
+        name: "Large Format Output",
+        description: "Wide format printing for posters and banners"
+      },
+    ],
+    "business-printing": [
+      {
+        image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=75",
+        name: "Business Card Press",
+        description: "Specialized equipment for premium business card printing"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Stationery Printing System",
+        description: "Professional printing for letterheads and corporate materials"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1585282263861-f55e341878f8?w=600&q=75",
+        name: "Cutting & Finishing",
+        description: "Precision cutting and finishing for business stationery"
+      },
+    ],
+    "promotional-products": [
+      {
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=75",
+        name: "Product Branding Equipment",
+        description: "Versatile equipment for branding various promotional items"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Screen Printing Station",
+        description: "Multi-surface printing for promotional merchandise"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
+        name: "Heat Press & Engraving",
+        description: "Heat transfer and engraving systems for product customization"
+      },
+    ],
+    "specialty-printing": [
+      {
+        image: "https://images.unsplash.com/photo-1621569899672-aa12763d4cc7?w=600&q=75",
+        name: "Foil Stamping Press",
+        description: "Precision equipment for metallic foil applications"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
+        name: "Embossing Machine",
+        description: "High-pressure embossing and debossing equipment"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&q=75",
+        name: "Die Cutting & UV Coating",
+        description: "Advanced die cutting and spot UV application systems"
+      },
+    ],
   };
-
-  // Default equipment for services not specifically mapped
-  const defaultEquipment = [
-    {
-      image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75",
-      name: "Professional Equipment",
-      description: "State-of-the-art machinery for superior quality"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75",
-      name: "Production Facility",
-      description: "Modern facility with climate-controlled environment"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1612538498456-e861df91b2ce?w=600&q=75",
-      name: "Quality Assurance",
-      description: "Advanced inspection and quality control systems"
-    },
-  ];
-
-  return equipmentMap[slug] || defaultEquipment;
+  
+  return equipmentMap[slug] || [];
 }
-
 interface ServicePageProps {
   params: {
     slug: string;
