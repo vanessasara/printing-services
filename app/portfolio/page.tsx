@@ -86,7 +86,7 @@ export default function PortfolioPage() {
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 <div className="relative h-80">
                   <Image
-                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=75"
+                    src="/cosmetic-packaging.jpg"
                     alt="Featured packaging project"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -112,7 +112,7 @@ export default function PortfolioPage() {
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 <div className="relative h-80">
                   <Image
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75"
+                    src="/restaurant-branding.jpg"
                     alt="Featured branding project"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -138,7 +138,7 @@ export default function PortfolioPage() {
               <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 <div className="relative h-80">
                   <Image
-                    src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=75"
+                    src="/tech-startup-branding.jpg"
                     alt="Featured marketing materials"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"

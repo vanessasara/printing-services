@@ -327,13 +327,23 @@ export default function Header() {
 
                 {/* Services Collapsible */}
                 <Collapsible open={servicesOpen} onOpenChange={setServicesOpen}>
-                  <CollapsibleTrigger className="w-full px-6 py-3 text-base font-bold hover:bg-accent transition-colors flex items-center justify-between group">
-                    <span className={cn(servicesOpen && "text-[#FDB913]")}>Services</span>
-                    <ChevronDown className={cn(
-                      "h-5 w-5 transition-transform duration-200",
-                      servicesOpen && "rotate-180 text-[#FDB913]"
-                    )} />
-                  </CollapsibleTrigger>
+                  <div className="w-full px-6 py-3 text-base font-bold hover:bg-accent transition-colors flex items-center justify-between group">
+                    <Link
+                      href="/services"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn("flex-1 text-left", servicesOpen && "text-[#FDB913]")}
+                    >
+                      Services
+                    </Link>
+                    <CollapsibleTrigger asChild>
+                      <button className="p-1">
+                        <ChevronDown className={cn(
+                          "h-5 w-5 transition-transform duration-200",
+                          servicesOpen && "rotate-180 text-[#FDB913]"
+                        )} />
+                      </button>
+                    </CollapsibleTrigger>
+                  </div>
                   <CollapsibleContent className="px-6 pb-3 pt-2 space-y-2">
                     {services.map((service) => (
                       <Link
@@ -353,13 +363,23 @@ export default function Header() {
 
                 {/* Products Collapsible */}
                 <Collapsible open={productsOpen} onOpenChange={setProductsOpen}>
-                  <CollapsibleTrigger className="w-full px-6 py-3 text-base font-bold hover:bg-accent transition-colors flex items-center justify-between group">
-                    <span className={cn(productsOpen && "text-[#FDB913]")}>Products</span>
-                    <ChevronDown className={cn(
-                      "h-5 w-5 transition-transform duration-200",
-                      productsOpen && "rotate-180 text-[#FDB913]"
-                    )} />
-                  </CollapsibleTrigger>
+                  <div className="w-full px-6 py-3 text-base font-bold hover:bg-accent transition-colors flex items-center justify-between group">
+                    <Link
+                      href="/products"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn("flex-1 text-left", productsOpen && "text-[#FDB913]")}
+                    >
+                      Products
+                    </Link>
+                    <CollapsibleTrigger asChild>
+                      <button className="p-1">
+                        <ChevronDown className={cn(
+                          "h-5 w-5 transition-transform duration-200",
+                          productsOpen && "rotate-180 text-[#FDB913]"
+                        )} />
+                      </button>
+                    </CollapsibleTrigger>
+                  </div>
                   <CollapsibleContent className="px-6 pb-3 pt-2 space-y-2">
                     {products.map((product) => (
                       <Link
@@ -379,13 +399,23 @@ export default function Header() {
 
                 {/* Industries Collapsible */}
                 <Collapsible open={industriesOpen} onOpenChange={setIndustriesOpen}>
-                  <CollapsibleTrigger className="w-full px-6 py-3 text-base font-bold hover:bg-accent transition-colors flex items-center justify-between group">
-                    <span className={cn(industriesOpen && "text-[#FDB913]")}>Industries</span>
-                    <ChevronDown className={cn(
-                      "h-5 w-5 transition-transform duration-200",
-                      industriesOpen && "rotate-180 text-[#FDB913]"
-                    )} />
-                  </CollapsibleTrigger>
+                  <div className="w-full px-6 py-3 text-base font-bold hover:bg-accent transition-colors flex items-center justify-between group">
+                    <Link
+                      href="/industries"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn("flex-1 text-left", industriesOpen && "text-[#FDB913]")}
+                    >
+                      Industries
+                    </Link>
+                    <CollapsibleTrigger asChild>
+                      <button className="p-1">
+                        <ChevronDown className={cn(
+                          "h-5 w-5 transition-transform duration-200",
+                          industriesOpen && "rotate-180 text-[#FDB913]"
+                        )} />
+                      </button>
+                    </CollapsibleTrigger>
+                  </div>
                   <CollapsibleContent className="px-6 pb-3 pt-2 space-y-2">
                     {industries.map((industry) => (
                       <Link

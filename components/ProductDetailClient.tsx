@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, ArrowRight, Star, Package, Ruler, Palette } from "lucide-react";
+import { CheckCircle2, ArrowRight, Star, Package, Ruler, Palette, ZoomIn } from "lucide-react";
 import { Product } from "@/components/lib/products";
 import ProductOrderSection from "@/components/ProductOrderSection";
 import CartSheet from "@/components/CartSheet";
@@ -70,6 +70,16 @@ function getUsageImage(slug: string, index: number): string {
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const [cartOpen, setCartOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(product.heroImage);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePosition({ x, y });
+  };
 
   return (
     <>
@@ -80,17 +90,38 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Images - Left Side (2 columns) */}
               <div className="lg:col-span-2 space-y-4">
-                <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden">
+                <div
+                  className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden group cursor-zoom-in"
+                  onMouseEnter={() => setIsZoomed(true)}
+                  onMouseLeave={() => setIsZoomed(false)}
+                  onMouseMove={handleMouseMove}
+                >
                   <Image
-                    src={product.heroImage}
+                    src={selectedImage}
                     alt={product.name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-in-out"
+                    style={isZoomed ? {
+                      transform: 'scale(1.5)',
+                      transformOrigin: `${mousePosition.x}% ${mousePosition.y}%`
+                    } : {}}
                   />
+                  {/* Zoom Icon Indicator */}
+                  <div className="absolute top-4 right-4 bg-black/50 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden md:block">
+                    <ZoomIn className="h-5 w-5 text-white" />
+                  </div>
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   {product.images.map((img, idx) => (
-                    <div key={idx} className="relative h-32 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition">
+                    <div
+                      key={idx}
+                      className={`relative h-32 rounded-lg overflow-hidden cursor-pointer transition-all ${
+                        selectedImage === img
+                          ? 'ring-2 ring-primary ring-offset-2'
+                          : 'hover:opacity-75'
+                      }`}
+                      onClick={() => setSelectedImage(img)}
+                    >
                       <Image
                         src={img}
                         alt={`${product.name} ${idx + 1}`}
