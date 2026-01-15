@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Filter } from "lucide-react";
-import {portfolioCategories, portfolioItems}from '@/components/lib/portfolio'
+import { getAllPortfolio, urlFor } from "@/lib/sanity.queries";
 
 export const metadata = {
   title: "Portfolio - Our Work | Fast Printing & Packaging",
@@ -11,7 +11,14 @@ export const metadata = {
   keywords: "printing portfolio, packaging portfolio, case studies, printing examples, packaging examples",
 };
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  // Fetch all portfolio items from Sanity
+  const allPortfolio = await getAllPortfolio();
+  const featuredPortfolio = allPortfolio.filter(item => item.featured);
+
+  // Get unique categories
+  const categories = ["All", ...new Set(allPortfolio.map(item => item.category))];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -27,7 +34,7 @@ export default function PortfolioPage() {
             </p>
             <div className="flex items-center justify-center gap-8 text-sm">
               <div>
-                <div className="text-3xl font-bold text-primary mb-1">{portfolioItems.length}+</div>
+                <div className="text-3xl font-bold text-primary mb-1">{allPortfolio.length}+</div>
                 <div className="text-muted-foreground">Projects Featured</div>
               </div>
               <div className="w-px h-12 bg-border"></div>
@@ -50,7 +57,7 @@ export default function PortfolioPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {portfolioCategories.map((category) => (
+              {categories.map((category) => (
                 <Button
                   key={category}
                   variant={category === "All" ? "default" : "outline"}
@@ -82,22 +89,94 @@ export default function PortfolioPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {/* Featured Project 1 */}
-              <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                <div className="relative h-80">
-                  <Image
-                    src="/cosmetic-packaging.jpg"
-                    alt="Featured packaging project"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                    <div className="inline-flex px-3 py-1 bg-[#FDB913] text-black rounded-full text-sm font-semibold mb-3 self-start">
-                      Featured
+              {featuredPortfolio.slice(0, 3).map((item) => {
+                const imageUrl = item.featuredImage
+                  ? urlFor(item.featuredImage).width(600).height(500).url()
+                  : "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=80";
+
+                return (
+                  <Card key={item._id} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                    <div className="relative h-80">
+                      <Image
+                        src={imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                        <div className="inline-flex px-3 py-1 bg-[#FDB913] text-black rounded-full text-sm font-semibold mb-3 self-start">
+                          Featured
+                        </div>
+                        <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
+                        <p className="text-white/90 text-sm mb-4">{item.shortDescription}</p>
+                        <Link href={`/portfolio/${item.slug.current}`} className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">
+                          View Case Study
+                          <ArrowRight className="ml-1 h-4 w-4" />
+                        </Link>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">Premium Packaging Design</h3>
-                    <p className="text-white/90 text-sm mb-4">
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Grid */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {allPortfolio.map((item) => {
+              const imageUrl = item.featuredImage
+                ? urlFor(item.featuredImage).width(600).height(400).url()
+                : "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=80";
+
+              return (
+                <Link key={item._id} href={`/portfolio/${item.slug.current}`}>
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-sm font-medium">View Case Study →</span>
+                      </div>
+                    </div>
+                    <CardContent className="pt-6">
+                      <div className="text-sm text-primary mb-2">{item.clientName}</div>
+                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                        {item.shortDescription}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs px-2 py-1 bg-muted rounded-full">
+                          {item.category}
+                        </span>
+                        {item.completionDate && (
+                          <span className="text-xs px-2 py-1 bg-muted rounded-full">
+                            {new Date(item.completionDate).getFullYear()}
+                          </span>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Remove old hardcoded sections below */}
+      {/* CTA Section */}
                       Custom luxury packaging that elevated brand perception and increased sales by 45%
                     </p>
                     <Link href="/portfolio/luxury-cosmetic-packaging" className="inline-flex items-center text-[#FDB913] font-semibold hover:gap-2 transition-all">

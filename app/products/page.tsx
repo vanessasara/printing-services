@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, Filter, Check, Zap, ShieldCheck, Tag, Palette, Leaf } from "lucide-react";
-import {productCategories} from '@/components/lib/products'
+import { getAllProducts, urlFor } from "@/lib/sanity.queries";
 
 export const metadata = {
   title: "Our Products - Printing & Packaging Products | Fast Printing",
@@ -65,8 +65,29 @@ function getInUseDescription(index: number): string {
   return descriptions[index] || "Discover how our printing solutions can elevate your business.";
 }
 
-export default function ProductsPage() {
-  const totalProducts = productCategories.reduce((acc, cat) => acc + cat.products.length, 0);
+export default async function ProductsPage() {
+  // Fetch all products from Sanity
+  const allProducts = await getAllProducts();
+  const totalProducts = allProducts.length;
+
+  // Group products by category
+  const productsByCategory: Record<string, typeof allProducts> = {};
+  allProducts.forEach((product) => {
+    if (!productsByCategory[product.category]) {
+      productsByCategory[product.category] = [];
+    }
+    productsByCategory[product.category].push(product);
+  });
+
+  // Convert category keys to readable names
+  const categoryNames: Record<string, string> = {
+    "business-cards": "Business Cards",
+    "packaging": "Custom Packaging",
+    "marketing-materials": "Marketing Materials",
+    "signage": "Signage & Displays",
+    "labels-stickers": "Labels & Stickers",
+    "books-magazines": "Books & Magazines",
+  };
 
   return (
     <div className="min-h-screen">
@@ -132,64 +153,74 @@ export default function ProductsPage() {
       </section>
 
       {/* Products by Category */}
-      {productCategories.map((category, idx) => (
-        <div key={idx}>
-          <section className={idx % 2 === 1 ? "py-16 md:py-20 bg-muted/30" : "py-16 md:py-20"}>
-            <div className="container mx-auto px-4">
-              {/* Category Header Banner */}
-              <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden mb-12">
-                <Image
-                  src={getCategoryBannerImage(category.name)}
-                  alt={`${category.name} banner`}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent flex items-center">
-                  <div className="container mx-auto px-8">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">{category.name}</h2>
-                    <p className="text-white/90 text-lg max-w-2xl">
-                      {getCategoryDescription(category.name)}
-                    </p>
+      {Object.entries(productsByCategory).map(([categoryKey, products], idx) => {
+        const categoryName = categoryNames[categoryKey] || categoryKey;
+        return (
+          <div key={categoryKey}>
+            <section className={idx % 2 === 1 ? "py-16 md:py-20 bg-muted/30" : "py-16 md:py-20"}>
+              <div className="container mx-auto px-4">
+                {/* Category Header Banner */}
+                <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden mb-12">
+                  <Image
+                    src={getCategoryBannerImage(categoryName)}
+                    alt={`${categoryName} banner`}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent flex items-center">
+                    <div className="container mx-auto px-8">
+                      <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">{categoryName}</h2>
+                      <p className="text-white/90 text-lg max-w-2xl">
+                        {getCategoryDescription(categoryName)}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {category.products.map((product) => (
-                  <Link key={product.slug} href={`/products/${product.slug}`}>
-                    <Card className="h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                      <div className="relative h-56 overflow-hidden">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                        <div className="absolute top-3 right-3 bg-background px-3 py-1 rounded-full text-xs font-medium">
-                          From {product.startingPrice}
-                        </div>
-                      </div>
-                      <CardHeader>
-                        <CardTitle className="group-hover:text-primary transition-colors">
-                          {product.name}
-                        </CardTitle>
-                        <CardDescription>{product.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <span className="text-primary font-medium inline-flex items-center group-hover:gap-2 transition-all">
-                          View Details
-                          <ArrowRight className="ml-1 h-4 w-4" />
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {products.map((product) => {
+                    const imageUrl = product.cardImage
+                      ? urlFor(product.cardImage).width(400).height(300).url()
+                      : "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=400&q=80";
 
-          {/* Product in Use Section - Between Categories */}
-          {idx < productCategories.length - 1 && (
+                    return (
+                      <Link key={product._id} href={`/products/${product.slug.current}`}>
+                        <Card className="h-full hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                          <div className="relative h-56 overflow-hidden">
+                            <Image
+                              src={imageUrl}
+                              alt={product.name}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                            {product.startingPrice && (
+                              <div className="absolute top-3 right-3 bg-background px-3 py-1 rounded-full text-xs font-medium">
+                                {product.startingPrice}
+                              </div>
+                            )}
+                          </div>
+                          <CardHeader>
+                            <CardTitle className="group-hover:text-primary transition-colors">
+                              {product.name}
+                            </CardTitle>
+                            <CardDescription>{product.shortDescription}</CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <span className="text-primary font-medium inline-flex items-center group-hover:gap-2 transition-all">
+                              View Details
+                              <ArrowRight className="ml-1 h-4 w-4" />
+                            </span>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+
+            {/* Product in Use Section - Between Categories */}
+            {idx < Object.keys(productsByCategory).length - 1 && (
             <section className="py-12 md:py-16 bg-gradient-to-br from-primary/5 to-background">
               <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -219,8 +250,9 @@ export default function ProductsPage() {
               </div>
             </section>
           )}
-        </div>
-      ))}
+          </div>
+        );
+      })}
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground">

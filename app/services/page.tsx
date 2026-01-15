@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2} from "lucide-react";
-import {serviceCategories,additionalServices} from '@/components/lib/services'
+import { getAllServices, urlFor } from "@/lib/sanity.queries";
+import { Printer, Package, Palette } from "lucide-react";
 
 export const metadata = {
   title: "Our Services - Printing & Packaging Solutions | Fast Printing",
@@ -33,7 +34,57 @@ function getBenefitImage(title: string): string {
   return images[title] || "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75";
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  // Fetch all services from Sanity
+  const allServices = await getAllServices();
+
+  // Group services by category
+  const servicesByCategory: Record<string, typeof allServices> = {};
+  allServices.forEach((service) => {
+    if (!servicesByCategory[service.category]) {
+      servicesByCategory[service.category] = [];
+    }
+    servicesByCategory[service.category].push(service);
+  });
+
+  // Category metadata
+  const categoryMeta: Record<string, { icon: any; description: string }> = {
+    "digital-printing": {
+      icon: Printer,
+      description: "Fast, high-quality digital printing for all your business needs"
+    },
+    "offset-printing": {
+      icon: Printer,
+      description: "Large volume printing with consistent, professional results"
+    },
+    "large-format": {
+      icon: Printer,
+      description: "Eye-catching banners, posters, and signage for maximum impact"
+    },
+    "design-services": {
+      icon: Palette,
+      description: "Professional design services to bring your vision to life"
+    },
+    "finishing": {
+      icon: Package,
+      description: "Professional finishing touches for polished, complete products"
+    },
+    "packaging": {
+      icon: Package,
+      description: "Custom packaging solutions that protect and promote your brand"
+    },
+  };
+
+  // Convert category keys to readable names
+  const categoryNames: Record<string, string> = {
+    "digital-printing": "Digital Printing",
+    "offset-printing": "Offset Printing",
+    "large-format": "Large Format Printing",
+    "design-services": "Design Services",
+    "finishing": "Finishing Services",
+    "packaging": "Packaging Solutions",
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -58,103 +109,83 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Categories */}
-      {serviceCategories.map((category, idx) => (
-        <section key={category.category} className={idx % 2 === 1 ? "py-16 md:py-24 bg-muted/30" : "py-16 md:py-24"}>
-          <div className="container mx-auto px-4">
-            {/* Category Header Banner */}
-            <div className="relative h-56 sm:h-64 md:h-72 lg:h-80 rounded-xl md:rounded-2xl overflow-hidden mb-8 md:mb-12">
-              <Image
-                src={getCategoryBannerImage(category.category)}
-                alt={`${category.category} banner`}
-                fill
-                className="object-cover"
-                priority={idx === 0}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40 md:to-transparent flex items-center">
-                <div className="container mx-auto px-4 sm:px-6 md:px-8">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 max-w-4xl">
-                    <div className="p-2.5 sm:p-3 md:p-4 bg-[#FDB913] rounded-lg flex-shrink-0">
-                      <category.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-black" />
-                    </div>
-                    <div>
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
-                        {category.category}
-                      </h2>
-                      <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl line-clamp-2 sm:line-clamp-none">
-                        {category.description}
-                      </p>
+      {Object.entries(servicesByCategory).map(([categoryKey, services], idx) => {
+        const categoryName = categoryNames[categoryKey] || categoryKey;
+        const CategoryIcon = categoryMeta[categoryKey]?.icon || Printer;
+        const categoryDescription = categoryMeta[categoryKey]?.description || "";
+
+        return (
+          <section key={categoryKey} className={idx % 2 === 1 ? "py-16 md:py-24 bg-muted/30" : "py-16 md:py-24"}>
+            <div className="container mx-auto px-4">
+              {/* Category Header Banner */}
+              <div className="relative h-56 sm:h-64 md:h-72 lg:h-80 rounded-xl md:rounded-2xl overflow-hidden mb-8 md:mb-12">
+                <Image
+                  src={getCategoryBannerImage(categoryName)}
+                  alt={`${categoryName} banner`}
+                  fill
+                  className="object-cover"
+                  priority={idx === 0}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40 md:to-transparent flex items-center">
+                  <div className="container mx-auto px-4 sm:px-6 md:px-8">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 max-w-4xl">
+                      <div className="p-2.5 sm:p-3 md:p-4 bg-[#FDB913] rounded-lg flex-shrink-0">
+                        <CategoryIcon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-black" />
+                      </div>
+                      <div>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
+                          {categoryName}
+                        </h2>
+                        <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl line-clamp-2 sm:line-clamp-none">
+                          {categoryDescription}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+                {services.map((service) => {
+                  const imageUrl = service.cardImage
+                    ? urlFor(service.cardImage).width(500).height(400).url()
+                    : "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=500&q=80";
+
+                  return (
+                    <Link key={service._id} href={`/services/${service.slug.current}`}>
+                      <Card className="h-full hover:shadow-lg transition-all duration-300 group overflow-hidden border-2 hover:border-primary/30">
+                        <div className="relative h-44 sm:h-48 md:h-52 lg:h-48 overflow-hidden bg-muted">
+                          <Image
+                            src={imageUrl}
+                            alt={service.name}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                          />
+                        </div>
+                        <CardHeader className="pb-3">
+                          <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-1">
+                            {service.name}
+                          </CardTitle>
+                          <CardDescription className="text-sm line-clamp-2">{service.shortDescription}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="pt-0">
+                          <span className="text-primary font-medium text-sm inline-flex items-center group-hover:gap-2 transition-all">
+                            Learn More
+                            <ArrowRight className="ml-1 h-4 w-4" />
+                          </span>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
+          </section>
+        );
+      })}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-              {category.services.map((service) => (
-                <Link key={service.slug} href={`/services/${service.slug}`}>
-                  <Card className="h-full hover:shadow-lg transition-all duration-300 group overflow-hidden border-2 hover:border-primary/30">
-                    <div className="relative h-44 sm:h-48 md:h-52 lg:h-48 overflow-hidden bg-muted">
-                      <Image
-                        src={service.heroImage}
-                        alt={service.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                      />
-                    </div>
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-1">
-                        {service.name}
-                      </CardTitle>
-                      <CardDescription className="text-sm line-clamp-2">{service.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <span className="text-primary font-medium text-sm inline-flex items-center group-hover:gap-2 transition-all">
-                        Learn More
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </span>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* Additional Services */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Additional Services</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Specialized solutions for unique printing and packaging needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {additionalServices.map((service) => (
-              <Card key={service.slug}>
-                <CardContent className="pt-6">
-                  <div className="mb-4 inline-flex p-3 bg-primary/10 rounded-lg">
-                    <service.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4">{service.name}</h3>
-                  <ul className="space-y-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Our Services */}
       <section className="py-16 md:py-24">

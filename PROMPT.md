@@ -1,1176 +1,1881 @@
-# Visual Enhancement Guide: Phased Implementation Plan
-## Printing Services Website Image Integration
+# Implementation Phases Guide
+### Sanity CMS & Payment Gateway Integration
+
+Comprehensive step-by-step implementation phases for integrating Sanity CMS and Pakistani payment gateways (JazzCash & Easypaisa) into your printing services website.
 
 ---
 
-## Overview
+## Phase 1: Foundation & Sanity Setup
 
-This phased approach divides image integration across the website into manageable stages, prioritizing high-impact pages and sections. Each phase builds upon the previous one, ensuring consistent progress and immediate visible improvements.
+### Objectives
+- Establish Sanity CMS project
+- Configure development environment
+- Create project structure
+- Set up client connections
 
-**Image Source**: All images must be sourced from Unsplash with direct URLs (https://images.unsplash.com/photo-...)
+### Required Actions
 
----
+#### 1.1 Sanity Account & Project Creation
+- Create account on sanity.io
+- Initialize new Sanity project
+- Select project name and choose dataset name
+- Generate and save Project ID
+- Create API tokens with appropriate permissions
 
-# PHASE 1: Foundation & High-Impact Pages
-**Goal: Establish visual credibility and enhance most-visited pages**
+#### 1.2 Dependency Installation
+- Install Sanity core package
+- Install Sanity image URL builder
+- Install Sanity client
+- Install next-sanity for Next.js integration
+- Install Portable Text React for rich text rendering
+- Install Sanity vision plugin for development
 
-## 1.1 Homepage Enhancements
+#### 1.3 Directory Structure Setup
+- Create `/sanity` folder in project root
+- Create `/sanity/schemas` subfolder for content types
+- Create `/lib` folder for utilities
+- Set up proper import/export structure
 
-### Hero Section
-- **Add**: Dynamic hero image or rotating image carousel
-- **Images Needed** (Unsplash URLs):
-  - Main: Modern printing facility
-    - `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Printing press)
-  - Alt 1: Team collaboration
-    - `https://images.unsplash.com/photo-1522071820081-009f0129c71c` (Team working)
-  - Alt 2: Finished product showcase
-    - `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Product display)
-- **Impact**: First impression, immediate engagement
+#### 1.4 Environment Variables Configuration
+- Create environment variables file
+- Add Sanity Project ID variable
+- Add dataset name variable
+- Add API token for read/write operations
+- Add base URL for application callbacks
+- Ensure variables are properly secured
 
-### Why Choose Us Section
-- **Add**: Supporting imagery for each USP
-- **Images Needed** (6 images):
-  - 20+ Years Experience: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Business legacy)
-  - Quality Guaranteed: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality control)
-  - Fast Turnaround: `https://images.unsplash.com/photo-1553877522-43269d4ea984` (Production speed)
-  - Expert Team: `https://images.unsplash.com/photo-1600880292203-757bb62b4baf` (Team collaboration)
-  - Eco-Friendly: `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09` (Sustainable materials)
-  - Custom Solutions: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Customization)
-- **Layout**: Background image in each benefit card with overlay
+#### 1.5 Client Configuration
+- Create Sanity client configuration file
+- Set project ID from environment
+- Configure dataset
+- Set API version
+- Configure CDN usage for production
+- Add authentication token
 
-### Stats Counter Section
-- **Add**: Background pattern or texture
-- **Images Needed**: 
-  - `https://images.unsplash.com/photo-1507238691740-187a5b1d37b8` (Abstract pattern - low opacity)
-- **Layout**: Subtle background behind statistics
+#### 1.6 Image Builder Setup
+- Create image URL builder utility
+- Import Sanity client
+- Configure builder with client
+- Export URL generation function
 
-### Testimonials Section
-- **Add**: Client credibility elements
-- **Images Needed**:
-  - Client headshots:
-    - `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e` (Professional male)
-    - `https://images.unsplash.com/photo-1494790108377-be9c29b29330` (Professional female)
-    - `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d` (Business person)
-- **Layout**: Testimonial cards with client photos
+#### 1.7 Sanity Studio Configuration
+- Create Sanity config file
+- Set project name and title
+- Add desk tool plugin
+- Add vision tool plugin
+- Prepare schema types registration
+- Configure studio appearance
 
----
+### Deliverables
+- Sanity project accessible online
+- All environment variables configured
+- Client successfully connecting to Sanity
+- Sanity Studio accessible locally
+- Complete directory structure in place
 
-## 1.2 About Page - Core Sections
-
-### Our Story Section
-- **Current**: Already has one image
-- **Keep**: Existing image
-- **Add Additional**:
-  - Company workspace: `https://images.unsplash.com/photo-1497366216548-37526070297c` (Modern office)
-
-### Core Values Section
-- **Add**: Background image to each value card (8 cards)
-- **Images Needed** (Unsplash URLs):
-  1. Quality First: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality inspection)
-  2. Customer Focused: `https://images.unsplash.com/photo-1521737711867-e3b97375f902` (Customer service)
-  3. Innovation: `https://images.unsplash.com/photo-1485827404703-89b55fcc595e` (Technology)
-  4. Sustainability: `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09` (Eco-friendly)
-  5. Integrity: `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Handshake)
-  6. Excellence: `https://images.unsplash.com/photo-1522071820081-009f0129c71c` (Achievement)
-  7. Teamwork: `https://images.unsplash.com/photo-1600880292203-757bb62b4baf` (Team)
-  8. Continuous Improvement: `https://images.unsplash.com/photo-1552664730-d307ca884978` (Learning)
-- **Layout**: Card background with gradient overlay, icon overlaid
-
-### What We Do Section
-- **Add**: Large image beside each service category (3 images)
-- **Images Needed** (Unsplash URLs):
-  1. Printing Services: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Printing press)
-  2. Packaging Solutions: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Packaging)
-  3. Design Services: `https://images.unsplash.com/photo-1561070791-2526d30994b5` (Designer workspace)
-- **Layout**: Alternating image-left/text-right pattern
-
-### Team Section (New)
-- **Add**: Complete new section
-- **Images Needed** (Unsplash URLs):
-  - Team group photo: `https://images.unsplash.com/photo-1522071820081-009f0129c71c` (Team together)
-  - Team member 1: `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d` (Professional)
-  - Team member 2: `https://images.unsplash.com/photo-1494790108377-be9c29b29330` (Professional)
-  - Team member 3: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e` (Professional)
-  - Team member 4: `https://images.unsplash.com/photo-1519085360753-af0119f7cbe7` (Professional)
-  - Office environment: `https://images.unsplash.com/photo-1497366216548-37526070297c` (Office)
-- **Layout**: Featured group photo + grid of individual profiles
+### Validation Steps
+- Verify Sanity Studio loads without errors
+- Confirm environment variables are reading correctly
+- Test client connection to Sanity backend
+- Ensure image builder generates valid URLs
 
 ---
 
-## 1.3 Contact Page
+## Phase 2: Schema Development
 
-### Office Showcase (New Section)
-- **Add**: Hero-style office presentation
-- **Images Needed** (Unsplash URLs):
-  - Main office exterior: `https://images.unsplash.com/photo-1486406146926-c627a92ad1ab` (Building exterior)
-  - Reception area: `https://images.unsplash.com/photo-1497366754035-f200968a6e72` (Reception)
-  - Production floor: `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158` (Production area)
-- **Layout**: Large hero image with overlay text
+### Objectives
+- Design complete content schemas
+- Define all field types with validations
+- Establish relationships between content types
+- Create sample content for testing
 
-### Team Availability Section (New)
-- **Add**: Customer service emphasis
-- **Images Needed** (Unsplash URLs):
-  - Customer service: `https://images.unsplash.com/photo-1573496359142-b8d87734a5a2` (Customer support)
-  - Team at work: `https://images.unsplash.com/photo-1600880292203-757bb62b4baf` (Working team)
-- **Layout**: Image beside "Why Contact Us" content
+### Required Actions
 
----
+#### 2.1 Product Schema Creation
 
-## 1.4 E-Commerce Features (New)
+**Basic Information Fields**
+- Create product name field as required string with max length
+- Create URL slug field that auto-generates from name
+- Create category field with predefined options list
+- Add field validation rules
 
-### Shopping Cart System
-- **Add**: Complete cart functionality with temporary session storage
-- **Desktop Navigation**:
-  - Add cart icon from Lucide React (`ShoppingCart`)
-  - Position in navbar beside existing CTAs
-  - Show cart item count badge
-  - Click opens shadcn Sheet component from right side
-- **Mobile Navigation**:
-  - Add cart icon with "Cart" text
-  - Position in mobile menu
-  - Click opens same shadcn Sheet component
-  - Display cart items count
-- **Cart Sheet Contents**:
-  - List of added items with images
-  - Quantity controls (+/-)
-  - Remove item option
-  - Subtotal calculation
-  - "Checkout" button
-  - "Continue Shopping" button
-- **Temporary Storage**: Use browser sessionStorage for cart data
+**Image Fields**
+- Create card image field for product listings
+- Enable hotspot functionality for card image
+- Create banner image field for detail pages
+- Set both images as required
 
-### Product Detail Pages - Add to Cart
-- **Add**: "Add to Cart" button on all product pages
-- **Functionality**:
-  - Click opens shadcn Sheet with success message
-  - Item details shown in sheet
-  - Quantity selector
-  - "View Cart" and "Checkout" buttons
-  - Cart updates in real-time
-- **Images Needed**: Product thumbnails already exist
+**Description Fields**
+- Create short description text field for cards with character limit
+- Create banner description string field with character limit
+- Create overview field using block content for rich text
+- Configure rich text options
 
-### Checkout Page (New)
-- **Route**: `/checkout`
-- **Add**: Complete checkout interface
-- **Sections**:
-  1. Order Summary (left side)
-     - Cart items list with images
-     - Subtotal, tax, total
-  2. Shipping Information (right side)
-     - Name, address, phone fields
-     - Email field
-  3. Payment Method Selection
-     - Cash on Delivery (COD)
-     - Bank Transfer
-     - Credit/Debit Card (UI only)
-     - Mobile Payment (UI only)
-  4. Order Notes (optional textarea)
-  5. Terms & Conditions checkbox
-  6. "Place Order" button
-- **Images Needed** (Unsplash URLs):
-  - Secure checkout icon: `https://images.unsplash.com/photo-1563013544-824ae1b704d3` (Security)
-  - Payment methods: `https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1` (Payment)
+**Pricing Structure**
+- Create starting price string field
+- Create pricing tiers array with quantity and price objects
+- Add validation for pricing data
 
----
+**Product Details**
+- Create features array field for bullet points
+- Create specifications object with nested fields for sizes, materials, finishes
+- Create gallery array for multiple images
+- Add order number field for display sorting
 
-## 1.5 404 Error Page (New)
+**Relationships**
+- Create related products field with references to other products
+- Configure reference preview
 
-### Custom 404 Page
-- **Route**: Global 404 handler
-- **Add**: Branded error page
-- **Elements**:
-  - Large 404 illustration
-  - Friendly error message
-  - Search bar to find content
-  - Quick links to main pages
-  - "Back to Home" button
-  - Recent products/services suggestions
-- **Icons Needed** (Lucide React):
-  - `FileQuestion` - Main 404 icon
-  - `Home` - Home button icon
-  - `Search` - Search icon
-  - `ArrowLeft` - Back button
-- **Images Needed** (Unsplash URLs):
-  - Background: `https://images.unsplash.com/photo-1584824486509-112e4181ff6b` (Abstract/error concept)
-  - Illustration area: Use Lucide icons with gradient backgrounds
+#### 2.2 Service Schema Creation
 
----
+**Basic Information**
+- Create service name, slug, and category fields
+- Create tagline field with character limit
+- Add appropriate validations
 
-## 1.6 Email Notification System
+**Visual Content**
+- Create card image field for service listings
+- Create hero/banner image field for detail pages
 
-### Quote Request Email
-- **Trigger**: User submits quote request form at `/request-quote`
-- **API Integration**: Use email sending API (Resend, SendGrid, or similar)
-- **From Address**: Company email (info@printingservices.com or as configured)
-- **Two Emails Sent**:
+**Content Sections**
+- Create short description for cards
+- Create banner description for hero section
+- Create overview using block content
 
-#### Email 1: To User (Confirmation)
-- **Subject**: "Quote Request Received - [Company Name]"
-- **Content**:
-  - Thank you message
-  - Quote request details:
-    - User name
-    - Email
-    - Phone
-    - Company name
-    - Service requested
-    - Project details
-    - Quantity
-    - Timeline
-    - Special requirements
-  - Next steps information
-  - Company contact information
-  - Professional email template design
+**Structured Information**
+- Create features array with title and description objects
+- Create benefits array for list items
+- Create process array with step objects including order, title, description
+- Create applications array for use cases
 
-#### Email 2: To Company (Notification)
-- **Subject**: "New Quote Request from [User Name]"
-- **Content**:
-  - New quote request notification
-  - Complete user details:
-    - Name
-    - Email
-    - Phone
-    - Company
-    - Service requested
-    - Project specifications
-    - Quantity needed
-    - Desired timeline
-    - Budget range
-    - Additional notes
-  - Timestamp
-  - Follow-up action required
+**Relationships**
+- Create related services reference field
 
-### Sample Request Email
-- **Trigger**: User submits sample request form at `/request-samples`
-- **API Integration**: Same email API
-- **From Address**: Company email
-- **Two Emails Sent**:
+#### 2.3 Portfolio Schema Creation
 
-#### Email 1: To User (Confirmation)
-- **Subject**: "Sample Request Received - [Company Name]"
-- **Content**:
-  - Thank you message
-  - Sample request details:
-    - User name
-    - Email
-    - Shipping address
-    - Phone
-    - Products requested
-    - Quantity of each sample
-    - Purpose (testing, approval, etc.)
-  - Shipping timeline (5-7 business days)
-  - What to expect
-  - Company contact information
+**Project Information**
+- Create title, slug, client name, and category fields
+- Add completion date field
+- Add featured flag boolean field
 
-#### Email 2: To Company (Notification)
-- **Subject**: "New Sample Request from [User Name]"
-- **Content**:
-  - New sample request alert
-  - Complete user details:
-    - Name
-    - Email
-    - Phone
-    - Shipping address
-    - Products requested
-    - Sample quantities
-    - Purpose/notes
-  - Timestamp
-  - Fulfillment action required
+**Visual Assets**
+- Create featured image for portfolio cards
+- Create banner image for detail pages
+- Create gallery array with image and caption objects
 
-### Contact Form Email
-- **Trigger**: User submits contact form at `/contact`
-- **Two Emails Sent**:
+**Content Sections**
+- Create short description for cards
+- Create banner description for hero
+- Create overview block content
+- Create challenge section with block content
+- Create solution section with block content
+- Create results section with block content
 
-#### Email 1: To User
-- **Subject**: "We Received Your Message - [Company Name]"
-- **Content**:
-  - Thank you for contacting us
-  - Copy of their message
-  - Expected response time (24-48 hours)
-  - Alternative contact methods
+**References & Testimonials**
+- Create services used reference field to services
+- Create products used reference field to products
+- Create testimonial object with quote, author, position fields
 
-#### Email 2: To Company
-- **Subject**: "New Contact Form Submission from [User Name]"
-- **Content**:
-  - User details
-  - Message content
-  - Service interest
-  - Priority level
-  - Timestamp
+#### 2.4 Schema Registration
+- Create schema index file
+- Import all schema definitions
+- Export combined schema types array
+- Register schemas in Sanity config
+- Verify all schemas appear in Studio
 
-### Email Template Design
-- **Include**:
-  - Company logo header
-  - Brand colors
-  - Professional formatting
-  - Clear call-to-action buttons
-  - Footer with:
-    - Company address
-    - Phone number
-    - Email
-    - Website link
-    - Social media links
-  - Unsubscribe option (for newsletters only)
+#### 2.5 Sample Data Population
+- Create multiple sample products covering different categories
+- Add sample services with complete information
+- Create sample portfolio items with relationships
+- Upload sample images for all content types
+- Test all field types and validations
+- Verify rich text editing works
+- Test reference linking between content types
+
+### Deliverables
+- Three complete content schemas implemented
+- All schemas visible and functional in Studio
+- Sample data populated across all content types
+- Relationships working correctly
+- All field validations functioning
+
+### Validation Steps
+- Create new documents of each type successfully
+- Verify required field validations prevent empty submissions
+- Confirm images upload and display correctly
+- Test rich text editor functionality
+- Verify reference fields link documents properly
+- Check preview modes work
 
 ---
 
-## Phase 1 Summary
-- **Total Images Required**: ~35 images
-- **Pages Affected**: 3 (Homepage, About, Contact)
-- **New Features**: Cart system, Checkout page, 404 page, Email notifications
-- **Priority**: Highest - Most visited pages + core e-commerce functionality
+## Phase 3: Next.js Integration
+
+### Objectives
+- Create query functions for all content
+- Implement data fetching in pages
+- Build listing and detail page templates
+- Integrate image optimization
+- Render rich text content properly
+
+### Required Actions
+
+#### 3.1 Query Functions Development
+
+**Base Setup**
+- Create centralized query utility file
+- Import GROQ from next-sanity
+- Import Sanity client
+- Export image URL builder function
+
+**Product Queries**
+- Write GROQ query to fetch all products with essential fields
+- Add category filtering capability
+- Implement ordering by display order
+- Write GROQ query to fetch single product by slug
+- Include all product details in single product query
+- Add related products with their basic info
+- Handle cases where product doesn't exist
+
+**Service Queries**
+- Write query to fetch all services
+- Write query to fetch single service by slug
+- Include related services in detail query
+- Fetch referenced content properly
+
+**Portfolio Queries**
+- Write query to fetch all portfolio items
+- Add filtering for featured items
+- Write query to fetch single portfolio item
+- Include service and product references
+- Fetch gallery images with captions
+
+#### 3.2 Product Pages Implementation
+
+**Listing Page**
+- Create products listing page component
+- Fetch all products using query function
+- Display products in responsive grid layout
+- Render product images using image builder
+- Show product name, description, and starting price
+- Add links to individual product pages
+- Implement category filtering if needed
+
+**Detail Page**
+- Create dynamic product detail page with slug parameter
+- Fetch single product data
+- Create banner section with large image
+- Display product name and banner description on banner
+- Add call-to-action buttons for quotes and samples
+- Create overview section with rich text rendering
+- Display features list
+- Show specifications in organized format
+- Display pricing tiers table
+- Create image gallery section
+- Show related products carousel or grid
+- Handle loading and error states
+
+#### 3.3 Service Pages Implementation
+
+**Listing Page**
+- Create services listing page
+- Fetch and display all services
+- Implement grid layout
+- Link to service detail pages
+
+**Detail Page**
+- Create dynamic service detail page
+- Fetch service data by slug
+- Display hero banner with image
+- Render service overview
+- Display features with icons or styling
+- Show process steps in sequence
+- List benefits
+- Display applications
+- Show related services
+
+#### 3.4 Portfolio Pages Implementation
+
+**Listing Page**
+- Create portfolio listing page
+- Fetch all portfolio items
+- Display in grid or masonry layout
+- Show featured items prominently
+- Add category filtering
+
+**Detail Page**
+- Create portfolio detail page
+- Display project banner
+- Show client name and completion date
+- Render challenge section
+- Display solution section
+- Show results with metrics if applicable
+- Create image gallery with captions
+- Display testimonial prominently
+- Show related services and products used
+- Link to referenced content
+
+#### 3.5 Rich Text Rendering
+
+**Portable Text Setup**
+- Import PortableText component
+- Create custom component serializers if needed
+- Style heading levels appropriately
+- Configure list styling
+- Handle links properly
+- Add any custom block types
+
+#### 3.6 Image Optimization
+
+**Image Builder Configuration**
+- Implement responsive image sizing
+- Configure automatic format optimization
+- Set appropriate quality settings
+- Enable lazy loading
+- Add blur placeholders
+- Configure image transformations for different contexts
+
+### Deliverables
+- All query functions created and tested
+- Product listing and detail pages functional
+- Service listing and detail pages complete
+- Portfolio listing and detail pages working
+- Rich text content rendering properly
+- Images optimized and loading efficiently
+- All page links working correctly
+
+### Validation Steps
+- All pages load without errors
+- Data fetches correctly on all pages
+- Images display at appropriate sizes
+- Rich text renders with proper formatting
+- Navigation between pages works
+- Related content displays correctly
+- SEO metadata is present
+- Pages are responsive on all devices
 
 ---
 
-# PHASE 2: Product & Service Pages
-**Goal: Enhance commercial pages and conversion paths**
+## Phase 4: Payment Gateway Research & Credentials
 
-## 2.1 Products Listing Page
+### Objectives
+- Understand payment gateway requirements
+- Obtain sandbox credentials for testing
+- Review integration documentation
+- Plan security implementation
 
-### Category Header Banners
-- **Add**: Banner image for each category (5 banners)
-- **Images Needed** (Unsplash URLs):
-  1. Business Essentials: `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Office supplies)
-  2. Marketing Materials: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Brochures)
-  3. Large Format: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Banners)
-  4. Packaging Products: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Packaging)
-  5. Specialty Items: `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Unique prints)
-- **Layout**: Horizontal banner above each category grid
+### Required Actions
 
-### Product in Use Sections
-- **Add**: Real-world application images between categories
-- **Images Needed** (Unsplash URLs):
-  - Business cards in use: `https://images.unsplash.com/photo-1589939705384-5185137a7f0f` (Networking)
-  - Brochures display: `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Exhibition)
-  - Packaging example: `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Product box)
-  - Banner installation: `https://images.unsplash.com/photo-1577563908411-5077b6dc7624` (Display)
-  - Office materials: `https://images.unsplash.com/photo-1497032628192-86f99bcd76bc` (Workspace)
-- **Layout**: Full-width showcase images
+#### 4.1 JazzCash Sandbox Setup
 
----
+**Account Creation**
+- Visit JazzCash sandbox portal
+- Register for merchant sandbox account
+- Complete merchant information form
+- Verify email and contact details
 
-## 2.2 Product Detail Pages - Individual Products
+**Credentials Collection**
+- Obtain Merchant ID from portal
+- Generate and save Password
+- Retrieve Integrity Salt for hash generation
+- Note callback/return URL requirements
 
-### IMPORTANT: Product Slug Verification
-- **Verify ALL product slugs work correctly**:
-  - `/products/business-cards`
-  - `/products/brochures`
-  - `/products/flyers`
-  - `/products/posters`
-  - `/products/banners`
-  - `/products/custom-boxes`
-  - `/products/stickers`
-  - `/products/letterheads`
-- **Test**: Each product page loads with correct data
-- **Ensure**: Images, specifications, pricing display properly
+**Documentation Review**
+- Download complete API documentation
+- Study hosted checkout integration method
+- Understand hash generation algorithm (HMAC-SHA256)
+- Review required parameters for payment requests
+- Study callback response parameters
+- Review response codes and their meanings
+- Understand transaction states
+- Study error handling procedures
 
-### Business Cards Page Enhancements
-- **Add to existing images**:
-  - Usage examples:
-    - `https://images.unsplash.com/photo-1589939705384-5185137a7f0f` (Networking scene)
-    - `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Business meeting)
-    - `https://images.unsplash.com/photo-1560472355-536de3962603` (Card exchange)
-  - Material close-ups:
-    - `https://images.unsplash.com/photo-1589939705384-5185137a7f0f` (Paper texture)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Finish examples)
-  - Design variations:
-    - `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Different designs)
-    - `https://images.unsplash.com/photo-1589939705384-5185137a7f0f` (Color options)
+**Testing Information**
+- Note sandbox URL endpoint
+- Save test card numbers
+- Note test credentials validity
+- Review testing best practices
 
-### Brochures Page Enhancements
-- **Add**:
-  - In-context usage:
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Trade show)
-    - `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Presentation)
-    - `https://images.unsplash.com/photo-1517245386807-bb43f82c33c4` (Reading brochure)
-  - Fold styles:
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Tri-fold)
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Bi-fold)
-  - Layout examples:
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Design variations)
+#### 4.2 Easypaisa Merchant Setup
 
-### Flyers Page Enhancements
-- **Add**:
-  - Distribution scenes:
-    - `https://images.unsplash.com/photo-1517245386807-bb43f82c33c4` (Hand holding flyer)
-    - `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Event distribution)
-  - Design examples:
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Various designs)
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Color options)
-  - Usage contexts:
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Event promotion)
+**Initial Contact**
+- Contact Easypaisa business support
+- Request sandbox access for development
+- Submit required business information
+- Request integration documentation
 
-### Posters Page Enhancements
-- **Add**:
-  - Display contexts:
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Wall display)
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Exhibition)
-    - `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Store window)
-  - Size comparisons:
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Different sizes)
-  - Finish options:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Matte vs glossy)
+**Credentials Collection**
+- Obtain Store ID
+- Receive Store Password
+- Get Hash Key for encryption
+- Note gateway URLs for sandbox and production
 
-### Banners Page Enhancements
-- **Add**:
-  - Installation examples:
-    - `https://images.unsplash.com/photo-1577563908411-5077b6dc7624` (Banner display)
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Trade show booth)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Outdoor banner)
-  - Material types:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Vinyl)
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Fabric)
-  - Size demonstrations:
-    - `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Scale comparison)
+**Documentation Study**
+- Review Easypaisa integration guide
+- Understand HTTP POST method flow
+- Study hash generation process (SHA256)
+- Review payment request parameters
+- Study callback parameters
+- Understand response codes
+- Review transaction lifecycle
 
-### Custom Boxes Page Enhancements
-- **Add**:
-  - Box styles:
-    - `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Various styles)
-    - `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Packaging examples)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Custom designs)
-  - In-use contexts:
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Product packaging)
-    - `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Unboxing)
-  - Material options:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Cardboard types)
+**Portal Access**
+- Access merchant portal
+- Familiarize with dashboard
+- Review transaction history capabilities
+- Understand reporting features
 
-### Stickers Page Enhancements
-- **Add**:
-  - Application examples:
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Product labels)
-    - `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Packaging stickers)
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Promotional stickers)
-  - Shape options:
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Die-cut shapes)
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Custom shapes)
-  - Finish types:
-    - `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Glossy/matte)
+#### 4.3 Environment Configuration
 
-### Letterheads Page Enhancements
-- **Add**:
-  - Professional usage:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Business letter)
-    - `https://images.unsplash.com/photo-1497032628192-86f99bcd76bc` (Office desk)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Correspondence)
-  - Design examples:
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Various designs)
-    - `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Brand elements)
-  - Paper quality:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Texture close-up)
+**JazzCash Variables**
+- Add merchant ID to environment variables
+- Add password securely
+- Add integrity salt
+- Configure callback URL with full domain
+- Add sandbox/production environment flag
+
+**Easypaisa Variables**
+- Add store ID to environment
+- Add store password securely
+- Add hash key
+- Configure gateway URL
+- Add callback URL
+- Add environment flag
+
+**Security Considerations**
+- Never commit credentials to version control
+- Use separate credentials for development and production
+- Ensure environment file is in gitignore
+- Use encrypted storage for production credentials
+
+#### 4.4 Integration Planning
+
+**Hash Generation Strategy**
+- Plan hash generation utility functions
+- Understand parameter ordering requirements
+- Plan hash verification for callbacks
+- Design secure implementation
+
+**Transaction Flow Planning**
+- Map out payment initialization process
+- Plan form submission mechanism
+- Design callback handling approach
+- Plan database logging strategy
+
+**Error Handling Strategy**
+- Plan for network failures
+- Design timeout handling
+- Plan for declined transactions
+- Design user feedback mechanisms
+
+**Security Measures Planning**
+- Plan HTTPS enforcement
+- Design amount validation process
+- Plan transaction logging approach
+- Design audit trail implementation
+
+### Deliverables
+- JazzCash sandbox credentials obtained and secured
+- Easypaisa sandbox credentials obtained and secured
+- All environment variables properly configured
+- Complete documentation reviewed and understood
+- Integration approach clearly defined
+- Security measures planned
+
+### Validation Steps
+- Can access JazzCash sandbox portal
+- Can access Easypaisa merchant portal
+- Environment variables load correctly in application
+- Callback URLs properly configured
+- Documentation downloaded and accessible
+- Test credentials verified
 
 ---
 
-## 2.3 Services Listing Page
+## Phase 5: JazzCash Integration Implementation
 
-### Category Headers
-- **Add**: Large banner for each category (3 banners)
-- **Images Needed** (Unsplash URLs):
-  1. Printing Services: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Industrial press)
-  2. Packaging Solutions: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Packaging line)
-  3. Design Services: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Creative studio)
-- **Layout**: Full-width category banner
+### Objectives
+- Implement complete JazzCash payment flow
+- Create secure hash generation
+- Handle payment initialization
+- Process callbacks and verify responses
+- Test thoroughly in sandbox
 
-### Why Choose Us Section
-- **Add**: Background images to benefit cards (6 cards)
-- **Images Needed** (Unsplash URLs):
-  1. Experience: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Timeline)
-  2. Quality: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality control)
-  3. Customer Service: `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Support)
-  4. Innovation: `https://images.unsplash.com/photo-1485827404703-89b55fcc595e` (Modern equipment)
-  5. Sustainability: `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09` (Eco-practices)
-  6. Reliability: `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Satisfied customers)
-- **Layout**: Card backgrounds with overlay text
+### Required Actions
 
-### Industry Certifications (New Section)
-- **Add**: Credibility markers
-- **Images Needed** (Unsplash URLs):
-  - ISO certification: `https://images.unsplash.com/photo-1450101499163-c8848c66ca85` (Certificate)
-  - Quality awards: `https://images.unsplash.com/photo-1522071820081-009f0129c71c` (Awards)
-  - Equipment standards: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Certified equipment)
-- **Layout**: Badge grid with supporting images
+#### 5.1 JazzCash Utility Class Creation
 
----
+**Class Structure**
+- Create JazzCash utility class or functions
+- Store credentials from environment variables
+- Implement proper encapsulation
 
-## 2.4 Service Detail Pages (All 15 Services)
+**Transaction Reference Generator**
+- Create function to generate unique transaction reference
+- Format as T{YYYYMMDDHHmmss}
+- Ensure uniqueness for each transaction
+- Handle timezone considerations
 
-### Process Steps (For All Services)
-- **Add**: Visual for each step (typically 5 steps)
-- **Universal Process Images** (Unsplash URLs):
-  1. Consultation: `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Meeting)
-  2. Design/Preparation: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Design work)
-  3. Production: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Manufacturing)
-  4. Quality Control: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Inspection)
-  5. Delivery: `https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55` (Shipping)
-- **Layout**: Icon or image beside each step
+**Expiry Date Generator**
+- Create function to generate transaction expiry time
+- Set appropriate expiry window (typically 1 hour)
+- Format according to JazzCash requirements
+- Handle timezone properly
 
-### Benefits Section (For All Services)
-- **Add**: Representative images
-- **Common Benefit Images** (Unsplash URLs):
-  - Cost Savings: `https://images.unsplash.com/photo-1554224155-6726b3ff858f` (Calculator/budget)
-  - Fast Turnaround: `https://images.unsplash.com/photo-1501139083538-0139583c060f` (Clock/speed)
-  - Quality Results: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality inspection)
-  - Custom Options: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Customization)
-  - Expert Support: `https://images.unsplash.com/photo-1573496359142-b8d87734a5a2` (Customer service)
-- **Layout**: Background image in benefit cards
+**Hash Generation**
+- Implement HMAC-SHA256 hash function
+- Follow exact parameter ordering requirement
+- Include all required fields in hash string
+- Use integrity salt properly
+- Return hex-encoded hash
 
-### Equipment Showcase (New Section for All Services)
-- **Add**: Technology credibility
-- **Service-Specific Equipment Images** (Unsplash URLs):
-  - Digital Printing: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Digital press)
-  - Offset Printing: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Offset press)
-  - Large Format: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Large printer)
-  - Screen Printing: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Screen setup)
-  - Packaging Equipment: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Packaging machine)
-  - Design Workstations: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Designer setup)
-- **Layout**: Equipment photo grid with descriptions
+**Payment Data Creator**
+- Create function to assemble payment form data
+- Convert amount to paisa (multiply by 100)
+- Generate transaction reference
+- Generate expiry datetime
+- Create hash with all parameters
+- Return complete payment object with all required fields
 
----
+#### 5.2 Payment API Route
 
-## Phase 2 Summary
-- **Total Images Required**: ~180 images
-- **Pages Affected**: Products (9 pages), Services (16 pages)
-- **Critical Task**: Verify all product slugs work correctly
-- **New Features**: Complete product pages with add-to-cart functionality
-- **Priority**: Very High - Direct conversion pages
+**Create Route**
+- Create API route for payment initialization
+- Accept payment request from frontend
+- Validate incoming data
 
----
+**Payment Processing**
+- Extract amount, order ID, and description
+- Instantiate JazzCash utility
+- Generate payment data
+- Return payment data to frontend
 
-# PHASE 3: Content & Information Pages
-**Goal: Enhance educational and informational content**
+**Error Handling**
+- Validate all required fields present
+- Handle missing credentials
+- Return appropriate error responses
+- Log errors for debugging
 
+#### 5.3 Frontend Payment Initiation
 
-### Category Filter Section
-- **Add**: Visual category indicators
-- **Images Needed** (Unsplash URLs):
-  - Printing Tips: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Printing)
-  - Design Guides: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Design)
-  - Business Advice: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Business)
-  - Industry News: `https://images.unsplash.com/photo-1504711434969-e33886168f5c` (News)
-  - Sustainability: `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09` (Eco)
-- **Layout**: Icon beside category button
+**Payment Button Component**
+- Create payment component or button
+- Handle user click event
+- Show loading state during processing
 
-## 3.3 Industries Pages
+**API Call**
+- Call payment initialization API
+- Send amount and order details
+- Handle API response
 
-### Industries Listing Page
-- **Add**: Industry card backgrounds (8 industries)
-- **Images Needed** (Unsplash URLs):
-  1. Schools & Education: `https://images.unsplash.com/photo-1503676260728-1c00da094a0b` (Education)
-  2. Healthcare & Medical: `https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d` (Healthcare)
-  3. Restaurants & Food: `https://images.unsplash.com/photo-1517248135467-4c7edcad34c4` (Restaurant)
-  4. Retail & E-commerce: `https://images.unsplash.com/photo-1441986300917-64674bd600d8` (Retail)
-  5. Corporate & Business: `https://images.unsplash.com/photo-1486406146926-c627a92ad1ab` (Corporate)
-  6. Events & Hospitality: `https://images.unsplash.com/photo-1511795409834-ef04bbd61622` (Events)
-  7. Technology & Startups: `https://images.unsplash.com/photo-1519389950473-47ba0277781c` (Tech office)
-  8. Fashion & Apparel: `https://images.unsplash.com/photo-1445205170230-053b83016050` (Fashion)
-- **Layout**: Card background with gradient overlay
+**Form Submission**
+- Dynamically create HTML form
+- Set form method to POST
+- Set action to JazzCash gateway URL
+- Add all payment data as hidden inputs
+- Append form to document body
+- Submit form programmatically
+- Handle any submission errors
 
-### Success Stories Preview (New Section)
-- **Add**: Client results showcase
-- **Images Needed** (Unsplash URLs):
-  - Before/after examples:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Before state)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (After state)
-    - `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Results)
-    - `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Implementation)
-    - `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Client satisfaction)
-- **Layout**: Comparison grid
+#### 5.4 Callback Page Implementation
 
----
+**Create Callback Route**
+- Create callback page at configured URL
+- Accept all query parameters from JazzCash
 
-## 3.4 Industry Detail Pages (4 Industries)
+**Response Extraction**
+- Extract response code
+- Extract response message
+- Extract transaction reference
+- Extract secure hash from response
+- Extract all other relevant parameters
 
-### Schools & Education Industry Page
-- **Challenges**: `https://images.unsplash.com/photo-1503676260728-1c00da094a0b` (Education challenges)
-- **Solutions**: `https://images.unsplash.com/photo-1546410531-bb4caa6b424d` (Educational materials)
-- **Products**: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (School materials)
-- **Case Study**: `https://images.unsplash.com/photo-1509062522246-3755977927d7` (School success)
-- **Statistics**: `https://images.unsplash.com/photo-1551288049-bebda4e38f71` (Education data)
+**Hash Verification**
+- Reconstruct hash string from response parameters
+- Generate hash using same algorithm
+- Compare with received hash
+- Reject if hashes don't match
 
-### Healthcare & Medical Industry Page
-- **Challenges**: `https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d` (Healthcare)
-- **Solutions**: `https://images.unsplash.com/photo-1505751172876-fa1923c5c528` (Medical documents)
-- **Products**: `https://images.unsplash.com/photo-1584982751601-97dcc096659c` (Medical prints)
-- **Case Study**: `https://images.unsplash.com/photo-1519494080410-f9aa76cb4283` (Healthcare facility)
-- **Statistics**: `https://images.unsplash.com/photo-1551288049-bebda4e38f71` (Medical data)
+**Status Handling**
+- Check response code for success (000)
+- Handle success case appropriately
+- Handle failure cases
+- Handle pending/timeout cases
+- Display appropriate message to user
 
-### Restaurants & Food Industry Page
-- **Challenges**: `https://images.unsplash.com/photo-1517248135467-4c7edcad34c4` (Restaurant)
-- **Solutions**: `https://images.unsplash.com/photo-1514933651103-005eec06c04b` (Menu design)
-- **Products**: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Food packaging)
-- **Case Study**: `https://images.unsplash.com/photo-1559329007-40df8a9345d8` (Restaurant branding)
-- **Statistics**: `https://images.unsplash.com/photo-1551288049-bebda4e38f71` (Food industry data)
+**Database Operations**
+- Update order status based on response
+- Log complete transaction details
+- Store response code and message
+- Update payment status
+- Handle any database errors
 
-### Retail & E-commerce Industry Page
-- **Challenges**: `https://images.unsplash.com/photo-1441986300917-64674bd600d8` (Retail store)
-- **Solutions**: `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Product packaging)
-- **Products**: `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Retail materials)
-- **Case Study**: `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Store success)
-- **Statistics**: `https://images.unsplash.com/photo-1551288049-bebda4e38f71` (Retail data)
+#### 5.5 Success and Failure Pages
 
----
+**Success Page**
+- Create success page component
+- Display success message
+- Show transaction reference
+- Show order details
+- Provide next steps
+- Add link to order confirmation
+- Send confirmation email if applicable
 
-## 3.5 How It Works Page
+**Failure Page**
+- Create failure page component
+- Display appropriate error message
+- Show transaction reference
+- Provide retry option
+- Display support contact information
+- Log failure for analysis
 
-### Process Steps Visualization
-- **Add**: Large visual for each step (6 steps)
-- **Images Needed** (Unsplash URLs):
-  1. Consultation: `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Meeting)
-  2. Design: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Creative process)
-  3. Approval: `https://images.unsplash.com/photo-1450101499163-c8848c66ca85` (Review)
-  4. Production: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Manufacturing)
-  5. Quality Control: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Inspection)
-  6. Delivery: `https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55` (Shipping)
-- **Layout**: Large image beside each step
+### Deliverables
+- JazzCash utility functions implemented
+- Payment initialization API route working
+- Frontend payment initiation functional
+- Callback handling complete with verification
+- Success and failure pages created
+- Hash verification working correctly
+- Database logging implemented
 
-### Timeline Visualization (New Section)
-- **Add**: End-to-end process overview
-- **Images Needed** (Unsplash URL):
-  - Comprehensive timeline: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Process flow)
-- **Layout**: Horizontal flowchart
+### Validation Steps
+- Can initialize payment successfully
+- Form submits to JazzCash correctly
+- Redirects to JazzCash payment page
+- Can complete test transactions
+- Callbacks received and processed
+- Hash verification passes
+- Success page displays for successful payments
+- Failure page displays for declined transactions
+- Database updates correctly
+- All response codes handled properly
 
 ---
 
-## 3.6 FAQ Page
+## Phase 6: Easypaisa Integration Implementation
 
-### Category Sections
-- **Add**: Category header images
-- **Images Needed** (Unsplash URLs):
-  - General Questions: `https://images.unsplash.com/photo-1488998427799-e3362cec87c3` (Questions)
-  - Printing Services: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Printing)
-  - Pricing & Payment: `https://images.unsplash.com/photo-1554224155-6726b3ff858f` (Payment)
-  - Shipping & Delivery: `https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55` (Delivery)
-  - Quality & Materials: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality)
-  - Design Services: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Design)
-- **Layout**: Small header image per category
+### Objectives
+- Implement Easypaisa payment flow
+- Create hash generation specific to Easypaisa
+- Handle payment lifecycle
+- Process and verify callbacks
+- Test in sandbox environment
 
-### Common Questions Illustrations
-- **Add**: Supporting diagrams
-- **Images Needed** (Unsplash URLs):
-  - Size guide: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Dimensions)
-  - Material comparison: `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Materials)
-  - Process diagram: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Workflow)
-  - Quality standards: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Standards)
-  - Turnaround times: `https://images.unsplash.com/photo-1501139083538-0139583c060f` (Timeline)
-  - File formats: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Digital files)
-  - Color matching: `https://images.unsplash.com/photo-1541701494587-cb58502866ab` (Colors)
-  - Finishing options: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Finishes)
-- **Layout**: Inline with relevant questions
+### Required Actions
 
----
+#### 6.1 Easypaisa Utility Class Creation
 
-## Phase 3 Summary
-- **Total Images Required**: ~95 images
-- **Pages Affected**: Industries (5 pages), How It Works, FAQ
-- **Priority**: Medium-High - Educational content, SEO value
-- **Focus**: Content engagement, information clarity
+**Class Structure**
+- Create Easypaisa utility class or functions
+- Load credentials from environment
+- Encapsulate Easypaisa-specific logic
 
----
+**Hash Generation**
+- Implement SHA256 hash function
+- Concatenate parameters in correct order
+- Append hash key
+- Generate and return hash digest
+- Handle parameter array properly
 
-# PHASE 4: Portfolio & Specialty Pages
-**Goal: Showcase work and complete specialty sections**
+**Expiry Date Generator**
+- Create function for transaction expiry
+- Format as YYYYMMDD
+- Set typically 24 hours from creation
+- Handle date formatting properly
 
-## 4.1 Portfolio Listing Page
+**Payment Request Creator**
+- Create function to build payment request
+- Format amount with two decimals
+- Generate expiry date
+- Create hash array with required parameters
+- Generate secure hash
+- Return complete payment request object
 
-### Filter Section Enhancement
-- **Add**: Category preview thumbnails
-- **Images Needed** (Unsplash URLs):
-  - Branding Projects: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Brand work)
-  - Packaging Projects: `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Package design)
-  - Marketing Materials: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Marketing)
-  - Large Format: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Banners)
-  - Business Print: `https://images.unsplash.com/photo-1589939705384-5185137a7f0f` (Business cards)
-  - Special Projects: `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Unique work)
-- **Layout**: Thumbnail beside filter option
+#### 6.2 Payment API Route
 
-### Featured Projects
-- **Add**: Enhanced hero treatment
-- **Images Needed** (Unsplash URLs):
-  - Project 1: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d` (Packaging project)
-  - Project 2: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Branding project)
-  - Project 3: `https://images.unsplash.com/photo-1572044162444-ad60f128bdea` (Display project)
-- **Layout**: Large featured cards
+**Create Route**
+- Create API route for Easypaisa initialization
+- Accept payment details from frontend
+- Validate incoming data
 
----
+**Request Processing**
+- Extract amount and order reference
+- Instantiate Easypaisa utility
+- Create payment request object
+- Return payment data to frontend
 
-## 4.2 Portfolio Detail Pages
+**Error Handling**
+- Validate required fields
+- Handle missing credentials
+- Return error responses
+- Log errors appropriately
 
-### Project Overview
-- **Add**: Multiple perspective shots per project
-- **Images Needed Per Project** (Unsplash URLs):
-  - Final product (main): Specific to project
-  - Detail shot 1: Close-up of design element
-  - Detail shot 2: Texture/material close-up
-  - Detail shot 3: Finishing details
-  - In-context 1: Product in use
-  - In-context 2: Display/presentation
-- **Layout**: Gallery grid
+#### 6.3 Frontend Payment Flow
 
-### Process Section (New)
-- **Add**: Behind-the-scenes content
-- **Images Needed Per Project** (Unsplash URLs):
-  - Initial mockup: `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Design stage)
-  - Production stage 1: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Printing)
-  - Production stage 2: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality check)
-  - Final assembly: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Completion)
-- **Layout**: Timeline with images
+**Payment Initiation**
+- Create payment component for Easypaisa
+- Handle payment button click
+- Show appropriate loading state
 
-### Client Collaboration
-- **Add**: Team-client interaction
-- **Images Needed** (Unsplash URLs):
-  - Consultation: `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Meeting)
-  - Collaboration: `https://images.unsplash.com/photo-1522071820081-009f0129c71c` (Working together)
-- **Layout**: Side image with testimonial
+**API Integration**
+- Call payment initialization API
+- Send payment details
+- Receive payment data
 
----
+**Gateway Submission**
+- Create HTML form dynamically
+- Set form action to Easypaisa gateway
+- Add all payment data as hidden fields
+- Submit form to gateway
+- Handle any errors
 
-## 4.3 Pricing Page
+#### 6.4 Callback Handling
 
-### Package Comparisons
-- **Add**: Visual tier indicators
-- **Images Needed** (Unsplash URLs):
-  - Basic tier: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Standard printing)
-  - Premium tier: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (High-end quality)
-  - Enterprise tier: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Large-scale)
-- **Layout**: Background images for pricing tiers
+**Callback Route Creation**
+- Create callback page at configured URL
+- Accept POST or GET parameters from Easypaisa
 
-### What's Included Sections
-- **Add**: Feature illustrations
-- **Images Needed** (Unsplash URLs):
-  - Design consultation: `https://images.unsplash.com/photo-1561070791-36c11767b26a`
-  - File preparation: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40`
-  - Proofing service: `https://images.unsplash.com/photo-1450101499163-c8848c66ca85`
-  - Rush processing: `https://images.unsplash.com/photo-1501139083538-0139583c060f`
-  - Quality guarantee: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d`
-  - Free shipping: `https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55`
-  - Custom sizes: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64`
-  - Eco options: `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09`
-- **Layout**: Icon/image beside feature list
+**Response Processing**
+- Extract order reference number
+- Extract payment token
+- Extract response code
+- Extract response description
+- Extract secure hash
+- Extract all other parameters
 
-### Value Demonstration (New Section)
-- **Add**: Quality comparisons
-- **Images Needed** (Unsplash URLs):
-  - Basic vs Premium print: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Quality comparison)
-  - Material comparison: `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Materials)
-  - Finish comparison: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Finishes)
-- **Layout**: Side-by-side comparisons
+**Hash Verification**
+- Recreate hash from response parameters
+- Use same algorithm as request
+- Compare with received hash
+- Reject transaction if mismatch
+- Log verification attempts
 
----
+**Transaction Status Processing**
+- Check response code (0000 for success)
+- Update order status accordingly
+- Handle success scenario
+- Handle failure scenarios
+- Handle any edge cases
 
-## 4.4 Quote Request Page
+**Database Updates**
+- Log complete transaction
+- Update payment status
+- Store all response parameters
+- Update order information
+- Handle concurrent updates
 
-### Form Introduction
-- **Add**: Trust imagery
-- **Images Needed** (Unsplash URLs):
-  - Customer service: `https://images.unsplash.com/photo-1573496359142-b8d87734a5a2` (Support team)
-  - Happy client: `https://images.unsplash.com/photo-1556761175-4b46a572b786` (Satisfied customer)
-  - Finished projects: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Quality results)
-- **Layout**: Hero image above form
+#### 6.5 Response Pages
 
-### Process Timeline (New Section)
-- **Add**: Visual timeline
-- **Images Needed** (Unsplash URLs):
-  1. Submit request: `https://images.unsplash.com/photo-1454165804606-c3d57bc86b40` (Form)
-  2. Review & quote: `https://images.unsplash.com/photo-1450101499163-c8848c66ca85` (Review)
-  3. Approve quote: `https://images.unsplash.com/photo-1521791136064-7986c2920216` (Approval)
-  4. Production begins: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Start)
-  5. Quality check: `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d` (Check)
-  6. Delivery: `https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55` (Shipping)
-- **Layout**: Horizontal timeline
+**Success Page**
+- Create success confirmation page
+- Display payment confirmation
+- Show order reference
+- Provide order details
+- Show next steps
+- Add navigation options
 
----
+**Failure Page**
+- Create failure notification page
+- Display clear error message
+- Show order reference
+- Provide retry mechanism
+- Display support information
+- Log failure details
 
-## 4.5 Sample Request Page
+### Deliverables
+- Easypaisa utility functions implemented
+- Payment API route functional
+- Frontend payment flow working
+- Callback processing complete
+- Hash verification implemented
+- Success and failure pages created
+- Database integration complete
 
-### Sample Showcase
-- **Add**: Available sample visuals
-- **Images Needed** (Unsplash URLs):
-  - Sample pack: `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Sample kit)
-  - Material swatches:
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Paper samples)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Cardstock)
-    - `https://images.unsplash.com/photo-1561070791-36c11767b26a` (Specialty papers)
-  - Finish examples:
-    - `https://images.unsplash.com/photo-1555421689-d68471e189f2` (Glossy)
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Matte)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Textured)
-- **Layout**: Grid of sample options
-
-### What You'll Receive (New Section)
-- **Add**: Package contents preview
-- **Images Needed** (Unsplash URLs):
-  - Sample kit unboxing: `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Unboxing)
-  - Contents display: `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Samples laid out)
-- **Layout**: Unboxing-style presentation
+### Validation Steps
+- Payment initialization works
+- Redirects to Easypaisa correctly
+- Can complete test transactions
+- Callbacks processed correctly
+- Hash verification successful
+- Database updates properly
+- Success cases handled correctly
+- Failure cases handled appropriately
+- All response codes processed
+- Error scenarios handled gracefully
 
 ---
 
-## 4.6 Sustainability Page
+## Phase 7: Database Integration for Payments
 
-### Eco-Friendly Practices
-- **Add**: Practice demonstrations
-- **Images Needed** (Unsplash URLs):
-  - Recycled materials: `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09` (Recycling)
-  - Energy-efficient equipment: `https://images.unsplash.com/photo-1473341304170-971dccb5ac1e` (Green tech)
-  - Waste reduction: `https://images.unsplash.com/photo-1532996122724-e3c354a0b15b` (Waste management)
-  - Sustainable inks: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb` (Eco inks)
-- **Layout**: Image-text alternating sections
+### Objectives
+- Create database schema for transactions
+- Implement order management
+- Log all payment activities
+- Handle transaction states
+- Maintain audit trail
 
-### Environmental Impact
-- **Add**: Impact visualization
-- **Images Needed** (Unsplash URLs):
-  - Green certification: `https://images.unsplash.com/photo-1450101499163-c8848c66ca85` (Certificate)
-  - Carbon footprint: `https://images.unsplash.com/photo-1551288049-bebda4e38f71` (Graph)
-  - Sustainability metrics: `https://images.unsplash.com/photo-1460925895917-afdab827c52f` (Data chart)
-- **Layout**: Infographic-style presentation
+### Required Actions
 
-### Green Materials Showcase
-- **Add**: Material close-ups
-- **Images Needed** (Unsplash URLs):
-  - Recycled paper: `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Recycled stock)
-  - Eco packaging: `https://images.unsplash.com/photo-1607083206968-13611e3d76db` (Green packaging)
-  - Sustainable alternatives:
-    - `https://images.unsplash.com/photo-1542601906990-b4d3fb778b09` (Bamboo)
-    - `https://images.unsplash.com/photo-1586281380349-632531db7ed4` (Hemp paper)
-    - `https://images.unsplash.com/photo-1558618666-fcd25c85cd64` (Biodegradable)
-- **Layout**: Material comparison grid
+#### 7.1 Database Schema Design
 
----
+**Orders Table**
+- Create orders table structure
+- Add order ID field as primary key
+- Add customer information fields
+- Add order details and items
+- Add total amount field
+- Add order status field with states
+- Add created and updated timestamps
+- Add indexes for performance
 
-## Phase 4 Summary
-- **Total Images Required**: ~70 images
-- **Pages Affected**: Portfolio, Pricing, Request Forms, Sustainability
-- **Priority**: Medium - Specialized content
-- **Focus**: Work showcase, conversion optimization
+**Transactions Table**
+- Create transactions table structure
+- Add transaction ID field
+- Add order ID foreign key
+- Add payment gateway field (JazzCash/Easypaisa)
+- Add transaction reference from gateway
+- Add amount field
+- Add currency field
+- Add status field
+- Add response code field
+- Add response message field
+- Add request payload field (JSON)
+- Add response payload field (JSON)
+- Add hash verification status
+- Add timestamps
+- Add indexes for queries
 
----
+**Payment Logs Table**
+- Create detailed logging table
+- Add log ID field
+- Add transaction ID reference
+- Add event type field
+- Add event data (JSON)
+- Add timestamp
+- Add IP address field
+- Add user agent field
 
-# PHASE 5: Polish & Completion
-**Goal: Complete all remaining pages and ensure consistency**
+#### 7.2 Order Management Implementation
 
-## 5.1 Privacy Policy Page
+**Order Creation**
+- Implement order creation function
+- Validate order data
+- Calculate order totals
+- Generate unique order ID
+- Set initial status as pending
+- Store customer information
+- Save order items
+- Return order ID
 
-### Header Section
-- **Add**: Professional trust imagery
-- **Images Needed** (Unsplash URL):
-  - Security/privacy concept: `https://images.unsplash.com/photo-1563013544-824ae1b704d3` (Security)
-- **Layout**: Hero image with overlay
+**Order Status Updates**
+- Implement status update function
+- Accept order ID and new status
+- Add status change timestamp
+- Log status change
+- Trigger any necessary notifications
+- Handle status transitions validation
 
-### Section Dividers
-- **Add**: Subtle separating graphics
-- **Images Needed** (Unsplash URLs):
-  - Pattern 1: `https://images.unsplash.com/photo-1507238691740-187a5b1d37b8` (Abstract)
-  - Pattern 2: `https://images.unsplash.com/photo-1557821552-17105176677c` (Texture)
-- **Layout**: Section breaks
+**Order Retrieval**
+- Implement order fetch by ID
+- Implement order fetch by customer
+- Include related transaction data
+- Format response appropriately
 
----
+#### 7.3 Transaction Logging
 
-## 5.2 Terms of Service Page
+**Transaction Initialization Logging**
+- Log when payment is initiated
+- Store request parameters
+- Record gateway used
+- Log timestamp
+- Store customer identifier
+- Record amount and currency
 
-### Header Section
-- **Add**: Legal documentation imagery
-- **Images Needed** (Unsplash URL):
-  - Legal concept: `https://images.unsplash.com/photo-1450101499163-c8848c66ca85` (Documents)
-- **Layout**: Hero image with overlay
+**Transaction Response Logging**
+- Log complete gateway response
+- Store response code and message
+- Record transaction reference
+- Log hash verification result
+- Store all response parameters
+- Record callback timestamp
 
-### Section Dividers
-- **Add**: Separating graphics
-- **Images Needed** (Unsplash URLs):
-  - Pattern 1: `https://images.unsplash.com/photo-1507238691740-187a5b1d37b8` (Abstract)
-  - Pattern 2: `https://images.unsplash.com/photo-1557821552-17105176677c` (Texture)
-- **Layout**: Section breaks
+**Transaction Status Updates**
+- Log all status changes
+- Record reason for change
+- Store timestamps
+- Maintain audit trail
 
----
+#### 7.4 Callback Database Operations
 
-## 5.3 Global Consistency Review
+**JazzCash Callback Processing**
+- Find transaction by reference
+- Verify transaction exists
+- Update transaction status
+- Store response data
+- Update related order
+- Commit transaction atomically
+- Handle any errors
 
-### All Product Cards
-- **Verify**: Consistent image sizing across all product cards
-- **Check**: Hover states working properly
-- **Ensure**: Alt text present on all images
+**Easypaisa Callback Processing**
+- Find transaction by order reference
+- Verify transaction exists
+- Update transaction with response
+- Store all response data
+- Update order status
+- Ensure atomic operations
+- Handle errors gracefully
 
-### All Service Cards
-- **Verify**: Uniform card heights and image aspect ratios
-- **Check**: Background images displaying correctly
-- **Ensure**: Text contrast sufficient over images
+#### 7.5 Query Functions
 
-### All Blog Cards
-- **Verify**: Featured images loading properly
-- **Check**: Category badges positioned correctly
-- **Ensure**: Consistent image quality
+**Transaction Queries**
+- Implement fetch transaction by ID
+- Implement fetch by order ID
+- Implement fetch by gateway reference
+- Add date range filtering
+- Add status filtering
+- Implement pagination
 
-### Navigation Images
-- **Verify**: Dropdown menu images (if any) displaying
-- **Check**: Mobile menu images optimized
-- **Ensure**: Logo and branding consistent
+**Order Queries**
+- Implement fetch order with transactions
+- Add customer filtering
+- Add date range queries
+- Add status filtering
+- Implement search functionality
 
----
+**Reporting Queries**
+- Create transaction summary queries
+- Implement revenue reporting
+- Add gateway-wise statistics
+- Create status distribution queries
+- Implement date-based aggregations
 
-## Phase 5 Summary
-- **Total Images Required**: ~8 images
-- **Pages Affected**: Privacy, Terms, Global refinements
-- **Priority**: Low-Medium - Completion and polish
-- **Focus**: Professional appearance, consistency
+### Deliverables
+- Complete database schema implemented
+- Order management functions working
+- Transaction logging operational
+- Callback database operations complete
+- Query functions implemented
+- Audit trail maintained
 
----
-
-# Complete Implementation Summary
-
-## Total Project Overview
-
-| Phase | Focus Area | Images Required | Critical Features |
-|-------|-----------|-----------------|-------------------|
-| **Phase 1** | Foundation & High-Impact | ~35 | Cart system, Email, 404 page |
-| **Phase 2** | Products & Services | ~180 | Product slugs, Add-to-cart |
-| **Phase 3** | Content & Information | ~95 | Blog content, Industry pages |
-| **Phase 4** | Portfolio & Specialty | ~70 | Portfolio showcase |
-| **Phase 5** | Polish & Completion | ~8 | Consistency, refinement |
-| **TOTAL** | Complete Website | **~388 images** | Full e-commerce functionality |
-
----
-
-## Critical Implementation Checklist
-
-### Phase 1 Must-Haves
-- ✅ Shopping cart icon in desktop navbar (Lucide `ShoppingCart`)
-- ✅ Cart text + icon in mobile menu
-- ✅ Cart opens shadcn Sheet on both desktop and mobile
-- ✅ Cart shows item count badge
-- ✅ Session storage for temporary cart data
-- ✅ Checkout page at `/checkout` with payment method selection
-- ✅ Custom 404 page with helpful navigation
-- ✅ Email API integration for quotes and samples
-- ✅ Dual email sending (user confirmation + company notification)
-- ✅ Professional email templates
-
-### Phase 2 Must-Haves
-- ✅ Verify ALL 8 product slugs work correctly:
-  - `/products/business-cards`
-  - `/products/brochures`
-  - `/products/flyers`
-  - `/products/posters`
-  - `/products/banners`
-  - `/products/custom-boxes`
-  - `/products/stickers`
-  - `/products/letterheads`
-- ✅ "Add to Cart" button on every product page
-- ✅ Add-to-cart opens Sheet with item added
-- ✅ Cart updates in real-time across site
-- ✅ Quantity controls in cart
-- ✅ Remove item functionality
-
-### Email Implementation Details
-
-#### Required Email Configuration
-- **Email Service**: Resend, SendGrid, or similar API
-- **From Address**: Company email (e.g., info@printingservices.com)
-- **Reply-To**: Same company email
-- **Templates**: HTML email templates with company branding
-
-#### Quote Request Email Flow
-1. User submits form at `/request-quote`
-2. System sends two emails:
-   - **To User**: Confirmation with quote details
-   - **To Company**: New quote request notification
-3. Email contains: Name, Email, Phone, Service, Project details, Quantity, Timeline, Budget
-
-#### Sample Request Email Flow
-1. User submits form at `/request-samples`
-2. System sends two emails:
-   - **To User**: Confirmation with sample details and shipping info
-   - **To Company**: New sample request notification
-3. Email contains: Name, Email, Phone, Address, Products requested, Quantities
-
-#### Contact Form Email Flow
-1. User submits contact form
-2. System sends two emails:
-   - **To User**: Message received confirmation
-   - **To Company**: New contact form submission
-3. Email contains: Name, Email, Phone, Service interest, Message
-
-### Cart System Specifications
-
-#### Desktop Cart Behavior
-- Icon position: Right side of navbar, before existing CTAs
-- Icon: Lucide `ShoppingCart`
-- Badge: Small circular badge with item count (e.g., "3")
-- Click action: Opens shadcn Sheet from right side
-- Sheet width: 400px (medium)
-- Sheet close: X button + click outside
-
-#### Mobile Cart Behavior
-- Position: In mobile menu (hamburger menu)
-- Display: Icon + "Cart" text + count badge
-- Click action: Opens same shadcn Sheet
-- Responsive: Full-width sheet on small screens
-
-#### Cart Sheet Contents
-```
-- Header: "Shopping Cart" + Close button
-- Items List:
-  - Product image (thumbnail)
-  - Product name
-  - Price per unit
-  - Quantity controls (-, number, +)
-  - Remove button (trash icon)
-  - Subtotal per item
-- Subtotal Section:
-  - Items subtotal
-  - Estimated tax (if applicable)
-  - Total
-- Action Buttons:
-  - "Checkout" (primary button)
-  - "Continue Shopping" (secondary button)
-- Empty State:
-  - Message: "Your cart is empty"
-  - "Browse Products" button
-```
-
-#### Session Storage Structure
-```javascript
-{
-  cartItems: [
-    {
-      id: "product-1",
-      slug: "business-cards",
-      name: "Business Cards",
-      price: 50,
-      quantity: 2,
-      image: "image-url",
-      specifications: {
-        size: "Standard",
-        material: "Premium",
-        finish: "Glossy"
-      }
-    }
-  ],
-  timestamp: "2024-01-11T10:30:00Z"
-}
-```
-
-### Checkout Page Structure
-
-#### Page Layout (`/checkout`)
-```
-Two-Column Layout:
-
-Left Column (Order Summary):
-- Cart items review
-- Subtotal calculation
-- Tax calculation (if applicable)
-- Shipping fee (if applicable)
-- Total amount
-
-Right Column (Checkout Form):
-1. Contact Information
-   - Full Name
-   - Email
-   - Phone
-
-2. Shipping Address
-   - Street Address
-   - City
-   - State/Province
-   - Postal Code
-   - Country
-
-3. Payment Method (Radio Buttons)
-   - Cash on Delivery (COD)
-   - Bank Transfer
-   - Credit/Debit Card (UI only - note: "Payment gateway coming soon")
-   - Mobile Payment (UI only)
-
-4. Additional Information
-   - Order Notes (optional textarea)
-   - Special Instructions
-
-5. Terms & Conditions
-   - Checkbox: "I agree to terms and conditions"
-   - Link to terms page
-
-6. Place Order Button
-   - Primary button
-   - Disabled until form valid and terms accepted
-```
-
-#### Payment Method Details
-- **COD**: "Pay when you receive your order"
-- **Bank Transfer**: Shows bank account details after order placement
-- **Card/Mobile**: "Coming soon" badge (UI only, not functional yet)
-
-### 404 Page Design
-
-#### Page Elements
-```
-Centered Layout:
-
-- Large 404 Number (using Lucide FileQuestion icon)
-- Heading: "Oops! Page Not Found"
-- Message: "The page you're looking for doesn't exist or has been moved."
-- Search Bar: "Search our site..."
-- Quick Links Section:
-  - Home
-  - Products
-  - Services
-  - Contact
-- Suggested Products: 3-4 product cards
-- Back Button: "← Go Back" or "Home Page"
-```
-
-#### Icons Used (Lucide React)
-- `FileQuestion` - Main 404 illustration
-- `Search` - Search bar
-- `Home` - Home link
-- `ArrowLeft` - Back button
-- `Package` - Products link
-- `Settings` - Services link
-- `Mail` - Contact link
+### Validation Steps
+- Orders create successfully
+- Transactions log properly
+- Status updates work correctly
+- Callbacks update database
+- Can retrieve transactions by various criteria
+- Reporting queries return accurate data
+- Concurrent operations handled
+- Database performance acceptable
 
 ---
 
-## Image Source Guidelines
+## Phase 8: Security Hardening
 
-### All Images Must Be From Unsplash
-- **Base URL**: `https://images.unsplash.com/photo-`
-- **Format**: Always use direct Unsplash URLs
-- **Quality**: Use high-resolution versions
-- **Optimization**: Add size parameters: `?w=800&q=80`
-- **Example**: `https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&q=80`
+### Objectives
+- Implement comprehensive security measures
+- Secure payment processing
+- Protect sensitive data
+- Prevent common vulnerabilities
+- Ensure compliance
 
-### Image Parameters for Performance
-- **Hero images**: `?w=1920&q=85`
-- **Section images**: `?w=800&q=80`
-- **Card images**: `?w=600&q=75`
-- **Thumbnails**: `?w=200&q=70`
-- **Mobile optimization**: Use `srcset` for responsive images
+### Required Actions
 
-### Accessibility Requirements
-- **Alt Text**: Descriptive alt text for all images
-- **Decorative Images**: Empty alt="" for decorative images
-- **Loading**: Use `loading="lazy"` for non-critical images
-- **Aspect Ratios**: Maintain consistent aspect ratios per section
+#### 8.1 HTTPS Enforcement
+
+**Production Configuration**
+- Ensure SSL certificate installed
+- Configure server to enforce HTTPS
+- Redirect all HTTP to HTTPS
+- Use HSTS headers
+- Verify certificate validity
+
+**Development Setup**
+- Use HTTPS in development if possible
+- Configure local certificates
+- Test with HTTPS enabled
+
+#### 8.2 Credential Security
+
+**Environment Variable Protection**
+- Store all credentials in environment variables
+- Never hardcode credentials
+- Ensure environment file in gitignore
+- Use different credentials per environment
+- Rotate credentials periodically
+
+**Production Secret Management**
+- Use secret management service if available
+- Encrypt credentials at rest
+- Limit access to production credentials
+- Implement audit logging for credential access
+
+#### 8.3 Hash Verification
+
+**Request Hash Generation**
+- Implement proper parameter ordering
+- Use correct hashing algorithm
+- Include all required fields
+- Generate hash consistently
+- Test hash generation thoroughly
+
+**Response Hash Verification**
+- Always verify incoming hashes
+- Reconstruct hash from response
+- Compare with received hash
+- Reject if mismatch
+- Log verification failures
+- Never process unverified responses
+
+#### 8.4 Amount Validation
+
+**Request Amount Validation**
+- Validate amount format
+- Check amount is positive
+- Verify amount matches order total
+- Prevent amount tampering
+
+**Callback Amount Verification**
+- Compare callback amount with original
+- Reject if amounts don't match
+- Log any discrepancies
+- Alert on validation failures
+
+#### 8.5 CSRF Protection
+
+**Token Implementation**
+- Generate CSRF tokens for forms
+- Validate tokens on submission
+- Expire tokens appropriately
+- Regenerate after use
+
+**API Route Protection**
+- Implement CSRF protection on API routes
+- Validate request origin
+- Check referer headers
+- Use appropriate middleware
+
+#### 8.6 Rate Limiting
+
+**Payment Initiation Limiting**
+- Implement rate limits per user
+- Limit payment attempts per time window
+- Track failed attempts
+- Block suspicious activity
+
+**API Route Rate Limiting**
+- Add rate limiting to all payment APIs
+- Configure appropriate limits
+- Return proper error responses
+- Log rate limit violations
+
+#### 8.7 Input Validation
+
+**Frontend Validation**
+- Validate all user inputs
+- Sanitize input data
+- Check data types
+- Verify required fields
+- Implement proper error messages
+
+**Backend Validation**
+- Never trust frontend validation alone
+- Re-validate all inputs on server
+- Use validation libraries
+- Sanitize inputs before processing
+- Validate against expected patterns
+
+#### 8.8 SQL Injection Prevention
+
+**Query Parameterization**
+- Use parameterized queries always
+- Never concatenate SQL strings
+- Use ORM or query builder
+- Validate input types
+
+**Prepared Statements**
+- Use prepared statements for all queries
+- Properly escape values
+- Validate query results
+
+#### 8.9 XSS Prevention
+
+**Output Encoding**
+- Encode all user-generated content
+- Use framework's built-in escaping
+- Never use dangerouslySetInnerHTML without sanitization
+- Validate and sanitize rich text
+
+**Content Security Policy**
+- Implement CSP headers
+- Restrict script sources
+- Disable inline scripts if possible
+- Configure appropriate directives
+
+#### 8.10 Error Handling
+
+**Secure Error Messages**
+- Never expose sensitive data in errors
+- Use generic error messages for users
+- Log detailed errors server-side
+- Don't reveal system information
+
+**Error Logging**
+- Log all errors securely
+- Include context information
+- Protect log files
+- Implement log rotation
+- Monitor logs for security events
+
+### Deliverables
+- HTTPS fully enforced
+- All credentials secured
+- Hash verification implemented
+- Amount validation working
+- CSRF protection enabled
+- Rate limiting active
+- Input validation comprehensive
+- SQL injection prevented
+- XSS protection in place
+- Secure error handling implemented
+
+### Validation Steps
+- HTTPS redirects work correctly
+- No credentials in code
+- Hash verification catches tampering
+- Amount validation prevents fraud
+- CSRF tokens validate correctly
+- Rate limits enforce properly
+- Invalid inputs rejected
+- SQL injection attempts blocked
+- XSS attempts prevented
+- Error messages don't leak information
 
 ---
 
-## Final Notes
+## Phase 9: Testing & Quality Assurance
 
-This phased implementation ensures:
-1. **Systematic Progress**: Each phase builds on previous work
-2. **Immediate Value**: Phase 1 delivers core functionality quickly
-3. **Scalability**: Easy to adjust timeline or scope per phase
-4. **Quality Focus**: Time for proper implementation in each phase
-5. **Complete E-commerce**: Full cart and checkout functionality
-6. **Professional Communication**: Automated email notifications
-7. **User Experience**: Custom 404, helpful navigation
-8. **Visual Consistency**: Unsplash images throughout
-9. **Mobile Optimization**: Responsive cart and navigation
-10. **Backend Ready**: UI structure ready for backend integration
+### Objectives
+- Test all payment flows thoroughly
+- Verify security measures
+- Test error scenarios
+- Ensure data integrity
+- Validate user experience
 
-**Total Deliverables**:
-- ~388 images from Unsplash
-- Complete shopping cart system
-- Checkout page with payment options
-- Email notification system (3 types)
-- Custom 404 error page
-- 47+ fully enhanced pages
-- Mobile and desktop optimized
+### Required Actions
+
+#### 9.1 JazzCash Testing
+
+**Successful Payment Flow**
+- Test complete successful payment
+- Verify payment initialization
+- Check redirect to JazzCash
+- Complete payment on gateway
+- Verify callback processing
+- Check database updates
+- Confirm order status change
+- Verify user sees success page
+- Check confirmation emails sent
+
+**Failed Payment Scenarios**
+- Test declined card
+- Test insufficient funds
+- Test expired card
+- Test invalid CVV
+- Verify error handling
+- Check database logging
+- Confirm user sees appropriate errors
+
+**Edge Cases**
+- Test timeout scenarios
+- Test network failures
+- Test duplicate callbacks
+- Test concurrent transactions
+- Test callback replay attacks
+- Verify all edge cases handled
+
+**Hash Verification**
+- Test with correct hash
+- Test with tampered hash
+- Test with missing hash
+- Verify rejection of invalid hashes
+- Check logging of verification failures
+
+#### 9.2 Easypaisa Testing
+
+**Complete Payment Flow**
+- Test full payment process
+- Verify initialization
+- Check gateway redirect
+- Complete payment
+- Verify callback handling
+- Check database updates
+- Confirm status changes
+- Validate user experience
+
+**Failure Scenarios**
+- Test payment declines
+- Test insufficient balance
+- Test network issues
+- Test timeout cases
+- Verify error messages
+- Check proper logging
+
+**Edge Case Testing**
+- Test duplicate submissions
+- Test concurrent payments
+- Test callback tampering
+- Test missing parameters
+- Verify all handled correctly
+
+#### 9.3 Integration Testing
+
+**Order to Payment Flow**
+- Create order in system
+- Initiate payment
+- Complete payment
+- Verify order updated
+- Check inventory updates if applicable
+- Verify notifications sent
+
+**Multi-Gateway Testing**
+- Test switching between gateways
+- Verify both work independently
+- Test concurrent use
+- Check proper routing
+
+#### 9.4 Security Testing
+
+**Hash Tampering**
+- Attempt to modify hash
+- Verify rejection
+- Check logging of attempts
+
+**Amount Manipulation**
+- Attempt to change amount
+- Verify validation catches changes
+- Check rejection handling
+
+**SQL Injection Attempts**
+- Test common injection patterns
+- Verify all blocked
+- Check parameterized queries working
+
+**XSS Attempts**
+- Test script injection in inputs
+- Verify proper encoding
+- Check CSP effectiveness
+
+**CSRF Testing**
+- Test without CSRF token
+- Test with invalid token
+- Verify protection working
+
+#### 9.5 Performance Testing
+
+**Load Testing**
+- Test concurrent payment initiations
+- Test multiple callback handling
+- Monitor database performance
+- Check for bottlenecks
+
+**Response Time Testing**
+- Measure payment initialization time
+- Measure callback processing time
+- Measure database query times
+- Optimize slow operations
+
+#### 9.6 Database Testing
+
+**Transaction Integrity**
+- Verify atomic operations
+- Test rollback scenarios
+- Check data consistency
+- Verify referential integrity
+
+**Concurrent Operations**
+- Test simultaneous transactions
+- Verify no race conditions
+- Check locking mechanisms
+- Validate data consistency
+
+#### 9.7 User Experience Testing
+
+**Payment Flow UX**
+- Test ease of payment initiation
+- Verify clear status messages
+- Check loading indicators
+- Test error message clarity
+- Verify success confirmation
+
+**Mobile Responsiveness**
+- Test on various mobile devices
+- Check payment flow on mobile
+- Verify touch interactions
+- Test different screen sizes
+
+**Browser Compatibility**
+- Test on Chrome
+- Test on Firefox
+- Test on Safari
+- Test on Edge
+- Verify consistent behavior
+
+#### 9.8 Monitoring Setup
+
+**Transaction Monitoring**
+- Set up transaction tracking
+- Monitor success rates
+- Track failure reasons
+- Alert on anomalies
+
+**Error Monitoring**
+- Implement error tracking
+- Set up alerting
+- Monitor error rates
+- Track error patterns
+
+**Performance Monitoring**
+- Track response times
+- Monitor database queries
+- Track API call times
+- Set up performance alerts
+
+### Deliverables
+- All payment flows tested and working
+- Security measures validated
+- Edge cases handled correctly
+- Performance acceptable
+- User experience smooth
+- Monitoring systems active
+
+### Validation Steps
+- Successful payments complete end-to-end
+- Failed payments handled gracefully
+- Security tests pass
+- Performance meets requirements
+- No critical bugs remaining
+- Monitoring captures key metrics
+- User experience is smooth
+- All browsers supported
+
+---
+
+## Phase 10: Production Deployment Preparation
+
+### Objectives
+- Prepare for production launch
+- Obtain production credentials
+- Configure production environment
+- Plan deployment strategy
+- Set up monitoring and support
+
+### Required Actions
+
+#### 10.1 Production Credentials
+
+**JazzCash Production**
+- Submit production application to JazzCash
+- Provide required business documents
+- Complete merchant verification
+- Receive production Merchant ID
+- Receive production Password
+- Receive production Integrity Salt
+- Update production environment variables
+- Test credentials in production
+
+**Easypaisa Production**
+- Contact Easypaisa for production access
+- Submit business documentation
+- Complete bank verification
+- Receive production Store ID
+- Receive production credentials
+- Update production environment
+- Verify production access
+
+#### 10.2 Environment Configuration
+
+**Production Variables**
+- Set all production environment variables
+- Update gateway URLs to production
+- Update callback URLs with production domain
+- Set environment flag to production
+- Remove any development/debug flags
+- Verify all variables set correctly
+
+**SSL Certificate**
+- Ensure valid SSL certificate installed
+- Verify certificate not expired
+- Check certificate chain
+- Test HTTPS access
+- Configure auto-renewal
+
+#### 10.3 Database Preparation
+
+**Production Database**
+- Set up production database
+- Configure backup strategy
+- Set up replication if applicable
+- Configure monitoring
+- Optimize indexes
+- Set appropriate permissions
+
+**Migration Strategy**
+- Prepare database migration scripts
+- Test migrations in staging
+- Plan rollback strategy
+- Schedule migration window
+- Prepare migration checklist
+
+#### 10.4 Deployment Strategy
+
+**Deployment Plan**
+- Document deployment steps
+- Prepare deployment checklist
+- Plan deployment timeline
+- Identify rollback points
+- Assign responsibilities
+
+**Staging Deployment**
+- Deploy to staging environment first
+- Test all functionality in staging
+- Verify with production-like data
+- Perform security checks
+- Get stakeholder approval
+
+**Production Deployment**
+- Follow deployment checklist
+- Deploy during low-traffic period
+- Monitor deployment process
+- Verify all services running
+- Check all integrations
+- Perform smoke tests
+
+#### 10.5 Monitoring Setup
+
+**Application Monitoring**
+- Set up application performance monitoring
+- Configure uptime monitoring
+- Set up error tracking
+- Configure log aggregation
+- Set up alerting thresholds
+
+**Payment Monitoring**
+- Monitor transaction success rates
+- Track payment gateway responses
+- Monitor callback processing
+- Set up payment failure alerts
+- Track gateway availability
+
+**Database Monitoring**
+- Monitor database performance
+- Track query execution times
+- Monitor connection pool
+- Set up slow query alerts
+- Monitor database size
+
+#### 10.6 Backup and Recovery
+
+**Backup Configuration**
+- Configure automated database backups
+- Set backup frequency
+- Define retention policy
+- Test backup restoration
+- Document recovery procedures
+
+**Disaster Recovery Plan**
+- Document disaster recovery steps
+- Define recovery time objectives
+- Test recovery procedures
+- Maintain updated documentation
+- Train team on recovery
+
+#### 10.7 Testing in Production
+
+**Small Transaction Testing**
+- Perform real small-amount transactions
+- Test with actual payment methods
+- Verify complete flow
+- Check database updates
+- Validate notifications
+
+**Monitoring Initial Transactions**
+- Watch first few production transactions closely
+- Monitor for any issues
+- Check logs for errors
+- Verify callbacks processing
+- Validate database entries
+
+#### 10.8 Documentation
+
+**Technical Documentation**
+- Document architecture
+- Document API endpoints
+- Document database schema
+- Document deployment process
+- Document troubleshooting steps
+
+**Operations Documentation**
+- Document monitoring procedures
+- Document incident response
+- Document backup procedures
+- Document recovery processes
+- Create runbooks for common issues
+
+**User Documentation**
+- Document payment process for users
+- Create FAQ section
+- Document error scenarios
+- Provide support contact information
+
+#### 10.9 Support Preparation
+
+**Support Team Training**
+- Train support team on payment flow
+- Provide troubleshooting guides
+- Set up support ticket system
+- Define escalation procedures
+- Provide necessary access
+
+**Customer Communication**
+- Prepare launch announcement
+- Create payment method guides
+- Prepare email templates
+- Set up support channels
+- Define response time targets
+
+### Deliverables
+- Production credentials obtained and configured
+- Production environment fully set up
+- Deployment successfully completed
+- Monitoring systems operational
+- Backups configured and tested
+- Documentation complete
+- Support team trained
+- Initial transactions successful
+
+### Validation Steps
+- Production credentials work correctly
+- All environment variables set
+- SSL certificate valid
+- Database properly configured
+- Application deployed successfully
+- Monitoring capturing data
+- Backups running automatically
+- Small test transactions successful
+- All documentation complete
+- Support team ready
+
+---
+
+## Phase 11: Post-Launch Monitoring & Optimization
+
+### Objectives
+- Monitor system performance
+- Track payment success rates
+- Optimize based on real data
+- Handle any issues promptly
+- Continuously improve
+
+### Required Actions
+
+#### 11.1 Active Monitoring
+
+**Transaction Monitoring**
+- Monitor all transactions daily
+- Track success vs failure rates
+- Identify patterns in failures
+- Monitor response times
+- Check for anomalies
+- Review callback processing times
+
+**System Health Monitoring**
+- Monitor application uptime
+- Track API response times
+- Monitor database performance
+- Check server resources
+- Review error rates
+- Monitor third-party service status
+
+**User Experience Monitoring**
+- Track payment completion rates
+- Monitor user drop-off points
+- Review user feedback
+- Track time to complete payment
+- Monitor mobile vs desktop success
+
+#### 11.2 Issue Resolution
+
+**Immediate Issues**
+- Set up 24/7 alert monitoring
+- Define response procedures
+- Have on-call rotation
+- Maintain incident log
+- Perform root cause analysis
+- Document resolutions
+
+**Common Issues Handling**
+- Track recurring issues
+- Document solutions
+- Create automated fixes where possible
+- Update monitoring to catch early
+- Improve error messages
+
+#### 11.3 Performance Optimization
+
+**Database Optimization**
+- Analyze slow queries
+- Add indexes where needed
+- Optimize query patterns
+- Review database caching
+- Consider read replicas if needed
+
+**Application Optimization**
+- Profile critical paths
+- Optimize slow operations
+- Implement caching where appropriate
+- Optimize image delivery
+- Minimize external API calls
+
+**Payment Flow Optimization**
+- Reduce steps where possible
+- Improve loading indicators
+- Optimize callback processing
+- Reduce timeout occurrences
+- Improve error recovery
+
+#### 11.4 Security Monitoring
+
+**Security Audit**
+- Review security logs regularly
+- Monitor for suspicious activity
+- Track failed authentication attempts
+- Review hash verification failures
+- Monitor for unusual patterns
+
+**Compliance Checks**
+- Ensure PCI DSS compliance maintained
+- Review data handling practices
+- Audit access logs
+- Verify encryption in use
+- Update security policies as needed
+
+#### 11.5 Analytics and Reporting
+
+**Transaction Analytics**
+- Track payment volumes
+- Analyze payment methods used
+- Monitor average transaction values
+- Track completion rates
+- Analyze time-based patterns
+
+**Business Reporting**
+- Generate revenue reports
+- Track refund rates
+- Monitor chargeback rates
+- Analyze customer payment behavior
+- Create executive dashboards
+
+**Technical Reporting**
+- Report on system uptime
+- Track error rates over time
+- Monitor performance trends
+- Report on capacity utilization
+- Track technical debt
+
+#### 11.6 User Feedback Integration
+
+**Feedback Collection**
+- Collect user payment experience feedback
+- Monitor support tickets
+- Track payment-related complaints
+- Conduct user surveys
+- Monitor social media mentions
+
+**Feedback Analysis**
+- Categorize feedback themes
+- Identify pain points
+- Prioritize improvement areas
+- Track sentiment trends
+- Create action items
+
+#### 11.7 Continuous Improvement
+
+**Regular Reviews**
+- Conduct weekly performance reviews
+- Monthly security reviews
+- Quarterly optimization reviews
+- Annual comprehensive audits
+
+**Feature Enhancements**
+- Identify enhancement opportunities
+- Prioritize based on impact
+- Plan implementation
+- Test thoroughly
+- Deploy carefully
+
+**Technology Updates**
+- Keep dependencies updated
+- Monitor for security patches
+- Update payment gateway integrations
+- Stay current with best practices
+- Plan technology upgrades
+
+#### 11.8 Documentation Updates
+
+**Technical Documentation**
+- Update based on changes
+- Document new features
+- Update troubleshooting guides
+- Maintain accuracy
+- Version control documentation
+
+**User Documentation**
+- Update user guides
+- Refresh FAQs based on questions
+- Add new common scenarios
+- Keep payment instructions current
+- Translate if needed
+
+### Deliverables
+- Comprehensive monitoring active
+- Issues resolved promptly
+- Performance optimized
+- Security maintained
+- Analytics providing insights
+- Continuous improvements implemented
+- Documentation kept current
+
+### Validation Steps
+- Monitoring systems capturing all metrics
+- Issues being detected and resolved quickly
+- Performance metrics improving
+- Security incidents being prevented
+- User satisfaction increasing
+- System stability maintained
+- Business objectives being met
+
+---
+
+## Appendix: Important Considerations
+
+### A. Response Codes Reference
+
+**JazzCash Response Codes**
+- 000: Successful transaction
+- 121: Transaction declined by customer
+- 124: Transaction timeout
+- 200: Transaction pending
+- Review complete documentation for all codes
+
+**Easypaisa Response Codes**
+- 0000: Successful transaction
+- 0001: Transaction failed
+- Review complete documentation for all codes
+
+### B. Hash Generation Notes
+
+**JazzCash Hash Parameters (in order)**
+- IntegritySalt
+- Amount
+- BillReference
+- Description
+- Language
+- MerchantID
+- Password
+- ReturnURL
+- TxnCurrency
+- TxnDateTime
+- TxnExpiryDateTime
+- TxnRefNo
+- Version
+
+**Easypaisa Hash Parameters**
+- Varies by implementation
+- Follow documentation exactly
+- Test hash generation thoroughly
+
+### C. Testing Resources
+
+**JazzCash Sandbox**
+- URL: https://sandbox.jazzcash.com.pk/
+- Test Card: 4141-4141-4141-4141
+- CVV: 123
+- Any future expiry date
+
+**Easypaisa Sandbox**
+- Contact Easypaisa for sandbox details
+- Use provided test credentials
+- Follow testing guidelines
+
+### D. Support Contacts
+
+**JazzCash**
+- Support: merchantsupport@jazzcash.com.pk
+- Documentation: https://sandbox.jazzcash.com.pk/SandboxDocumentation/
+
+**Easypaisa**
+- Contact: 0800-33000 or 4000
+- Email: business@easypaisa.com.pk
+
+### E. Best Practices Summary
+
+**Security**
+- Always use HTTPS
+- Verify all hashes
+- Validate all amounts
+- Never expose credentials
+- Log everything securely
+
+**Performance**
+- Optimize database queries
+- Use appropriate indexes
+- Implement caching wisely
+- Monitor response times
+- Scale as needed
+
+**Reliability**
+- Handle all error scenarios
+- Implement proper logging
+- Set up comprehensive monitoring
+- Have backup plans
+- Test disaster recovery
+
+**User Experience**
+- Keep payment flow simple
+- Provide clear feedback
+- Show loading states
+- Display helpful error messages
+- Ensure mobile-friendly
+
+### F. Sanity CMS Best Practices
+
+**Content Structure**
+- Keep schemas simple and focused
+- Use appropriate field types
+- Add helpful descriptions
+- Implement proper validations
+- Use references for relationships
+
+**Performance**
+- Query only needed fields
+- Use CDN for images
+- Implement proper caching
+- Optimize image delivery
+- Paginate large datasets
+
+**Content Management**
+- Create clear content guidelines
+- Train content editors
+- Set up preview functionality
+- Implement workflow if needed
+- Regular content audits
+
+---
+
+## Summary
+
+This comprehensive guide provides a complete roadmap for implementing Sanity CMS and Pakistani payment gateways for your printing services website. Follow each phase systematically, ensuring all deliverables are met and validation steps completed before moving to the next phase.
+
+Key success factors include thorough testing, comprehensive security measures, proper monitoring, and continuous optimization based on real-world usage data. Always prioritize security and user experience throughout the implementation.
+
+For any issues or questions during implementation, refer to the official documentation of Sanity, JazzCash, and Easypaisa, and don't hesitate to contact their respective support teams.
