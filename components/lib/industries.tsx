@@ -1,4 +1,4 @@
-import { ArrowRight, GraduationCap, Stethoscope, Utensils, ShoppingBag, Briefcase, Calendar, Cpu, Shirt } from "lucide-react";
+import { GraduationCap, Stethoscope, Utensils, ShoppingBag, Briefcase, Calendar, Cpu, Shirt } from "lucide-react";
 
 
 export interface Industry {
@@ -37,7 +37,7 @@ export interface Industry {
       satisfactionRate: string;
     };
   }
-  
+
 export const industries: Industry[] = [
     {
       id: 1,
@@ -45,7 +45,7 @@ export const industries: Industry[] = [
       name: "Schools & Education",
       tagline: "Empowering education through quality printing",
       description: "Specialized printing and packaging solutions for schools, colleges, universities, and educational institutions. From custom notebooks to certificates, we support the education sector with quality materials.",
-      heroImage: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/certificates/certificate-school.jpeg",
       challenges: [
         {
           title: "Budget Constraints",
@@ -78,22 +78,22 @@ export const industries: Industry[] = [
         {
           name: "Custom Notebooks",
           description: "Branded exercise books and notebooks for students",
-          image: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&h=300&fit=crop",
+          image: "/images/products/notepads/sigmund-p_qkdlpLBGk-unsplash.jpg",
         },
         {
           name: "ID Cards",
           description: "Student and staff identification cards with security features",
-          image: "https://images.unsplash.com/photo-1583852983243-8a81e54e5a48?w=400&h=300&fit=crop",
+          image: "/images/products/business-cards/buenos-mockups-8cqdHOME9zY-unsplash.jpg",
         },
         {
           name: "Certificates",
           description: "Professional achievement and completion certificates",
-          image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=300&fit=crop",
+          image: "/images/products/certificates/certificate-school.jpeg",
         },
         {
           name: "Prospectuses",
           description: "High-quality brochures showcasing your institution",
-          image: "https://images.unsplash.com/photo-1598901405737-eb5ed732f33d?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/tech-startup-branding.jpg",
         },
       ],
       caseStudies: [
@@ -127,7 +127,7 @@ export const industries: Industry[] = [
       name: "Healthcare & Medical",
       tagline: "Compliant, professional healthcare printing",
       description: "Medical-grade printing and packaging solutions that meet healthcare industry standards. From prescription pads to medical packaging, we understand the critical nature of healthcare materials.",
-      heroImage: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/stickers/retail-label.jpeg",
       challenges: [
         {
           title: "Regulatory Compliance",
@@ -160,22 +160,22 @@ export const industries: Industry[] = [
         {
           name: "Medical Brochures",
           description: "Patient information and healthcare brochures",
-          image: "https://images.unsplash.com/photo-1598901405737-eb5ed732f33d?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/tech-startup-branding.jpg",
         },
         {
           name: "Prescription Pads",
           description: "Secure prescription pads with anti-fraud features",
-          image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop",
+          image: "/images/products/letterheads/annie-spratt-t6ulw0R0dt8-unsplash.jpg",
         },
         {
           name: "Medical Packaging",
           description: "Sterile packaging for medical devices and supplies",
-          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+          image: "/images/products/custom-boxes/cosmetic-packaging.jpg",
         },
         {
           name: "Labels",
           description: "Medical-grade labels for prescriptions and samples",
-          image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop",
+          image: "/images/products/stickers/food-label.jpeg",
         },
       ],
       caseStudies: [
@@ -204,7 +204,7 @@ export const industries: Industry[] = [
       name: "Restaurants & Food Service",
       tagline: "Appetizing menus and food-safe packaging",
       description: "Food-safe materials and mouth-watering designs for restaurants, cafes, and food service businesses. Make your food look as good on paper as it tastes.",
-      heroImage: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/brochures/restaurant-branding.jpg",
       challenges: [
         {
           title: "Food Safety Compliance",
@@ -237,22 +237,22 @@ export const industries: Industry[] = [
         {
           name: "Menu Cards",
           description: "Durable, attractive menus that showcase your offerings",
-          image: "https://images.unsplash.com/photo-1598901405737-eb5ed732f33d?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/restaurant-branding.jpg",
         },
         {
           name: "Food Packaging",
           description: "Takeout boxes, bags, and containers with custom branding",
-          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+          image: "/images/products/food-packaging/burger-box-branded.jpeg",
         },
         {
           name: "Labels & Stickers",
           description: "Food-safe labels for packaging and ingredients",
-          image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop",
+          image: "/images/products/stickers/food-label.jpeg",
         },
         {
           name: "Table Tents",
           description: "Promotional displays for tables and counters",
-          image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop",
+          image: "/images/products/flyers/restaurant-flyer.jpeg",
         },
       ],
       caseStudies: [
@@ -286,7 +286,7 @@ export const industries: Industry[] = [
       name: "Retail & E-commerce",
       tagline: "Packaging that sells and protects",
       description: "Eye-catching retail packaging and shipping solutions that enhance brand value and create unforgettable unboxing experiences for online shoppers.",
-      heroImage: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/custom-boxes/shipping-boxes.jpg",
       challenges: [
         {
           title: "Unboxing Experience",
@@ -319,22 +319,22 @@ export const industries: Industry[] = [
         {
           name: "Shipping Boxes",
           description: "Custom e-commerce boxes with your branding",
-          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+          image: "/images/products/custom-boxes/shipping-boxes.jpg",
         },
         {
           name: "Shopping Bags",
           description: "Branded retail bags for in-store purchases",
-          image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=300&fit=crop",
+          image: "/images/products/shopping-bags/shopping-bag-pattern.jpeg",
         },
         {
           name: "Product Labels",
           description: "High-quality labels for product information and branding",
-          image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop",
+          image: "/images/products/stickers/retail-label.jpeg",
         },
         {
           name: "Hang Tags",
           description: "Custom hang tags for clothing and accessories",
-          image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop",
+          image: "/images/products/business-cards/buenos-mockups-8cqdHOME9zY-unsplash.jpg",
         },
       ],
       caseStudies: [
@@ -363,7 +363,7 @@ export const industries: Industry[] = [
       name: "Corporate & Business",
       tagline: "Professional printing for professional businesses",
       description: "Comprehensive corporate stationery, marketing materials, and branded items that enhance your business's professional image. From business cards to annual reports, we deliver quality that reflects your brand excellence.",
-      heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop",
+      heroImage: "/Branding.jpg",
       challenges: [
         {
           title: "Brand Consistency",
@@ -396,22 +396,22 @@ export const industries: Industry[] = [
         {
           name: "Business Cards",
           description: "Premium business cards that make lasting impressions",
-          image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop",
+          image: "/images/products/business-cards/select-photos-NPgq_TPo710-unsplash.jpg",
         },
         {
           name: "Letterheads",
           description: "Professional letterheads for official correspondence",
-          image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=300&fit=crop",
+          image: "/images/products/letterheads/annie-spratt-t6ulw0R0dt8-unsplash.jpg",
         },
         {
           name: "Presentation Folders",
           description: "High-quality folders for proposals and presentations",
-          image: "https://images.unsplash.com/photo-1586281380614-94ca412df0e0?w=400&h=300&fit=crop",
+          image: "/images/products/folders/student-files.jpeg",
         },
         {
           name: "Corporate Reports",
           description: "Annual reports and corporate documentation",
-          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/tech-startup-branding.jpg",
         },
       ],
       caseStudies: [
@@ -445,7 +445,7 @@ export const industries: Industry[] = [
       name: "Events & Hospitality",
       tagline: "Making every event memorable",
       description: "Specialized printing solutions for events, weddings, conferences, and hospitality venues. From elegant invitations to large-format event signage, we help create memorable experiences.",
-      heroImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/wedding-cards/wedding-card-nikah-purple.jpeg",
       challenges: [
         {
           title: "Tight Deadlines",
@@ -478,22 +478,22 @@ export const industries: Industry[] = [
         {
           name: "Wedding Invitations",
           description: "Elegant custom invitations for your special day",
-          image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop",
+          image: "/images/products/wedding-cards/wedding-card-nikah-maroon.jpeg",
         },
         {
           name: "Event Banners",
           description: "Large format banners and backdrops for events",
-          image: "https://images.unsplash.com/photo-1487260211189-670c54da558d?w=400&h=300&fit=crop",
+          image: "/images/products/roll-up-banners/roll-up-banner-agricultural.jpeg",
         },
         {
           name: "Name Badges",
           description: "Professional badges and lanyards for conferences",
-          image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=300&fit=crop",
+          image: "/images/products/business-cards/buenos-mockups-8cqdHOME9zY-unsplash.jpg",
         },
         {
           name: "Event Programs",
           description: "Booklets and programs for conferences and weddings",
-          image: "https://images.unsplash.com/photo-1598901405737-eb5ed732f33d?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/restaurant-branding.jpg",
         },
       ],
       caseStudies: [
@@ -527,7 +527,7 @@ export const industries: Industry[] = [
       name: "Technology & Startups",
       tagline: "Modern printing for innovative companies",
       description: "Fast, flexible printing solutions that keep pace with tech companies and startups. From pitch decks to product packaging, we help innovative companies make their mark.",
-      heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/brochures/tech-startup-branding.jpg",
       challenges: [
         {
           title: "Rapid Changes",
@@ -560,22 +560,22 @@ export const industries: Industry[] = [
         {
           name: "Pitch Decks",
           description: "Professional presentation materials for investors",
-          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/tech-startup-branding.jpg",
         },
         {
           name: "Product Packaging",
           description: "Custom packaging for tech products and gadgets",
-          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+          image: "/images/products/custom-boxes/cosmetic-packaging.jpg",
         },
         {
           name: "Marketing Materials",
           description: "Flyers, brochures, and promotional items",
-          image: "https://images.unsplash.com/photo-1561070791-36c11767b26a?w=400&h=300&fit=crop",
+          image: "/images/products/flyers/restaurant-flyer.jpeg",
         },
         {
           name: "Tech Swag",
           description: "Branded stickers, t-shirts, and promotional items",
-          image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop",
+          image: "/images/products/stickers/retail-label.jpeg",
         },
       ],
       caseStudies: [
@@ -609,7 +609,7 @@ export const industries: Industry[] = [
       name: "Fashion & Apparel",
       tagline: "Packaging as stylish as your products",
       description: "Premium packaging and labels that complement fashion brands and elevate the customer experience. From luxury boxes to hang tags, we help your products make a stylish statement.",
-      heroImage: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/shopping-bags/shopping-bag-pattern.jpeg",
       challenges: [
         {
           title: "Brand Aesthetics",
@@ -642,22 +642,22 @@ export const industries: Industry[] = [
         {
           name: "Garment Tags",
           description: "Custom hang tags and care labels",
-          image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop",
+          image: "/images/products/business-cards/select-photos-NPgq_TPo710-unsplash.jpg",
         },
         {
           name: "Luxury Boxes",
           description: "Premium rigid boxes for high-end products",
-          image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=400&h=300&fit=crop",
+          image: "/images/products/custom-boxes/cosmetic-packaging.jpg",
         },
         {
           name: "Shopping Bags",
           description: "Designer shopping bags with luxury finishes",
-          image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=300&fit=crop",
+          image: "/images/products/shopping-bags/shopping-bag-pattern.jpeg",
         },
         {
           name: "Lookbooks",
           description: "Fashion catalogs and collection lookbooks",
-          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop",
+          image: "/images/products/brochures/restaurant-branding.jpg",
         },
       ],
       caseStudies: [
@@ -686,7 +686,7 @@ export const industries: Industry[] = [
       },
     },
   ];
-  
+
  // This data will be imported from lib/industries.ts
 
  export const industriesList = [
@@ -696,7 +696,7 @@ export const industries: Industry[] = [
     icon: GraduationCap,
     tagline: "Empowering education through quality printing",
     description: "Complete printing solutions for educational institutions - from notebooks to certificates",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop",
+    image: "/images/products/certificates/certificate-school.jpeg",
     products: ["Custom Notebooks", "ID Cards", "Certificates", "Prospectuses", "Signage"],
     caseStudies: 45,
   },
@@ -706,7 +706,7 @@ export const industries: Industry[] = [
     icon: Stethoscope,
     tagline: "Compliant, professional healthcare printing",
     description: "Medical-grade printing and packaging that meets healthcare standards",
-    image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=600&h=400&fit=crop",
+    image: "/images/products/stickers/retail-label.jpeg",
     products: ["Medical Brochures", "Labels", "Patient Forms", "Prescription Pads", "Medical Packaging"],
     caseStudies: 32,
   },
@@ -716,7 +716,7 @@ export const industries: Industry[] = [
     icon: Utensils,
     tagline: "Appetizing menus and food-safe packaging",
     description: "Food-safe materials and mouth-watering designs for the F&B industry",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop",
+    image: "/images/products/brochures/restaurant-branding.jpg",
     products: ["Menu Cards", "Food Labels", "Takeout Packaging", "Table Tents", "Delivery Bags"],
     caseStudies: 78,
   },
@@ -726,7 +726,7 @@ export const industries: Industry[] = [
     icon: ShoppingBag,
     tagline: "Packaging that sells and protects",
     description: "Eye-catching retail packaging and shipping solutions that enhance brand value",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
+    image: "/images/products/custom-boxes/shipping-boxes.jpg",
     products: ["Product Boxes", "Shopping Bags", "Labels", "Hang Tags", "Shipping Boxes"],
     caseStudies: 120,
   },
@@ -736,7 +736,7 @@ export const industries: Industry[] = [
     icon: Briefcase,
     tagline: "Professional printing for professional businesses",
     description: "Corporate stationery, marketing materials, and branded items for businesses",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+    image: "/Branding.jpg",
     products: ["Business Cards", "Letterheads", "Folders", "Corporate Gifts", "Reports"],
     caseStudies: 156,
   },
@@ -746,7 +746,7 @@ export const industries: Industry[] = [
     icon: Calendar,
     tagline: "Making every event memorable",
     description: "Event materials, banners, and hospitality printing solutions",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop",
+    image: "/images/products/wedding-cards/wedding-card-nikah-purple.jpeg",
     products: ["Invitations", "Banners", "Badges", "Event Signage", "Programs"],
     caseStudies: 89,
   },
@@ -756,7 +756,7 @@ export const industries: Industry[] = [
     icon: Cpu,
     tagline: "Modern printing for innovative companies",
     description: "Fast, flexible printing solutions that keep pace with tech companies",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop",
+    image: "/images/products/brochures/tech-startup-branding.jpg",
     products: ["Pitch Decks", "Product Packaging", "Marketing Materials", "Swag", "Documentation"],
     caseStudies: 67,
   },
@@ -766,19 +766,19 @@ export const industries: Industry[] = [
     icon: Shirt,
     tagline: "Packaging as stylish as your products",
     description: "Premium packaging and labels that complement fashion brands",
-    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=400&fit=crop",
+    image: "/images/products/shopping-bags/shopping-bag-pattern.jpeg",
     products: ["Garment Tags", "Luxury Boxes", "Shopping Bags", "Lookbooks", "Swing Tags"],
     caseStudies: 54,
   },
-]; 
+];
   export function getAllIndustries(): Industry[] {
     return industries;
   }
-  
+
   export function getIndustryBySlug(slug: string): Industry | undefined {
     return industries.find(industry => industry.slug === slug);
   }
-  
+
   export function getIndustryById(id: number): Industry | undefined {
     return industries.find(industry => industry.id === id);
   }

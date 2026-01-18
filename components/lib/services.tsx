@@ -351,7 +351,7 @@ export interface Service {
       tagline: "Tailored packaging boxes for any product, any size",
       description: "Custom-designed boxes that protect your products and promote your brand. From small gift boxes to large shipping containers.",
       longDescription: "Our custom box manufacturing service creates packaging solutions perfectly tailored to your products and brand. We design and produce boxes in any size, shape, and style, from simple corrugated shipping boxes to luxury gift boxes with custom printing and finishing. Every box is engineered to protect your products during shipping while creating an unforgettable unboxing experience. Choose from various materials including corrugated cardboard, rigid board, and kraft paper, with options for full-color printing, spot UV, embossing, and more.",
-      heroImage: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/custom-boxes/shipping-boxes.jpg",
       features: [
         "Any size or shape custom manufactured",
         "Multiple material options",
@@ -428,7 +428,7 @@ export interface Service {
       tagline: "Eye-catching labels and stickers for branding and information",
       description: "Custom labels and stickers in any shape, size, or material. Perfect for products, packaging, and promotions.",
       longDescription: "Our label and sticker printing services provide high-quality solutions for product labeling, branding, and promotional applications. We can print on a wide variety of materials including paper, vinyl, polyester, and specialty films, with options for various adhesives to suit your application. From simple black and white labels to full-color stickers with specialty finishes, we have the capabilities to bring your vision to life. All labels can be die-cut to any shape, and we offer both roll and sheet formats to suit your application method.",
-      heroImage: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/stickers/retail-label.jpeg",
       features: [
         "Custom shapes and sizes",
         "Multiple material options (paper, vinyl, polyester)",
@@ -505,7 +505,7 @@ export interface Service {
       tagline: "Custom bags and pouches for retail and food products",
       description: "Versatile bag and pouch solutions for retail packaging, food products, and promotional use. Available in various materials and sizes.",
       longDescription: "Our custom bags and pouches provide flexible packaging solutions for a wide range of products. From retail shopping bags to food-grade pouches, we offer options in paper, plastic, fabric, and biodegradable materials. Each bag can be customized with your branding through various printing methods. Whether you need small sachets, stand-up pouches, or large shopping bags, we have the manufacturing capabilities and design expertise to create the perfect packaging solution for your products.",
-      heroImage: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/shopping-bags/shopping-bag-pattern.jpeg",
       features: [
         "Multiple material options (paper, plastic, fabric, biodegradable)",
         "Various sizes and styles available",
@@ -582,7 +582,7 @@ export interface Service {
       tagline: "Sustainable packaging solutions that care for the planet",
       description: "Environmentally responsible packaging made from recycled, biodegradable, and sustainable materials. Protect your products and the environment.",
       longDescription: "As environmental consciousness grows, businesses need packaging solutions that minimize environmental impact without compromising quality or functionality. Our eco-friendly packaging options include recycled cardboard, biodegradable plastics, plant-based materials, and compostable alternatives. We help you reduce your carbon footprint while maintaining the protective and marketing functions of traditional packaging. All materials are sourced from sustainable suppliers and can be customized to meet your specific requirements.",
-      heroImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&h=600&fit=crop",
+      heroImage: "/tiffany-tertipes-sY5-f-eviXs-unsplash.jpg",
       features: [
         "100% recycled and recyclable materials",
         "Biodegradable and compostable options",
@@ -659,7 +659,7 @@ export interface Service {
       tagline: "Complete brand development from concept to implementation",
       description: "Comprehensive brand identity design including logo, color palette, typography, and brand guidelines. Create a cohesive brand that resonates.",
       longDescription: "A strong brand identity is the foundation of business success. Our brand identity service goes beyond logo design to create a complete visual system that represents your values, differentiates you from competitors, and connects with your target audience. We develop comprehensive brand guidelines that ensure consistency across all touchpoints, from business cards to websites. The process includes market research, competitor analysis, mood boarding, concept development, and final delivery of all brand assets and documentation.",
-      heroImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop",
+      heroImage: "/Branding.jpg",
       features: [
         "Complete brand strategy development",
         "Logo design and variations",
@@ -736,7 +736,7 @@ export interface Service {
       tagline: "Memorable logos that capture your brand essence",
       description: "Professional logo design that makes your brand instantly recognizable. From concept to final files, we create logos that work everywhere.",
       longDescription: "Your logo is the face of your brand, appearing on everything from business cards to billboards. Our logo design service creates versatile, memorable marks that effectively communicate your brand identity. We begin with research and sketching, then develop multiple concepts for your review. Each logo is designed to work across all applications and sizes, from favicon to billboard. You'll receive the final logo in all necessary formats, including vector files, along with usage guidelines.",
-      heroImage: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/business-cards/buenos-mockups-8cqdHOME9zY-unsplash.jpg",
       features: [
         "Multiple initial concepts",
         "Unlimited revisions on chosen concept",
@@ -813,7 +813,7 @@ export interface Service {
       tagline: "Stunning packaging designs that sell your products",
       description: "Creative packaging design that attracts customers and communicates your brand. From concept to print-ready files.",
       longDescription: "Packaging design is where aesthetics meet functionality. Our packaging designers create visually stunning designs that not only look beautiful but also protect your products and comply with regulations. We consider every aspect including structure, materials, printing techniques, and user experience. The design process includes market research, competitor analysis, concept development, 3D mockups, and print-ready file preparation. We ensure your packaging stands out on shelves and creates memorable unboxing experiences.",
-      heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/custom-boxes/cosmetic-packaging.jpg",
       features: [
         "Custom structural design",
         "3D mockups and visualization",
@@ -890,7 +890,7 @@ export interface Service {
       tagline: "Professional designs for all your marketing collateral",
       description: "Eye-catching designs for brochures, flyers, posters, and all marketing materials. Designs that convert viewers into customers.",
       longDescription: "Effective marketing materials combine compelling design with strategic messaging to drive results. Our designers create professional marketing collateral that captures attention, communicates your value proposition, and motivates action. From single-page flyers to multi-page brochures, we ensure every piece is on-brand, visually appealing, and optimized for its intended use. All designs are provided print-ready with appropriate bleeds, color modes, and specifications for flawless production.",
-      heroImage: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/brochures/tech-startup-branding.jpg",
       features: [
         "Brochures and catalogs",
         "Flyers and leaflets",
@@ -967,7 +967,7 @@ export interface Service {
       tagline: "Essential business stationery that makes a professional impression",
       description: "Complete business printing services including business cards, letterheads, envelopes, and folders. Quality that represents your brand.",
       longDescription: "Professional business stationery is essential for making the right impression. Our business printing service provides all the essential materials your company needs to communicate professionally. From business cards that get noticed to letterheads that command respect, we ensure every piece reflects your brand identity and quality standards. We offer various paper stocks, finishes, and printing techniques to match your brand positioning, from economy options to premium luxury materials.",
-      heroImage: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=600&fit=crop",
+      heroImage: "/images/products/business-cards/select-photos-NPgq_TPo710-unsplash.jpg",
       features: [
         "Business cards (standard and premium)",
         "Letterheads and company paper",
@@ -1044,7 +1044,7 @@ export interface Service {
       tagline: "Branded merchandise that keeps your brand in customers' hands",
       description: "Custom promotional products and corporate gifts. From pens to tote bags, create lasting impressions with branded merchandise.",
       longDescription: "Promotional products are powerful marketing tools that keep your brand visible long after the initial interaction. We offer a wide range of customizable promotional items suitable for trade shows, corporate gifts, employee appreciation, and marketing campaigns. Each product can be branded with your logo and messaging using appropriate printing or engraving techniques. From budget-friendly giveaways to premium corporate gifts, we help you select products that align with your brand and resonate with your audience.",
-      heroImage: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=600&fit=crop",
+      heroImage: "/cosmoh-G-D3Su9Yqd8-unsplash.jpg",
       features: [
         "Wide range of product options",
         "Custom branding and printing",
@@ -1121,7 +1121,7 @@ export interface Service {
       tagline: "Premium finishing techniques that make your prints extraordinary",
       description: "Advanced printing techniques including die-cutting, embossing, foil stamping, and spot UV. Elevate your materials with special finishes.",
       longDescription: "Specialty printing techniques add tactile and visual elements that transform ordinary printed materials into memorable experiences. Our specialty finishing services include die-cutting for custom shapes, embossing and debossing for dimensional effects, foil stamping for metallic accents, spot UV for selective glossy highlights, and more. These techniques can be combined to create truly unique pieces that command attention and convey quality. Perfect for business cards, invitations, packaging, and high-end marketing materials.",
-      heroImage: "https://images.unsplash.com/photo-1621569899672-aa12763d4cc7?w=1200&h=600&fit=crop",
+      heroImage: "/Service-color.jpg",
       features: [
         "Die-cutting for custom shapes",
         "Embossing and debossing",

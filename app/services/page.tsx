@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowRight, CheckCircle2} from "lucide-react";
-import { getAllServices} from "@/components/lib/services";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { serviceCategories, getAllServices } from "@/components/lib/services";
 import { Printer, Package, Palette } from "lucide-react";
 
 export const metadata = {
@@ -17,26 +17,36 @@ function getCategoryBannerImage(category: string): string {
   const banners: Record<string, string> = {
     "Printing Services": "/service-page-first-banner.jpeg",
     "Packaging Solutions": "/service-page-second-banner.jpeg",
-    "Design Services": "https://images.unsplash.com/photo-1561070791-36c11767b26a?w=1920&q=85",
+    "Design Services": "/Branding.jpg",
+    "Business Solutions": "/images/products/business-cards/select-photos-NPgq_TPo710-unsplash.jpg",
   };
-  return banners[category] || "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=1920&q=85";
+  return banners[category] || "/Hero1.jpg";
+}
+
+function getCategoryDescription(category: string): string {
+  const descriptions: Record<string, string> = {
+    "Printing Services": "Professional printing solutions for all your business needs",
+    "Packaging Solutions": "Custom packaging that protects and promotes your products",
+    "Design Services": "Creative design solutions to elevate your brand",
+    "Business Solutions": "Professional business printing and promotional products",
+  };
+  return descriptions[category] || "Quality printing solutions for your needs";
 }
 
 function getBenefitImage(title: string): string {
   const images: Record<string, string> = {
-    "End-to-End Solutions": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=75",
-    "State-of-the-Art Technology": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=75",
-    "Expert Team": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=75",
-    "Fast Turnaround": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=75",
-    "Competitive Pricing": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75",
-    "Quality Guaranteed": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75",
+    "End-to-End Solutions": "/Service-digital-press.jpg",
+    "State-of-the-Art Technology": "/Service-color.jpg",
+    "Expert Team": "/Quality-control.jpg",
+    "Fast Turnaround": "/Curing-system.jpg",
+    "Competitive Pricing": "/Cutting.jpg",
+    "Quality Guaranteed": "/Color-management.jpg",
   };
-  return images[title] || "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75";
+  return images[title] || "/Hero2.jpg";
 }
 
-export default async function ServicesPage() {
-  // Fetch all services from Sanity
-  const allServices = await getAllServices();
+export default function ServicesPage() {
+  const allServices = getAllServices();
 
   // Group services by category
   const servicesByCategory: Record<string, typeof allServices> = {};
@@ -47,42 +57,20 @@ export default async function ServicesPage() {
     servicesByCategory[service.category].push(service);
   });
 
-  // Category metadata
-  const categoryMeta: Record<string, { icon: any; description: string }> = {
-    "digital-printing": {
-      icon: Printer,
-      description: "Fast, high-quality digital printing for all your business needs"
-    },
-    "offset-printing": {
-      icon: Printer,
-      description: "Large volume printing with consistent, professional results"
-    },
-    "large-format": {
-      icon: Printer,
-      description: "Eye-catching banners, posters, and signage for maximum impact"
-    },
-    "design-services": {
-      icon: Palette,
-      description: "Professional design services to bring your vision to life"
-    },
-    "finishing": {
-      icon: Package,
-      description: "Professional finishing touches for polished, complete products"
-    },
-    "packaging": {
-      icon: Package,
-      description: "Custom packaging solutions that protect and promote your brand"
-    },
-  };
-
-  // Convert category keys to readable names
-  const categoryNames: Record<string, string> = {
-    "digital-printing": "Digital Printing",
-    "offset-printing": "Offset Printing",
-    "large-format": "Large Format Printing",
-    "design-services": "Design Services",
-    "finishing": "Finishing Services",
-    "packaging": "Packaging Solutions",
+  // Get unique category icons
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "Printing Services":
+        return Printer;
+      case "Packaging Solutions":
+        return Package;
+      case "Design Services":
+        return Palette;
+      case "Business Solutions":
+        return Printer;
+      default:
+        return Printer;
+    }
   };
 
   return (
@@ -95,7 +83,7 @@ export default async function ServicesPage() {
               Complete Printing & Packaging Solutions
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              From concept to delivery, we provide comprehensive services to bring your vision to life. 
+              From concept to delivery, we provide comprehensive services to bring your vision to life.
               Quality, speed, and reliability in every project.
             </p>
             <Button asChild size="lg">
@@ -110,9 +98,8 @@ export default async function ServicesPage() {
 
       {/* Service Categories */}
       {Object.entries(servicesByCategory).map(([categoryKey, services], idx) => {
-        const categoryName = categoryNames[categoryKey] || categoryKey;
-        const CategoryIcon = categoryMeta[categoryKey]?.icon || Printer;
-        const categoryDescription = categoryMeta[categoryKey]?.description || "";
+        const CategoryIcon = getCategoryIcon(categoryKey);
+        const categoryDescription = getCategoryDescription(categoryKey);
 
         return (
           <section key={categoryKey} className={idx % 2 === 1 ? "py-16 md:py-24 bg-muted/30" : "py-16 md:py-24"}>
@@ -120,8 +107,8 @@ export default async function ServicesPage() {
               {/* Category Header Banner */}
               <div className="relative h-56 sm:h-64 md:h-72 lg:h-80 rounded-xl md:rounded-2xl overflow-hidden mb-8 md:mb-12">
                 <Image
-                  src={getCategoryBannerImage(categoryName)}
-                  alt={`${categoryName} banner`}
+                  src={getCategoryBannerImage(categoryKey)}
+                  alt={`${categoryKey} banner`}
                   fill
                   className="object-cover"
                   priority={idx === 0}
@@ -135,7 +122,7 @@ export default async function ServicesPage() {
                       </div>
                       <div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">
-                          {categoryName}
+                          {categoryKey}
                         </h2>
                         <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl line-clamp-2 sm:line-clamp-none">
                           {categoryDescription}
@@ -147,45 +134,38 @@ export default async function ServicesPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-                {services.map((service) => {
-                  const imageUrl = service.cardImage
-                    ? urlFor(service.cardImage).width(500).height(400).url()
-                    : "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=500&q=80";
-
-                  return (
-                    <Link key={service._id} href={`/services/${service.slug.current}`}>
-                      <Card className="h-full hover:shadow-lg transition-all duration-300 group overflow-hidden border-2 hover:border-primary/30">
-                        <div className="relative h-44 sm:h-48 md:h-52 lg:h-48 overflow-hidden bg-muted">
-                          <Image
-                            src={imageUrl}
-                            alt={service.name}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                          />
-                        </div>
-                        <CardHeader className="pb-3">
-                          <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-1">
-                            {service.name}
-                          </CardTitle>
-                          <CardDescription className="text-sm line-clamp-2">{service.shortDescription}</CardDescription>
-                        </CardHeader>
-                        <CardContent className="pt-0">
-                          <span className="text-primary font-medium text-sm inline-flex items-center group-hover:gap-2 transition-all">
-                            Learn More
-                            <ArrowRight className="ml-1 h-4 w-4" />
-                          </span>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  );
-                })}
+                {services.map((service) => (
+                  <Link key={service.id} href={`/services/${service.slug}`}>
+                    <Card className="h-full hover:shadow-lg transition-all duration-300 group overflow-hidden border-2 hover:border-primary/30">
+                      <div className="relative h-44 sm:h-48 md:h-52 lg:h-48 overflow-hidden bg-muted">
+                        <Image
+                          src={service.heroImage}
+                          alt={service.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                        />
+                      </div>
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-1">
+                          {service.name}
+                        </CardTitle>
+                        <CardDescription className="text-sm line-clamp-2">{service.tagline}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <span className="text-primary font-medium text-sm inline-flex items-center group-hover:gap-2 transition-all">
+                          Learn More
+                          <ArrowRight className="ml-1 h-4 w-4" />
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
               </div>
             </div>
           </section>
         );
       })}
-
 
       {/* Why Choose Our Services */}
       <section className="py-16 md:py-24">
@@ -267,7 +247,7 @@ export default async function ServicesPage() {
               <div className="text-center">
                 <div className="relative h-40 sm:h-44 md:h-48 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-muted">
                   <Image
-                    src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75"
+                    src="/Quality-control.jpg"
                     alt="ISO Certification"
                     fill
                     className="object-cover"
@@ -283,7 +263,7 @@ export default async function ServicesPage() {
               <div className="text-center">
                 <div className="relative h-40 sm:h-44 md:h-48 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-muted">
                   <Image
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=75"
+                    src="/Service-color.jpg"
                     alt="Quality Awards"
                     fill
                     className="object-cover"
@@ -299,7 +279,7 @@ export default async function ServicesPage() {
               <div className="text-center sm:col-span-2 md:col-span-1">
                 <div className="relative h-40 sm:h-44 md:h-48 rounded-lg overflow-hidden mb-3 sm:mb-4 bg-muted">
                   <Image
-                    src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=75"
+                    src="/Service-digital-press.jpg"
                     alt="State-of-the-art Equipment"
                     fill
                     className="object-cover"
