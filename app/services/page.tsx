@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2} from "lucide-react";
-import { getAllServices, urlFor } from "@/lib/sanity.queries";
+import { getAllServices} from "@/components/lib/services";
 import { Printer, Package, Palette } from "lucide-react";
 
 export const metadata = {
