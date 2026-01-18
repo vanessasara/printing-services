@@ -4,7 +4,7 @@
 Comprehensive step-by-step implementation phases for integrating Sanity CMS and Pakistani payment gateways (JazzCash & Easypaisa) into your printing services website.
 
 ---
-
+this is phase 4 which i want to start it with claude i dont want 1 2 3
 ## Phase 4: Payment Gateway Research & Credentials
 
 ### Objectives
