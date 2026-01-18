@@ -5,6 +5,7 @@ Comprehensive step-by-step implementation phases for integrating Sanity CMS and 
 
 ---
 this is phase 4 which i want to start it with claude i dont want 1 2 3
+this is the second time im updating it 
 ## Phase 4: Payment Gateway Research & Credentials
 
 ### Objectives
