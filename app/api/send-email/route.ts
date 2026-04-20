@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>Thank You for Contacting Us!</h1>
+              <h1>Thank You for Contacting Us if needed please head over to our office that is located in lahore!</h1>
             </div>
             <div class="content">
               <p>Dear ${customerName},</p>
